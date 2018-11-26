@@ -5,7 +5,7 @@ header-img: img/home-bg.jpg
 email:  Jacob_Zhou@outlook.com
 description: "alcofish NLP"
 keyword: "NLP"
-url: "http://alcofish.cn"              # your host, for absolute URL
+url: "http://alcofish.com"              # your host, for absolute URL
 baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
@@ -94,7 +94,7 @@ service-worker: true
 
 
 # MathJax rendering for layout:page (e.g. post preview)
-page-mathjax: true
+page-mathjax: false
 
 
 

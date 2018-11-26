@@ -1,20 +1,19 @@
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
+MathJax.Hub.Config({
     TeX: {
-      equationNumbers: {
+        equationNumbers: {
         autoNumber: "AMS"
-      }
+        },
+        extensions: ["AMSmath.js","AMSsymbols.js", "autobold.js"]
     },
     SVG: {
-      scale: 90
+        scale: 90
     },
     tex2jax: {
-      inlineMath: [ ['$','$'] ],
-      displayMath: [ ['$$','$$'] ],
-      processEscapes: true,
+        inlineMath: [ ['$','$'] ],
+        displayMath: [ ['$$','$$'] ],
+        processEscapes: true,
     }
-  });
+});
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG">
-</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG" type="text/javascript"></script>
