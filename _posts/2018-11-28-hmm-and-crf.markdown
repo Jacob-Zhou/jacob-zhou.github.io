@@ -318,27 +318,27 @@ $$
 
 $$\begin{split}
     P(Y_i|S) &= \sum_{Y_{\neq i}}P(Y_1,Y_2,\dotsc,Y_n|S)\\
-             &= \frac{1}{Z(S)}\sum_{Y_{\neq i}}\tilde{P}(Y_1,Y_2,\dotsc,Y_n|S)\\
+             &= \frac{1}{Z(S)}\sum_{Y_{\neq i}}\tilde{P}(Y_1,Y_2,\dotsc,Y_n,S)\\
              &= \frac{1}{Z(S)}\sum_{Y_{\neq i}}\phi(\text{Start},Y_1,S)\phi(Y_1,Y_2,S)\dotsm\phi(Y_n,\text{Stop},S)\\\\
-    P(Y_{i-1},Y_i|S) &= \sum_{Y_{\neq \{i,i-1\}}}P(Y_1,Y_2,\dotsc,Y_n|S)\\
-             &= \frac{1}{Z(S)}\sum_{Y_{\neq \{i,i-1\}}}\tilde{P}(Y_1,Y_2,\dotsc,Y_n|S)\\
+    P(Y_{i-1},Y_i|S) &= \sum_{Y_{\neq \{i,i-1\}}}P(Y_1,Y_2,\dotsc,Y_n,S)\\
+             &= \frac{1}{Z(S)}\sum_{Y_{\neq \{i,i-1\}}}\tilde{P}(Y_1,Y_2,\dotsc,Y_n,S)\\
              &= \frac{1}{Z(S)}\sum_{Y_{\neq \{i,i-1\}}}\phi(\text{Start},Y_1,S)\phi(Y_1,Y_2,S)\dotsm\phi(Y_n,\text{Stop},S)\\\\
-    Z(S) &= \sum_{Y_1,Y_2,\dotsc,Y_n}\tilde{P}(Y_1,Y_2,\dotsc,Y_n|S)\\
+    Z(S) &= \sum_{Y_1,Y_2,\dotsc,Y_n}\tilde{P}(Y_1,Y_2,\dotsc,Y_n,S)\\
          &= \sum_{Y_1,Y_2,\dotsc,Y_n}\phi(\text{Start},Y_1,S)\phi(Y_1,Y_2,S)\dotsm\phi(Y_n,\text{Stop},S)\\
 \end{split}$$
 
-对未归一化概率 $\tilde{P}(Y_1,Y_2,\dotsc,Y_n\|S)$ 的求和进行了多次，并且有着共同点
+对未归一化概率 $\tilde{P}(Y_1,Y_2,\dotsc,Y_n,S)$ 的求和进行了多次，并且有着共同点
 
 $$\begin{split}
-     &\sum_{Y_{\neq i}}\tilde{P}(Y_1,Y_2,\dotsc,Y_n|S)\\
+     &\sum_{Y_{\neq i}}\tilde{P}(Y_1,Y_2,\dotsc,Y_n,S)\\
     =&\sum_{Y_{\neq i}}\phi(\text{Start},Y_1,S)\phi(Y_1,Y_2,S)\dotsm\phi(Y_n,\text{Stop},S)\\
     =&\sum_{Y_1,\dotsc,Y_{i-1}}\phi(\text{Start},Y_1,S)\dotsm\phi(Y_{i-1},Y_i,S)\sum_{Y_{i+1},\dotsc,Y_n}\phi(Y_i,Y_i+1,S)\dotsm\phi(Y_n,\text{Stop},S)\\
     \\
-     &\sum_{Y_{\neq \{i,i-1\}}}\tilde{P}(Y_1,Y_2,\dotsc,Y_n|S)\\
+     &\sum_{Y_{\neq \{i,i-1\}}}\tilde{P}(Y_1,Y_2,\dotsc,Y_n,S)\\
     =&\sum_{Y_{\neq \{i,i-1\}}}\phi(\text{Start},Y_1,S)\phi(Y_1,Y_2,S)\dotsm\phi(Y_n,\text{Stop},S)\\
     =&\sum_{Y_1,\dotsc,Y_{i-2}}\phi(\text{Start},Y_1,S)\dotsm\phi(Y_{i-2},Y_{i-1},S)\cdot\phi(Y_{i-1},Y_i,S)\cdot\sum_{Y_{i+1},\dotsc,Y_n}\phi(Y_i,Y_i+1,S)\dotsm\phi(Y_n,\text{Stop},S)\\
     \\
-    &\sum_{Y_1,Y_2,\dotsc,Y_n}\tilde{P}(Y_1,Y_2,\dotsc,Y_n|S)\\
+    &\sum_{Y_1,Y_2,\dotsc,Y_n}\tilde{P}(Y_1,Y_2,\dotsc,Y_n,S)\\
     =&\sum_{Y_1,Y_2,\dotsc,Y_n}\phi(\text{Start},Y_1,S)\phi(Y_1,Y_2,S)\dotsm\phi(Y_n,\text{Stop},S)\\
     =&\sum_{Y_1}\phi(\text{Start},Y_1,S)\dotsm\sum_{Y_i}\phi(Y_{i-1},Y_i,S)\sum_{Y_{i+1},\dotsc,Y_n}\phi(Y_i,Y_i+1,S)\dotsm\phi(Y_n,\text{Stop},S)\\
     =&\sum_{Y_n}\phi(Y_n,\text{Stop},S)\dotsm\sum_{Y_i}\phi(Y_i,Y_{i+1},S)\sum_{Y_1,\dotsc,Y_{i-1}}\phi(\text{Start},Y_1,S)\dotsm\phi(Y_{i-1},Y_i,S)\\
@@ -395,15 +395,15 @@ $$\begin{split}
 
 ![meanning-of-alpha-beta](\img\hmm-and-crf\meanning-of-alpha-beta.png)
 
-我们可以看到 $\alpha_i$ 是在前部分子图上求未归一化概率 $\tilde{P}(Y_i\|S)$，而 $\beta_i$ 是在后部分子图上求未归一化概率 $\tilde{P}(Y_i\|S)$
+我们可以看到 $\alpha_i$ 是在前部分子图上求未归一化概率 $\tilde{P}(Y_i,S)$，而 $\beta_i$ 是在后部分子图上求未归一化概率 $\tilde{P}(Y_i,S)$
 
 #### 预测问题  
 条件随机场中的解码问题的解决方法与隐马尔可夫模型中的解法基本上是一致的，都是使用了**维比特算法**
 
 $$\begin{split} 
     Y^\star&=\mathop{\text{argmax}}_{Y}P(Y|S)\\
-    &=\mathop{\text{argmax}}_{Y}\frac{1}{Z(S)}\tilde{P}(Y|S)\\
-    &=\mathop{\text{argmax}}_{Y}\tilde{P}(Y|S)\\
+    &=\mathop{\text{argmax}}_{Y}\frac{1}{Z(S)}\tilde{P}(Y,S)\\
+    &=\mathop{\text{argmax}}_{Y}\tilde{P}(Y,S)\\
     &=\mathop{\text{argmax}}_{Y}\prod_{i=1}^{n+1}\phi(Y_i,Y_{i-1},S)\\
     &=\mathop{\text{argmax}}_{Y}\prod_{i=1}^{n+1}\exp(\mathop{\mathcal{Score}}(S,i,Y_{i-1},Y_i))\\
     &=\mathop{\text{argmax}}_{Y}\exp(\sum_{i=1}^{n+1}\mathop{\mathcal{Score}}(S,i,Y_{i-1},Y_i))\\
