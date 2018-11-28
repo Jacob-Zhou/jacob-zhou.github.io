@@ -1648,6 +1648,7 @@ img::-moz-selection {
   color: #ddd;
 }
 .MathJax_SVG_Display {
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 }
