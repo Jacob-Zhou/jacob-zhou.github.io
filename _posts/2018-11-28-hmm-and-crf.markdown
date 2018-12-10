@@ -444,7 +444,7 @@ $$\begin{split}
 学习过程中，我们希望有 $N$ 个训练数据的训练数据集 $\mathcal{D}$ 中所有数据对 $(S^j,Y^j)$ 的条件概率 $P(S=S^j\|Y=Y^j)$ 最大化，于是我们给出条件随机场的最大似然函数
 
 $$\begin{split}
-    LL(\mathcal{D};\boldsymbol{w})&=\sum_{j=1}^N\log P(Y=Y^j|S=S^j)\\
+    \mathcal{LL}(\mathcal{D};\boldsymbol{w})&=\sum_{j=1}^N\log P(Y=Y^j|S=S^j)\\
     &=\sum_{j=1}^N\log \frac{\tilde{P}(Y=Y^j,S=S^j)}{Z(S=S^j)}\\
     &=\sum_{j=1}^N\log \frac{\prod_{i=1}^{n+1}\phi(Y_i=y_i^j,Y_{i-1}=y_{i-1}^j,S=S^j)}{Z(S=S^j)}\\
     &=\sum_{j=1}^N\log \frac{\prod_{i=1}^{n+1}\exp(\mathop{\mathcal{Score}}(S=S^j,i,Y_{i-1}=y_{i-1}^j,Y_i=y_i^j))}{Z(S=S^j)}\\
@@ -456,7 +456,7 @@ $$\begin{split}
 接下来我们对最大似然函数对权重 $\boldsymbol{w}$ 进行求导  
 
 $$\begin{split}
-    \frac{\partial LL(\mathcal{D};\boldsymbol{w})}{\partial \boldsymbol{w}} &= \sum_{j=1}^N\left(\frac{\partial\left(\sum_{i=1}^{n+1}\boldsymbol{w}\cdot \boldsymbol{f}\left(S=S^j,i,Y_{i-1}=y_{i-1}^j,Y_i=y_i^j\right)\right)}{\partial \boldsymbol{w}}-\frac{\partial\log Z(S=S^j)}{\partial \boldsymbol{w}}\right)\\
+    \frac{\partial \mathcal{LL}(\mathcal{D};\boldsymbol{w})}{\partial \boldsymbol{w}} &= \sum_{j=1}^N\left(\frac{\partial\left(\sum_{i=1}^{n+1}\boldsymbol{w}\cdot \boldsymbol{f}\left(S=S^j,i,Y_{i-1}=y_{i-1}^j,Y_i=y_i^j\right)\right)}{\partial \boldsymbol{w}}-\frac{\partial\log Z(S=S^j)}{\partial \boldsymbol{w}}\right)\\
     &=\sum_{j=1}^N\left(\sum_{i=1}^{n+1}\boldsymbol{f}\left(S=S^j,i,Y_{i-1}=y_{i-1}^j,Y_i=y_i^j\right) - \frac{\partial\log Z(S=S^j)}{\partial \boldsymbol{w}}\right)\\
 \end{split}$$
 
@@ -477,7 +477,7 @@ $$\begin{split}
 最后我们有
 
 $$\begin{split}
-\frac{\partial LL(\mathcal{D};\boldsymbol{w})}{\partial \boldsymbol{w}} &=\sum_{j=1}^N\left(\sum_{i=1}^{n+1}\boldsymbol{f}\left(S=S^j,i,Y_{i-1}=y_{i-1}^j,Y_i=y_i^j\right) - \sum_{i=1}^{n+1}\sum_{Y_{i-1},Y_i}\boldsymbol{f}\left(S,i,Y_{i-1},Y_i\right)P\left(Y_{i-1},Y_i|S\right)\right)\\
+\frac{\partial \mathcal{LL}(\mathcal{D};\boldsymbol{w})}{\partial \boldsymbol{w}} &=\sum_{j=1}^N\left(\sum_{i=1}^{n+1}\boldsymbol{f}\left(S=S^j,i,Y_{i-1}=y_{i-1}^j,Y_i=y_i^j\right) - \sum_{i=1}^{n+1}\sum_{Y_{i-1},Y_i}\boldsymbol{f}\left(S,i,Y_{i-1},Y_i\right)P\left(Y_{i-1},Y_i|S\right)\right)\\
     &=\sum_{j=1}^N\sum_{i=1}^{n+1}\left(\boldsymbol{f}\left(S=S^j,i,Y_{i-1}=y_{i-1}^j,Y_i=y_i^j\right) - \sum_{Y_{i-1},Y_i}\boldsymbol{f}\left(S=S^j,i,Y_{i-1},Y_i\right)P\left(Y_{i-1},Y_i|S=S^j\right)\right)
 \end{split}$$
 
