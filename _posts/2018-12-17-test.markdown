@@ -1,8 +1,8 @@
 ---
 layout:     post
 title:      "TEST"
-subtitle:   "今天起要开始学着写博客了"
-date:       2018-12-17 17:09:00 +0800
+subtitle:   "test"
+date:       2018-12-16 17:09:00 +0800
 author:     "Zo"
 header-img: "img/post-bg.jpg"
 catalog: true
