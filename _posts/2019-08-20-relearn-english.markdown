@@ -54,3 +54,30 @@ tags:
    - **often**  
    - **usually**  
    - **sometimes**  
+
+# was/were
+1. - 第一人称 **I** 和第三人称单数 **he/she/it** 用 **was**  （不可数名词视为单数)
+   - 复数 **you/they** 和第二人称 **we** 用 **were**  (A and B 整体来视为一个复数)
+
+
+# Every Each
+1. **Every** **Each** 后面接的是名词单数
+2. **Every number** 后面接名词复数
+3. **Each of determiner** 后面接名词复数
+
+# 介词搭配
+1. **on** time 有踩点的意思; **in** time 表在某一时间前到, 会留有时间余地
+2. **in** the end 有*finally*的意思; **at** the end 表在最后一部分
+3. **in** business 成为商人; **on** business 因公
+4. **in** a moment 一会后; **at** the moment 现在
+
+# 及物动词短语
+1. 宾语是动词的话 必须要放动词短语中
+    > **put** *them* **on**
+
+# could
+1. **could** 用于表示过去
+
+# 表示有必要
+1. **must** do something
+2. 表示过去不能用*must*, 得用**had to**
