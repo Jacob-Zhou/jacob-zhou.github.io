@@ -11,6 +11,13 @@ body {
   margin: 0
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #223e36;
+    color: #dadbdf;
+  }
+}
+
 .pub-row {
   display: flex;
   align-items: center;
@@ -21,7 +28,7 @@ body {
   height: 2.4rem;
   width: 2.4rem;
   background-color: transparent;
-  color: #043361 !important;
+  color: #223e36 !important;
   border-radius: 100%;
   text-align: center;
   font-size: 1.15rem;
@@ -31,7 +38,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
   .social-icons a {
-    color: #3eb7f0 !important;
+    color: #93d5dc !important;
   }
 }
 
@@ -286,18 +293,18 @@ h4,
 h5,
 h6 {
   font-weight: 600;
-  color: #043361;
+  color: #223e36;
   margin: 0 0 20px;
 }
 
 h1 {
   font-weight: 500;
-  color: #043361;
+  color: #223e36;
   margin: 0 0 20px;
 }
 
 h2 {
-  color: #043361;
+  color: #223e36;
   font-weight: 500;
   margin: 2px 0px 15px;
   font-size: 157%;
@@ -310,11 +317,15 @@ h2 {
   h4,
   h5,
   h6 {
-    color: rgb(62, 183, 240);
+    color: #93d5dc;
+  }
+
+  h1 {
+    color: #93d5dc;
   }
 
   h2 {
-    color: rgb(62, 183, 240);
+    color: #93d5dc;
   }
 }
 
@@ -338,17 +349,21 @@ h1 {
 }
 
 a {
-  color: #39c;
+  color: #2c9678;
   text-decoration: none;
 }
 
 a:hover {
-  color: #069;
+  color: #1a6840;
 }
 
 @media (prefers-color-scheme: dark) {
   a {
-    color: rgb(62, 183, 240);
+    color: #45b787;
+  }
+
+  a:hover {
+    color: #83cbac;
   }
 }
 
@@ -413,11 +428,11 @@ th {
 
 @media (prefers-color-scheme: dark) {
   th {
-    color: rgb(62, 183, 240);
+    color: #93d5dc;
   }
 
   dt {
-    color: rgb(62, 183, 240);
+    color: #93d5dc;
   }
 }
 

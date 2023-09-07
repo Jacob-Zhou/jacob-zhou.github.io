@@ -14,6 +14,7 @@ KEYS = [
     'evaluation', 'evaluating', 'evaluations', 'benchmark', 'benchmarks', 
     'grammar', 'grammatical',
     'decoding', 
+    'agent', 'agents', 
     'seq2seq', 'sequence', 'sequence to sequence', 'sequence-to-sequence',
     'stochasticity', 'struct', 'structural', 'structure', 'structured', 'sum-product', 'syntax',
     'transducer', 'transduction', 'transformer', 'translation', 
