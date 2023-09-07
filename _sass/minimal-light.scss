@@ -677,6 +677,13 @@ screen and (max-width: 480px) {
   font-family: monospace;
 }
 
+
+#publications>ul>li>p:not(.vspace) {
+  margin-bottom: 0px;
+  font-size: 16px;
+}
+
+
 .vspace {
   margin-bottom: 5px;
 }
