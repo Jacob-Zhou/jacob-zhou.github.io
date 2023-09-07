@@ -94,7 +94,7 @@ for day in range(7):
 
 with open('arxiv.md', 'w') as f:
     f.write('---\nlayout: default\n---\n\n')
-    f.write('<style type="text/css"> code { width: 120px; display: inline-block;} </style>\n\n')
+    f.write('<style type="text/css"> code { width: 130px; display: inline-block;} </style>\n\n')
     f.write('<details><summary>Contents</summary><ul>')
     for date in papers:
         f.write(f'<li><a href="#{date.replace(" ", "-").replace(",", "").lower()}">{date}</a></li>')

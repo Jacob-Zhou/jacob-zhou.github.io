@@ -2,7 +2,7 @@
 layout: default
 ---
 
-Hi, my name is Houquan Zhou (周厚全). 
+Hi, my name is **Houquan Zhou** (**周厚全**). 
 I am a second-year PhD student at [HLT@SUDA](http://hlt.suda.edu.cn), co-advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli) and [Prof. Min Zhang](https://zhangminsuda.github.io/cn_homepage/).
 
 
@@ -50,7 +50,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 * **Fast and Accurate Neural CRF Constituency Parsing**
     <p class="vspace"></p>
-    *Yu Zhang\*, **Houquan Zhou***, Zhenghua Li* <br>
+    *Yu Zhang\*, **Houquan Zhou**\*, Zhenghua Li* <br>
     **IJCAI 2020**
     <p class="vspace"></p>
     [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://www.ijcai.org/Proceedings/2020/560/)
