@@ -4,8 +4,10 @@ layout: default
 
 Hi, my name is Houquan Zhou (周厚全). 
 I am a second-year PhD student at [HLT@SUDA](http://hlt.suda.edu.cn), co-advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli) and [Prof. Min Zhang](https://zhangminsuda.github.io/cn_homepage/).
+
+
 My main research interest focuses on grammatical error correction (GEC) and the evaluation and application of large language models.
-Before that, I worked on constituency parsing, dependency parsing, and POS tagging (unsupervised).
+Before that, I worked on constituency parsing, dependency parsing, and part-of-speech tagging.
 
 
 ### Publications:
