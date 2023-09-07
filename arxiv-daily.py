@@ -8,34 +8,15 @@ from typing import Iterable, Tuple
 import arxiv
 
 KEYS = [
-    'adversarial', 'algebraic', 'algebratic', 'amr', 'auto-encoding', 'autoencoder', 'autoencoding',
+    'adversarial', 'algebraic', 'algebratic', 'auto-encoding', 'autoencoder', 'autoencoding',
     'autoregressive',
-    'backward', 'bayesian', 'bayes', 'bethe', 'bilexical', 'bipartite', 'bregman',
-    'carlo', 'chomsky', 'circuit', 'clique', 'constituency', 'constituent', 'context-free', 'crf', 'ctc',
-    'conditional independence', 'conditional-independence',
-    'dependency', 'differentiable', 'differential', 'differentiation', 'diffusion', 'discrete', 'discretized',
-    'duality',
-    'dynamic', 'dynamic programming',
-    'energy', 'euclidean', 'expectation', 'exponential',
-    'fenchel-young', 'filter', 'flow', 'flowseq', 'forest', 'forward', 'frank-wolfe',
-    'gaussian', 'generation', 'grammar', 'grammars', 'gumbel', 'gumbel-softmax',
-    'high-order', 'higher-order', 'hmm', 'hsmm', 'hypergraph',
-    'induction', 'inside', 'invertible',
-    'lagrangian', 'latent', 'levenshtein', 'lexicalized', 'low-rank',
-    'marginal', 'markov', 'masking', 'mcmc', 'mean-field', 'message-passing', 'monte', 'monotonic', 'mutual',
-    'non-projective', 'normalizing',
-    'optimal', 'outside',
-    'parse', 'parser', 'parsing', 'particle', 'partition', 'pcfg', 'perturb-and-map', 'perturb-and-parse',
-    'perturbation',
-    'posterior', 'probabilistic', 'probabilistically', 'programming', 'projection', 'prototype', 'proximal',
-    'randomized', 'ranking', 'rao-blackwell', 'regularization', 'regularized', 'relaxation', 'reorder',
-    'reparameterization', 're-parameterization', 'rnnt', 'rnn-t',
-    'sample', 'sampling', 'scaling', 'second-order', 'semi-amortized', 'semiring', 'semi-markov',
+    'parse', 'parser', 'parsing',
+    'evaluation', 'evaluating', 'evaluations', 'benchmark', 'benchmarks', 
+    'grammar', 'grammatical',
+    'decoding', 
     'seq2seq', 'sequence', 'sequence to sequence', 'sequence-to-sequence',
-    'simplex', 'sinkhorn', 'sparse', 'sparsemap', 'sparsemax', 'state-space', 'stochastic',
     'stochasticity', 'struct', 'structural', 'structure', 'structured', 'sum-product', 'syntax',
-    'transducer', 'transduction', 'transformer', 'translation', 'transport', 'tree', 'treecrf',
-    'variational', 'viterbi'
+    'transducer', 'transduction', 'transformer', 'translation', 
 ]
 
 AUTHORS = [
