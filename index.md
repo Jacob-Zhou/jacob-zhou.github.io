@@ -14,7 +14,7 @@ Before that, I worked on constituency parsing, dependency parsing, and POS taggi
 
 * **Bridging Pre-trained Language Models and Hand-crafted Features for Unsupervised POS Tagging**
     <p class="vspace"></p>
-    ***Houquan Zhou**\*, Yang Li\*, Zhenghua Li, Min Zhang* <br>
+    *__Houquan Zhou__\*, Yang Li\*, Zhenghua Li, Min Zhang* <br>
     **ACL (Findings) 2022**
     <p class="vspace"></p>
     [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2022.findings-acl.259/)
@@ -59,9 +59,10 @@ Before that, I worked on constituency parsing, dependency parsing, and POS taggi
 
 * **Is POS Tagging Necessary or Even Helpful for Neural Dependency Parsing?**
     <p class="vspace"></p>
-    ***Houquan Zhou**\*, Yu Zhang\*, Zhenghua Li, Min Zhang* <br>
+    <p class="vspace">
+    *__Houquan Zhou__\*, Yu Zhang\*, Zhenghua Li, Min Zhang* <br>
     **NLPCC 2020** (<strong><i style="color:#e74d3c">Best Paper Award</i></strong>)
-    <p class="vspace"></p>
+    </p>
     [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2003.03204)
     [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/stack-parser)
     [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F3bb577d87ae8e0d45a223f65db24ab479fbda174%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/Is-POS-Tagging-Necessary-or-Even-Helpful-for-Neural-Zhang-Li/3bb577d87ae8e0d45a223f65db24ab479fbda174)
