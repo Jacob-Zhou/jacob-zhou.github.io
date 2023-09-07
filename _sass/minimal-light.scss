@@ -678,11 +678,14 @@ screen and (max-width: 480px) {
 }
 
 
-#publications>ul>li>p:not(.vspace) {
+h3#publications~ul>li>p:not(.vspace) {
   margin-bottom: 0px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
+h3#publications~ul>li {
+  margin-bottom: 18px;
+}
 
 .vspace {
   margin-bottom: 5px;
