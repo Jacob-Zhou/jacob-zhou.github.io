@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
 
@@ -298,14 +298,14 @@ h6 {
 }
 
 h1 {
-  font-weight: 500;
+  font-weight: 700;
   color: #223e36;
   margin: 0 0 20px;
 }
 
 h2 {
   color: #223e36;
-  font-weight: 500;
+  font-weight: 600;
   margin: 2px 0px 15px;
   font-size: 157%;
 }
@@ -396,7 +396,7 @@ pre {
 }
 
 pre {
-  max-width: 500px;
+  max-width: 600px;
   padding: 8px 15px;
   background: #f8f8f8;
   border-radius: 5px;
@@ -418,7 +418,7 @@ td {
 
 dt {
   color: #444;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 th {
@@ -494,13 +494,13 @@ header ul a:active {
 }
 
 strong {
-  color: #222;
-  font-weight: 500;
+  color: #000;
+  font-weight: 600;
 }
 
 @media (prefers-color-scheme: dark) {
   strong {
-    color: #eeeff0;
+    color: #fff;
   }
 }
 
