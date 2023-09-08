@@ -12,12 +12,13 @@ KEYS = [
     'autoregressive',
     'parse', 'parser', 'parsing',
     'evaluation', 'evaluating', 'evaluations', 'benchmark', 'benchmarks', 
-    'grammar', 'grammatical',
+    'grammar', 'grammatical', 'grammatical error', 'grammar error correction', 
     'decoding', 
     'agent', 'agents', 
+    'feedback', 'feedbacks', 
     'seq2seq', 'sequence', 'sequence to sequence', 'sequence-to-sequence',
-    'stochasticity', 'struct', 'structural', 'structure', 'structured', 'sum-product', 'syntax',
-    'transducer', 'transduction', 'transformer', 'translation', 
+    'stochasticity', 'struct', 'structural', 'structure', 'structured', 'syntax',
+    # 'transducer', 'transduction', 'transformer', 'translation', 
 ]
 
 AUTHORS = [
