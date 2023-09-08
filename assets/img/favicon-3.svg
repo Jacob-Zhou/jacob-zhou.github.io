@@ -2,7 +2,7 @@
 <!-- <svg width="36" height="36" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1" xml:space="preserve"> -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px"
    y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve">
-   <!-- <style>
+   <style>
       path {
          fill: #231916;
       }
@@ -16,7 +16,7 @@
             fill: white;
          }
       }
-   </style> -->
+   </style>
    <g class="layer">
       <title>Layer 1</title>
       <g id="g8" transform="matrix(0.094948 0 0 -0.094948 -68.5403 161.086)">
