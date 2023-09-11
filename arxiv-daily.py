@@ -50,12 +50,14 @@ CLASSES = ['cs.CL', 'cs.LG']
 
 
 def red(t: str) -> str:
-    return f'<span style="color:#e74d3c;">{t}</span>'
+    return f'<strong>*{t}*</strong>'
 
 
-def code(t: str, color: str = 'green') -> str:
-    return f'<code style="color:{color};">{t}</code>'
+def text_title(t: str) -> str:
+    return f'<code class="title">{t}</code>'
 
+def texttt(t: str) -> str:
+    return f'<code>{t}</code>'
 
 def link(t: str) -> str:
     return f'[{t}]({t})'
@@ -83,20 +85,19 @@ for day in range(7):
             authors, _ = match(', '.join([f"{author}" for author in paper.authors]), AUTHORS)
             abstract, matched = match(paper.summary, KEYS)
             comments, _ = match(paper.comment or '', CONFS)
-            categories = '    '.join([code(c, 'gray') for c in paper.categories if c in CLASSES])
+            categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
             papers[date][paper.title] = f'* **{title}** <br>\n'
-            papers[date][paper.title] += f'{code("[AUTHORS]")}{authors} <br>\n'
+            papers[date][paper.title] += f'{text_title("[AUTHORS]")}{authors} <br>\n'
             if matched:
-                papers[date][paper.title] += f'{code("[ABSTRACT]")}{abstract} <br>\n'
+                papers[date][paper.title] += f'{text_title("[ABSTRACT]")}{abstract} <br>\n'
             if comments:
-                papers[date][paper.title] += f'{code("[COMMENTS]")}{comments} <br>\n'
-            papers[date][paper.title] += f'{code("[LINK]")}{link(paper.entry_id)} <br>\n'
-            papers[date][paper.title] += f'{code("[DATE]")}{paper.updated} <br>\n'
-            papers[date][paper.title] += f'{code("[CATEGORIES]")}{categories} <br>\n'
+                papers[date][paper.title] += f'{text_title("[COMMENTS]")}{comments} <br>\n'
+            papers[date][paper.title] += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
+            papers[date][paper.title] += f'{text_title("[DATE]")}{paper.updated} <br>\n'
+            papers[date][paper.title] += f'{text_title("[CATEGORIES]")}{categories} <br>\n'
 
 with open('arxiv.md', 'w') as f:
     f.write('---\nlayout: default\n---\n\n')
-    f.write('<style type="text/css"> code { width: 130px; display: inline-block;} </style>\n\n')
     f.write('<details><summary>Contents</summary><ul>')
     for date in papers:
         f.write(f'<li><a href="#{date.replace(" ", "-").replace(",", "").lower()}">{date}</a></li>')
