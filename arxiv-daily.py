@@ -50,7 +50,7 @@ CLASSES = ['cs.CL', 'cs.LG']
 
 
 def red(t: str) -> str:
-    return f'<strong>*{t}*</strong>'
+    return f'<strong class="highlight">*{t}*</strong>'
 
 
 def text_title(t: str) -> str:
