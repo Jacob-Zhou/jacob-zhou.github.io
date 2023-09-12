@@ -717,3 +717,11 @@ code.title {
 strong.highlight {
   color: #D05130;
 }
+
+@media (prefers-color-scheme: dark) {
+  code.title {
+    width: 135px;
+    display: inline-block;
+    color: #45b787;
+  }
+}
