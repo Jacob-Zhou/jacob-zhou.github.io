@@ -81,11 +81,17 @@ for day in range(7):
             if any(paper.title in i for i in papers.values()):
                 continue
             date = date.strftime("%a, %d %b %Y")
-            title, _ = match(paper.title, KEYS)
-            authors, _ = match(', '.join([f"{author}" for author in paper.authors]), AUTHORS)
+            any_match = False
+            title, matched = match(paper.title, KEYS)
+            any_match = any_match or matched
+            authors, matched = match(', '.join([f"{author}" for author in paper.authors]), AUTHORS)
+            any_match = any_match or matched
             abstract, matched = match(paper.summary, KEYS)
-            comments, _ = match(paper.comment or '', CONFS)
-            categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
+            any_match = any_match or matched
+            comments, comment_matched = match(paper.comment or '', CONFS)
+            any_match = any_match or comment_matched
+            if not any_match:
+                continue
             papers[date][paper.title] = f'* **{title}** <br>\n'
             papers[date][paper.title] += f'{text_title("[AUTHORS]")}{authors} <br>\n'
             if matched:
@@ -94,6 +100,7 @@ for day in range(7):
                 papers[date][paper.title] += f'{text_title("[COMMENTS]")}{comments} <br>\n'
             papers[date][paper.title] += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
             papers[date][paper.title] += f'{text_title("[DATE]")}{paper.updated} <br>\n'
+            categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
             papers[date][paper.title] += f'{text_title("[CATEGORIES]")}{categories} <br>\n'
 
 with open('arxiv.md', 'w') as f:
