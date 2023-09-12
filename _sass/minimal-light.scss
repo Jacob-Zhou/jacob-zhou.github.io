@@ -392,7 +392,15 @@ blockquote {
 code,
 pre {
   font-family: monospace, Consolas, Terminal, Courier New, Monaco, Bitstream Vera Sans Mono, Lucida Console, Liberation Mono, DejaVu Sans Mono;
-  color: #333;
+  color: #595959;
+}
+
+@media (prefers-color-scheme: dark) {
+
+  code,
+  pre {
+    color: #dadbdf;
+  }
 }
 
 pre {
@@ -720,8 +728,6 @@ strong.highlight {
 
 @media (prefers-color-scheme: dark) {
   code.title {
-    width: 135px;
-    display: inline-block;
     color: #45b787;
   }
 }
