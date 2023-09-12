@@ -43,24 +43,6 @@
     setInterval(changeFavicon, 1000);
   </script> -->
 
-  <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css
-    integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
-  <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css
-    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin=anonymous>
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/pub.css">
-
-  <script src="./assets/js/github-stars.js"></script>
-  <script type="text/javascript" src="./assets/js/jquery.js"></script>
-  <script>
-    var _hmt = _hmt || [];
-    (function () {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?4ccba6f6c27ad20f7975ac1ded1f6e80";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 </head>
 
 <body>
@@ -81,6 +63,25 @@
       height: 30px;
     }
   </style>
+  <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css
+    integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
+  <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css
+    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin=anonymous>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/pub.css">
+
+  <script src="./assets/js/github-stars.js"></script>
+  <script src="./assets/js/scale.fix.js"></script>
+  <script type="text/javascript" src="./assets/js/jquery.js"></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4ccba6f6c27ad20f7975ac1ded1f6e80";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
   <div class="wrapper">
     <header>
@@ -104,11 +105,11 @@
       <br>
       <br>
       <div class="social-icons">
-        <a style="margin: 0 5px 0 0" href="{{ site.semantic_scholar }}">
+        <a style="margin: 0 5px 0 0" href="{{ site.semantic_scholar }}" aria-label="Go to Semantic Scholar Page">
           <i class="ai ai-semantic-scholar" style="font-size:1.2rem"></i>
         </a>
 
-        <a style="margin: 0 5px 0 0" href="{{ site.google_scholar }}">
+        <a style="margin: 0 5px 0 0" href="{{ site.google_scholar }}" aria-label="Go to Google Scholar Page">
           <i class="ai ai-google-scholar" style="font-size:1.2rem"></i>
         </a>
 
@@ -116,11 +117,11 @@
           <i class="ai ai-cv" style="font-size:1.2rem;"></i>
         </a> -->
 
-        <a style="margin: 0 5px 0 0" href="{{ site.github_link }}">
+        <a style="margin: 0 5px 0 0" href="{{ site.github_link }}" aria-label="Go to GitHub Page">
           <i class="fab fa-github"></i>
         </a>
 
-        <a style="margin: 0 5px 0 0" href="{{ site.arxiv_link }}">
+        <a style="margin: 0 5px 0 0" href="{{ site.arxiv_link }}" aria-label="Go to My ArXiv New Papers Page">
           <i class="ai ai-arxiv"></i>
         </a>
       </div>
@@ -154,7 +155,6 @@
       <br>
     </footer>
   </div>
-  <script src="./assets/js/scale.fix.js"></script>
 </body>
 
 </html>
