@@ -14,6 +14,15 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 [[Semantic Scholar](https://www.semanticscholar.org/author/Houquan-Zhou/50986473)] [[Google Scholar](https://scholar.google.com/citations?user=hJWovmAAAAAJ)] [[DBLP](https://dblp.org/pid/221/7847-1.html)] (* denotes equal contributions)
 
+* **CCL23-Eval Task 7 Track 1 System Report: Suda &Alibaba Team Text Error Correction System**
+    <p class="vspace"></p>
+    *Haochen Jiang, Yumeng Liu, __Houquan Zhou__, Ziheng Qiao, Bo Zhang, Chen Li, Zhenghua Li, Min Zhang* <br>
+    **CCL 2023**
+    <p class="vspace"></p>
+    [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2023.ccl-3.25/)
+    [![bib](https://img.shields.io/badge/bib-68b88e.svg?style=flat)](https://aclanthology.org/2023.ccl-3.25.bib)
+    [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F22895ce93d629a7f3129bcd228ee3968721c071f%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/CCL23-Eval任务7赛道一系统报告%3ASuda-%26Alibaba-Task-7-Track-1-Haochen浩辰Jiang-Yumeng雨萌Liu/22895ce93d629a7f3129bcd228ee3968721c071f)
+
 * **Bridging Pre-trained Language Models and Hand-crafted Features for Unsupervised POS Tagging**
     <p class="vspace"></p>
     *__Houquan Zhou__\*, Yang Li\*, Zhenghua Li, Min Zhang* <br>
@@ -68,7 +77,11 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/stack-parser)
     [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F3bb577d87ae8e0d45a223f65db24ab479fbda174%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/Is-POS-Tagging-Necessary-or-Even-Helpful-for-Neural-Zhang-Li/3bb577d87ae8e0d45a223f65db24ab479fbda174)
 
-
+### Competition
+* **First** prize in the [CCL 2023](http://cips-cl.org/static/CCL2023/cclEval/taskResults/index.html#评测任务-7汉语学习者文本纠错cltc) Chinese Learner Text Correction (Track 1)
+    <p class="vspace"></p>
+    2023.08
+ 
 ### Experience
 
 
