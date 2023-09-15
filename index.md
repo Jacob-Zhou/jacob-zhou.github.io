@@ -78,7 +78,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F3bb577d87ae8e0d45a223f65db24ab479fbda174%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/Is-POS-Tagging-Necessary-or-Even-Helpful-for-Neural-Zhang-Li/3bb577d87ae8e0d45a223f65db24ab479fbda174)
 
 ### Competition
-* 🏆 **First** prize in the [CCL 2023](http://cips-cl.org/static/CCL2023/cclEval/taskResults/index.html#评测任务-7汉语学习者文本纠错cltc) Chinese Learner Text Correction (Track 1)
+* 🏆 **First** prize in the [CCL 2023](http://cips-cl.org/static/CCL2023/cclEval/taskResults/index.html#评测任务-7汉语学习者文本纠错cltc) Task 7: Chinese Learner Text Correction (Track 1)
     <p class="vspace"></p>
     2023.08
  
