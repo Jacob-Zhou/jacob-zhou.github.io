@@ -18,6 +18,8 @@ KEYS = [
     'feedback', 'feedbacks', 
     'seq2seq', 'sequence', 'sequence to sequence', 'sequence-to-sequence',
     'stochasticity', 'struct', 'structural', 'structure', 'structured', 'syntax',
+    'question generation',
+    'compression', 'compressor', 'compressors'
     # 'transducer', 'transduction', 'transformer', 'translation', 
 ]
 
