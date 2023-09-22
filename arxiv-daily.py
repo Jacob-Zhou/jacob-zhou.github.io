@@ -74,37 +74,40 @@ def match(t: str, keys: Iterable) -> Tuple[str, bool]:
 
 
 papers = defaultdict(dict)
-for day in range(7):
-    for name in CLASSES:
-        search = arxiv.Search(query=name, sort_by=arxiv.SortCriterion.LastUpdatedDate)
-        for paper in search.results():
-            date = datetime.now(paper.updated.tzinfo) - timedelta(day)
-            if paper.updated.date() < date.date():
-                break
-            if any(paper.title in i for i in papers.values()):
-                continue
-            date = date.strftime("%a, %d %b %Y")
-            any_match = False
-            title, matched = match(paper.title, KEYS)
-            any_match = any_match or matched
-            authors, matched = match(', '.join([f"{author}" for author in paper.authors]), AUTHORS)
-            any_match = any_match or matched
-            abstract, matched = match(paper.summary, KEYS)
-            any_match = any_match or matched
-            comments, comment_matched = match(paper.comment or '', CONFS)
-            any_match = any_match or comment_matched
-            if not any_match:
-                continue
-            papers[date][paper.title] = f'* **{title}** <br>\n'
-            papers[date][paper.title] += f'{text_title("[AUTHORS]")}{authors} <br>\n'
-            if matched:
-                papers[date][paper.title] += f'{text_title("[ABSTRACT]")}{abstract} <br>\n'
-            if comments:
-                papers[date][paper.title] += f'{text_title("[COMMENTS]")}{comments} <br>\n'
-            papers[date][paper.title] += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
-            papers[date][paper.title] += f'{text_title("[DATE]")}{paper.updated} <br>\n'
-            categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
-            papers[date][paper.title] += f'{text_title("[CATEGORIES]")}{categories} <br>\n'
+# for day in range(7):
+max_day = 7
+for name in CLASSES:
+    search = arxiv.Search(query=name, sort_by=arxiv.SortCriterion.LastUpdatedDate)
+    for paper in search.results():
+        # date = datetime.now(paper.updated.tzinfo) - timedelta(day)
+        date = datetime.now(paper.updated.tzinfo) - timedelta(max_day)
+        if paper.updated.date() < date.date():
+            break
+        # if any(paper.title in i for i in papers.values()):
+        #     continue
+        # date = date.strftime("%a, %d %b %Y")
+        date = paper.updated.date().strftime("%a, %d %b %Y")
+        any_match = False
+        title, matched = match(paper.title, KEYS)
+        any_match = any_match or matched
+        authors, matched = match(', '.join([f"{author}" for author in paper.authors]), AUTHORS)
+        any_match = any_match or matched
+        abstract, matched = match(paper.summary, KEYS)
+        any_match = any_match or matched
+        comments, comment_matched = match(paper.comment or '', CONFS)
+        any_match = any_match or comment_matched
+        if not any_match:
+            continue
+        papers[date][paper.title] = f'* **{title}** <br>\n'
+        papers[date][paper.title] += f'{text_title("[AUTHORS]")}{authors} <br>\n'
+        if matched:
+            papers[date][paper.title] += f'{text_title("[ABSTRACT]")}{abstract} <br>\n'
+        if comments:
+            papers[date][paper.title] += f'{text_title("[COMMENTS]")}{comments} <br>\n'
+        papers[date][paper.title] += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
+        papers[date][paper.title] += f'{text_title("[DATE]")}{paper.updated} <br>\n'
+        categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
+        papers[date][paper.title] += f'{text_title("[CATEGORIES]")}{categories} <br>\n'
 
 with open('arxiv.md', 'w') as f:
     f.write('---\nlayout: default\n---\n\n')
