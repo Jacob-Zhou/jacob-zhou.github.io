@@ -2,7 +2,7 @@
 
 import re
 from collections import defaultdict
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Iterable, Tuple
 
 import arxiv
@@ -72,6 +72,9 @@ def match(t: str, keys: Iterable) -> Tuple[str, bool]:
         t = re.sub(fr'\b{key}\b', lambda m: red(m.group()), t, flags=re.I)
     return t, (raw != t)
 
+def cover_timezones(date: datetime) -> datetime:
+    # to UTF+8
+    return date.astimezone(timezone(timedelta(hours=8)))
 
 papers = defaultdict(dict)
 # for day in range(7):
@@ -86,7 +89,9 @@ for name in CLASSES:
         # if any(paper.title in i for i in papers.values()):
         #     continue
         # date = date.strftime("%a, %d %b %Y")
-        date = paper.updated.date().strftime("%a, %d %b %Y")
+        # date = paper.updated.date().strftime("%a, %d %b %Y")
+        # Convert to UTC+8
+        date = cover_timezones(paper.updated).strftime("%a, %d %b %Y")
         any_match = False
         title, matched = match(paper.title, KEYS)
         any_match = any_match or matched
@@ -105,7 +110,8 @@ for name in CLASSES:
         if comments:
             papers[date][paper.title] += f'{text_title("[COMMENTS]")}{comments} <br>\n'
         papers[date][paper.title] += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
-        papers[date][paper.title] += f'{text_title("[DATE]")}{paper.updated} <br>\n'
+        # papers[date][paper.title] += f'{text_title("[DATE]")}{paper.updated} <br>\n'
+        papers[date][paper.title] += f'{text_title("[DATE]")}{cover_timezones(paper.updated)} <br>\n'
         categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
         papers[date][paper.title] += f'{text_title("[CATEGORIES]")}{categories} <br>\n'
 
