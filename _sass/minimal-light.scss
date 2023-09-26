@@ -766,14 +766,18 @@ ul.tab-nav li a.button {
 }
 
 ul.tab-nav li a.active.button {
-  border-width: 2px;
-  padding: 3px 25px;
+  border-width: 0px;
+  background: #223e36;
+  color: #ffffff;
+  // padding: 3px 25px;
 }
 
 ul.tab-nav li a.button:hover {
   // background: #eef7f2;
   border-width: 1.5px;
-  padding: 6px 30px;
+  border-color: #1a6840;
+  box-shadow: 0 0 5px #cbffe4 inset, 0 0 20px #cbffe4;
+  // padding: 6px 30px;
   color: #223e36;
 }
 
