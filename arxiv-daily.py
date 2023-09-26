@@ -147,7 +147,7 @@ with open('arxiv.md', 'w') as f:
                 continue
             f.write(f'<li><a class="button{" active" if i == 0 else ""} arxiv-tab" href="#{normalize_id(tab)}">{tab}</a></li>\n')
         f.write('</ul>\n\n')
-        f.write('---')
+        f.write('---\n')
 
     f.write('<div class="tab-content">\n')
     for i, tab in enumerate(sorted(available_tabs)):
