@@ -5,7 +5,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from typing import Iterable, Tuple
 import unicodedata
-from urllib.parse import quote
+# from urllib.parse import quote
 
 import arxiv
 
@@ -70,17 +70,17 @@ def link(t: str) -> str:
     return f'<a href="{t}">{t}</a>'
 
 def normalize_id(t: str) -> str:
-    # t = unicodedata.normalize('NFD', t)
-    # t = ''.join([c for c in t if not unicodedata.combining(c)])
-    # t = t.lower()
-    # # space to _
-    # t = re.sub(r'\s+', '_', t)
+    t = unicodedata.normalize('NFD', t)
+    t = ''.join([c for c in t if not unicodedata.combining(c)])
+    t = t.lower()
+    # remove "."
+    t = t.replace('.', '')
+    # space to _
+    t = re.sub(r'\s+', '_', t)
     # # escape special characters
     # # t = re.sub(r'([\\`*_{}[\]()#+-.!])', r'\\\1', t)
-    # return t
-    # replace "." with "%2E"
-    t = t.replace('.', '%2E')
-    return quote(t)
+    # return quote(t)
+    return t
 
 def upper_first(t: str) -> str:
     return t[0].upper() + t[1:]
