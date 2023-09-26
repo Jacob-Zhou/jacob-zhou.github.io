@@ -125,18 +125,19 @@ for name in CLASSES:
         if len(any_match) == 0:
             continue
         available_tabs.update(any_match)
+        paper_content = f'<strong>{title}</strong><br>\n'
+        paper_content += f'{text_title("[AUTHORS]")}{authors} <br>\n'
+        paper_content += f'{text_title("[ABSTRACT]")}{abstract} <br>\n'
+        # paper_content += f'{text_title("[ABSTRACT]")}<details><summary>Click to expand</summary>{abstract}</details> <br>\n'
+        if comments:
+            paper_content += f'{text_title("[COMMENTS]")}{comments} <br>\n'
+        paper_content += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
+        # paper_content += f'{text_title("[DATE]")}{paper.updated} <br>\n'
+        paper_content += f'{text_title("[DATE]")}{cover_timezones(paper.updated)} <br>\n'
+        categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
+        paper_content += f'{text_title("[CATEGORIES]")}{categories} <br>\n'
         for key in any_match:
-            papers[key][date][paper.title] = f'<strong>{title}</strong><br>\n'
-            papers[key][date][paper.title] += f'{text_title("[AUTHORS]")}{authors} <br>\n'
-            papers[key][date][paper.title] += f'{text_title("[ABSTRACT]")}{abstract} <br>\n'
-            # papers[key][date][paper.title] += f'{text_title("[ABSTRACT]")}<details><summary>Click to expand</summary>{abstract}</details> <br>\n'
-            if comments:
-                papers[key][date][paper.title] += f'{text_title("[COMMENTS]")}{comments} <br>\n'
-            papers[key][date][paper.title] += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
-            # papers[key][date][paper.title] += f'{text_title("[DATE]")}{paper.updated} <br>\n'
-            papers[key][date][paper.title] += f'{text_title("[DATE]")}{cover_timezones(paper.updated)} <br>\n'
-            categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
-            papers[key][date][paper.title] += f'{text_title("[CATEGORIES]")}{categories} <br>\n'
+            papers[key][date][paper.title] = paper_content
 
 with open('arxiv.md', 'w') as f:
     f.write('---\nlayout: default\n---\n\n')

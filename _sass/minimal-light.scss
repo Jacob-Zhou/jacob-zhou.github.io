@@ -746,8 +746,18 @@ summary.date {
 }
 
 ul.tab-nav {
+  // list-style: none;
+  // padding-left: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   list-style: none;
-  padding-left: 5px;
+  padding: 0px;
+}
+
+ul.tab-nav::after {
+  content: "";
+  flex: auto;
 }
 
 ul.tab-nav li {
@@ -802,5 +812,6 @@ ul.tab-nav li a.button:hover {
 }
 
 hr.tab-nav-divider {
-  margin: 9px 0 9px;
+  // margin: 9px 0 9px;
+  width: 100%;
 }
