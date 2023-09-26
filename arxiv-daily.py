@@ -135,12 +135,12 @@ with open('arxiv.md', 'w') as f:
     f.write('</ul>\n\n')
     f.write('<div class="tab-content">\n')
     for i, tab in enumerate(sorted(available_tabs)):
-        f.write(f'<div class="tab{" active" if i == 0 else ""}" id="{tab.lower()}">\n')
+        f.write(f'<div class="tab-pane {" active" if i == 0 else ""}" id="{tab.lower()}">\n')
         for date in sorted(papers[tab].keys(), reverse=True):
-            # f.write(f'#### {date}\n\n')
-            f.write(f'<details><summary>#### {date}</summary>\n\n')
+            f.write(f'#### {date}\n\n')
+            # f.write(f'<details><summary>#### {date}</summary>\n\n')
             for title, paper in papers[tab][date].items():
                 f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
-            f.write('</details>\n\n')
+            # f.write('</details>\n\n')
         f.write('</div>\n')
     f.write('</div>\n')
