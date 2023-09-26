@@ -67,18 +67,22 @@ def link(t: str) -> str:
 
 
 def match(t: str, keys: Iterable) -> Tuple[str, bool]:
-    raw = t
+    # raw = t
+    matched_keys = []
     for key in keys:
-        t = re.sub(fr'\b{key}\b', lambda m: red(m.group()), t, flags=re.I)
-    return t, (raw != t)
+        if re.search(fr'\b{key}\b', t, flags=re.I):
+            matched_keys.append(key)
+            t = re.sub(fr'\b{key}\b', lambda m: red(m.group()), t, flags=re.I)
+    return t, matched_keys
 
 def cover_timezones(date: datetime) -> datetime:
     # to UTF+8
     return date.astimezone(timezone(timedelta(hours=8)))
 
-papers = defaultdict(dict)
+papers = defaultdict(defaultdict(dict))
 # for day in range(7):
 max_day = 7
+available_tabs = set()
 for name in CLASSES:
     search = arxiv.Search(query=name, sort_by=arxiv.SortCriterion.LastUpdatedDate)
     for paper in search.results():
@@ -89,36 +93,53 @@ for name in CLASSES:
         # Convert to UTC+8
         # date = cover_timezones(paper.updated).strftime("%a, %d %b %Y")
         date = cover_timezones(paper.updated).strftime("%Y %b %d, %a")
-        any_match = False
+        any_match = []
         title, matched = match(paper.title, KEYS)
-        any_match = any_match or matched
+        any_match.extend(matched)
         authors, matched = match(', '.join([f"{author}" for author in paper.authors]), AUTHORS)
-        any_match = any_match or matched
+        any_match.extend(matched)
         abstract, matched = match(paper.summary, KEYS)
-        any_match = any_match or matched
+        any_match.extend(matched)
         comments, comment_matched = match(paper.comment or '', CONFS)
-        any_match = any_match or comment_matched
-        if not any_match:
+        any_match.extend(comment_matched)
+        if len(any_match) == 0:
             continue
-        papers[date][paper.title] = f'* **{title}** <br>\n'
-        papers[date][paper.title] += f'{text_title("[AUTHORS]")}{authors} <br>\n'
-        if matched:
-            papers[date][paper.title] += f'{text_title("[ABSTRACT]")}{abstract} <br>\n'
-        if comments:
-            papers[date][paper.title] += f'{text_title("[COMMENTS]")}{comments} <br>\n'
-        papers[date][paper.title] += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
-        # papers[date][paper.title] += f'{text_title("[DATE]")}{paper.updated} <br>\n'
-        papers[date][paper.title] += f'{text_title("[DATE]")}{cover_timezones(paper.updated)} <br>\n'
-        categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
-        papers[date][paper.title] += f'{text_title("[CATEGORIES]")}{categories} <br>\n'
+        available_tabs.update(any_match)
+        for key in any_match:
+            papers[key][date][paper.title] = f'* **{title}** <br>\n'
+            papers[key][date][paper.title] += f'{text_title("[AUTHORS]")}{authors} <br>\n'
+            # papers[key][date][paper.title] += f'{text_title("[ABSTRACT]")}{abstract} <br>\n'
+            papers[key][date][paper.title] += f'{text_title("[ABSTRACT]")}<details><summary>Click to expand</summary>{abstract}</details> <br>\n'
+            if comments:
+                papers[key][date][paper.title] += f'{text_title("[COMMENTS]")}{comments} <br>\n'
+            papers[key][date][paper.title] += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
+            # papers[key][date][paper.title] += f'{text_title("[DATE]")}{paper.updated} <br>\n'
+            papers[key][date][paper.title] += f'{text_title("[DATE]")}{cover_timezones(paper.updated)} <br>\n'
+            categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
+            papers[key][date][paper.title] += f'{text_title("[CATEGORIES]")}{categories} <br>\n'
 
 with open('arxiv.md', 'w') as f:
     f.write('---\nlayout: default\n---\n\n')
-    f.write('<details><summary>Contents</summary><ul>')
-    for date in sorted(papers.keys(), reverse=True):
-        f.write(f'<li><a href="#{date.replace(" ", "-").replace(",", "").lower()}">{date}</a></li>')
-    f.write('</ul></details><br>\n\n')
-    for date in sorted(papers.keys(), reverse=True):
-        f.write(f'#### {date}\n\n')
-        for title, paper in papers[date].items():
-            f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
+    # f.write('<details><summary>Contents</summary><ul>')
+    # for date in sorted(papers.keys(), reverse=True):
+    #     f.write(f'<li><a href="#{date.replace(" ", "-").replace(",", "").lower()}">{date}</a></li>')
+    # f.write('</ul></details><br>\n\n')
+    # for date in sorted(papers.keys(), reverse=True):
+    #     f.write(f'#### {date}\n\n')
+    #     for title, paper in papers[key][date].items():
+    #         f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
+    f.write('<ul class="tab-nav">\n')
+    for i, tab in enumerate(sorted(available_tabs)):
+        f.write(f'<li><a class="button{" active" if i == 0 else ""}" href="#{tab.lower()}">{tab}</a></li>\n')
+    f.write('</ul>\n\n')
+    f.write('<div class="tab-content">\n')
+    for i, tab in enumerate(sorted(available_tabs)):
+        f.write(f'<div class="tab{" active" if i == 0 else ""}" id="{tab.lower()}">\n')
+        for date in sorted(papers[tab].keys(), reverse=True):
+            # f.write(f'#### {date}\n\n')
+            f.write(f'<details><summary>#### {date}</summary>\n\n')
+            for title, paper in papers[tab][date].items():
+                f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
+            f.write('</details>\n\n')
+        f.write('</div>\n')
+    f.write('</div>\n')
