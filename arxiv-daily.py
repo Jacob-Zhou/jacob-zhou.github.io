@@ -147,7 +147,7 @@ with open('arxiv.md', 'w') as f:
         for i, tab in enumerate(sorted(available_tabs)):
             if tab not in domain:
                 continue
-            f.write(f'<li><a class="button{" active" if i == 0 else ""} arxiv-tab" href="#{normalize_id(tab)}">{upper_first(tab)}</a></li>\n')
+            f.write(f'<li><a class="button{" active" if i == 0 else ""}" href="#{normalize_id(tab)}">{upper_first(tab)}</a></li>\n')
         f.write(f'<hr class="tab-nav-divider {" last" if i == 2 else ""}">\n')
     f.write('</ul>\n\n')
 
