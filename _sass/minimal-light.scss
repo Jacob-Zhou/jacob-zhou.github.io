@@ -773,7 +773,21 @@ ul.tab-nav li a.active.button {
 }
 
 ul.tab-nav li a.button:hover {
-  background: #eef7f2;
+  // background: #eef7f2;
+  border-width: 1.5px;
   padding: 6px 30px;
   color: #223e36;
+}
+
+@media (prefers-color-scheme: dark) {
+  ul.tab-nav li a.button {
+    background: #223e36;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+  }
+
+  ul.tab-nav li a.button:hover {
+    background: #223e36;
+    color: #ffffff;
+  }
 }

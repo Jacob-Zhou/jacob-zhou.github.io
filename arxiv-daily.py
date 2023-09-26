@@ -140,14 +140,14 @@ with open('arxiv.md', 'w') as f:
     #     f.write(f'#### {date}\n\n')
     #     for title, paper in papers[key][date].items():
     #         f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
+    f.write('<ul class="tab-nav">\n')
     for i, domain in enumerate([KEYS, AUTHORS, CONFS]):
-        f.write('<ul class="tab-nav">\n')
         for i, tab in enumerate(sorted(available_tabs)):
             if tab not in domain:
                 continue
             f.write(f'<li><a class="button{" active" if i == 0 else ""} arxiv-tab" href="#{normalize_id(tab)}">{tab}</a></li>\n')
-        f.write('</ul>\n\n')
         f.write('---\n')
+    f.write('</ul>\n\n')
 
     f.write('<div class="tab-content">\n')
     for i, tab in enumerate(sorted(available_tabs)):
