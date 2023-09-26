@@ -705,7 +705,7 @@ h3#publications~ul>li>p:not(.vspace) {
   font-size: 15px;
 }
 
-#arxiv-paper,
+li.arxiv-paper,
 h3#publications~ul>li {
   margin-bottom: 18px;
 }
@@ -733,14 +733,47 @@ strong.highlight {
   }
 }
 
-summary#date {
+summary.date {
   font-weight: 600;
   color: #223e36;
   margin: 0 0 20px;
 }
 
 @media (prefers-color-scheme: dark) {
-  summary#date {
+  summary.date {
     color: #ffffff;
   }
+}
+
+.arxiv-tab {}
+
+ul.tab-nav {
+  list-style: none;
+  padding-left: 5px;
+}
+
+ul.tab-nav li {
+  display: inline-flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+ul.tab-nav li a.button {
+  font-size: 16px;
+  background: white;
+  border: 1px solid #223e36;
+  border-radius: 5px;
+  color: #223e36;
+  padding: 3px 5px;
+}
+
+ul.tab-nav li a.active.button {
+  border-width: 2px;
+  padding: 3px 25px;
+}
+
+ul.tab-nav li a.button:hover {
+  background: #eef7f2;
+  padding: 6px 30px;
+  color: #223e36;
 }
