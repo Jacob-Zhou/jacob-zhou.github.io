@@ -4,6 +4,7 @@ import re
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from typing import Iterable, Tuple
+import unicodedata
 
 import arxiv
 
@@ -53,7 +54,7 @@ CLASSES = ['cs.CL', 'cs.LG']
 
 
 def red(t: str) -> str:
-    return f'<strong class="highlight">*{t}*</strong>'
+    return f'<strong class="highlight"><em>{t}</em></strong>'
 
 
 def text_title(t: str) -> str:
@@ -64,6 +65,16 @@ def texttt(t: str) -> str:
 
 def link(t: str) -> str:
     return f'[{t}]({t})'
+
+def normalize_id(t: str) -> str:
+    t = unicodedata.normalize('NFD', t)
+    t = ''.join([c for c in t if not unicodedata.combining(c)])
+    t = t.lower()
+    # space to _
+    t = re.sub(r'\s+', '_', t)
+    # escape special characters
+    t = re.sub(r'([\\`*_{}[\]()#+-.!])', r'\\\1', t)
+    return t
 
 
 def match(t: str, keys: Iterable) -> Tuple[str, bool]:
@@ -107,10 +118,10 @@ for name in CLASSES:
             continue
         available_tabs.update(any_match)
         for key in any_match:
-            papers[key][date][paper.title] = f'* **{title}** <br>\n'
+            papers[key][date][paper.title] = f'<strong>{title}</strong><br>\n'
             papers[key][date][paper.title] += f'{text_title("[AUTHORS]")}{authors} <br>\n'
-            # papers[key][date][paper.title] += f'{text_title("[ABSTRACT]")}{abstract} <br>\n'
-            papers[key][date][paper.title] += f'{text_title("[ABSTRACT]")}<details><summary>Click to expand</summary>{abstract}</details> <br>\n'
+            papers[key][date][paper.title] += f'{text_title("[ABSTRACT]")}{abstract} <br>\n'
+            # papers[key][date][paper.title] += f'{text_title("[ABSTRACT]")}<details><summary>Click to expand</summary>{abstract}</details> <br>\n'
             if comments:
                 papers[key][date][paper.title] += f'{text_title("[COMMENTS]")}{comments} <br>\n'
             papers[key][date][paper.title] += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
@@ -131,16 +142,20 @@ with open('arxiv.md', 'w') as f:
     #         f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
     f.write('<ul class="tab-nav">\n')
     for i, tab in enumerate(sorted(available_tabs)):
-        f.write(f'<li><a class="button{" active" if i == 0 else ""}" href="#{tab.lower()}">{tab}</a></li>\n')
+        f.write(f'<li><a class="button{" active" if i == 0 else ""}" href="#{normalize_id(tab)}">{tab}</a></li>\n')
     f.write('</ul>\n\n')
     f.write('<div class="tab-content">\n')
     for i, tab in enumerate(sorted(available_tabs)):
-        f.write(f'<div class="tab-pane {" active" if i == 0 else ""}" id="{tab.lower()}">\n')
+        f.write(f'<div class="tab-pane {" active" if i == 0 else ""}" id="{normalize_id(tab)}">\n')
         for date in sorted(papers[tab].keys(), reverse=True):
-            f.write(f'#### {date}\n\n')
-            # f.write(f'<details><summary>#### {date}</summary>\n\n')
+            # f.write(f'#### {date}\n\n')
+            f.write(f'<details><summary><h3>{date}</h3></summary>\n\n')
+            f.write('<ul>\n')
             for title, paper in papers[tab][date].items():
+                f.write('<li>\n')
                 f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
-            # f.write('</details>\n\n')
+                f.write('</li>\n')
+            f.write('</ul>\n')
+            f.write('</details>\n\n')
         f.write('</div>\n')
     f.write('</div>\n')
