@@ -86,12 +86,9 @@ for name in CLASSES:
         date = datetime.now(paper.updated.tzinfo) - timedelta(max_day)
         if paper.updated.date() < date.date():
             break
-        # if any(paper.title in i for i in papers.values()):
-        #     continue
-        # date = date.strftime("%a, %d %b %Y")
-        # date = paper.updated.date().strftime("%a, %d %b %Y")
         # Convert to UTC+8
-        date = cover_timezones(paper.updated).strftime("%a, %d %b %Y")
+        # date = cover_timezones(paper.updated).strftime("%a, %d %b %Y")
+        date = cover_timezones(paper.updated).strftime("%Y %b %d, %a")
         any_match = False
         title, matched = match(paper.title, KEYS)
         any_match = any_match or matched
@@ -118,10 +115,10 @@ for name in CLASSES:
 with open('arxiv.md', 'w') as f:
     f.write('---\nlayout: default\n---\n\n')
     f.write('<details><summary>Contents</summary><ul>')
-    for date in papers:
+    for date in sorted(papers.keys(), reverse=True):
         f.write(f'<li><a href="#{date.replace(" ", "-").replace(",", "").lower()}">{date}</a></li>')
     f.write('</ul></details><br>\n\n')
-    for date in papers:
+    for date in sorted(papers.keys(), reverse=True):
         f.write(f'#### {date}\n\n')
         for title, paper in papers[date].items():
             f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
