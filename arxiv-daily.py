@@ -73,7 +73,7 @@ def normalize_id(t: str) -> str:
     # space to _
     t = re.sub(r'\s+', '_', t)
     # escape special characters
-    t = re.sub(r'([\\`*_{}[\]()#+-.!])', r'\\\1', t)
+    # t = re.sub(r'([\\`*_{}[\]()#+-.!])', r'\\\1', t)
     return t
 
 
@@ -149,10 +149,10 @@ with open('arxiv.md', 'w') as f:
         f.write(f'<div class="tab-pane {" active" if i == 0 else ""}" id="{normalize_id(tab)}">\n')
         for date in sorted(papers[tab].keys(), reverse=True):
             # f.write(f'#### {date}\n\n')
-            f.write(f'<details><summary><h3>{date}</h3></summary>\n\n')
+            f.write(f'<details><summary class="date">{date}</summary>\n\n')
             f.write('<ul>\n')
             for title, paper in papers[tab][date].items():
-                f.write('<li>\n')
+                f.write('<li class="arxiv-paper">\n')
                 f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
                 f.write('</li>\n')
             f.write('</ul>\n')

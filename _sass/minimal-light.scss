@@ -705,6 +705,7 @@ h3#publications~ul>li>p:not(.vspace) {
   font-size: 15px;
 }
 
+#arxiv-paper,
 h3#publications~ul>li {
   margin-bottom: 18px;
 }
@@ -729,5 +730,17 @@ strong.highlight {
 @media (prefers-color-scheme: dark) {
   code.title {
     color: #45b787;
+  }
+}
+
+summary#date {
+  font-weight: 600;
+  color: #223e36;
+  margin: 0 0 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  summary#date {
+    color: #ffffff;
   }
 }
