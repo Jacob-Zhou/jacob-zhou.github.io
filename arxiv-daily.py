@@ -64,7 +64,8 @@ def texttt(t: str) -> str:
     return f'<code>{t}</code>'
 
 def link(t: str) -> str:
-    return f'[{t}]({t})'
+    # return f'[{t}]({t})'
+    return f'<a href="{t}">{t}</a>'
 
 def normalize_id(t: str) -> str:
     t = unicodedata.normalize('NFD', t)
