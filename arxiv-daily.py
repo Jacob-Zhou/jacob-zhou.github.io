@@ -76,6 +76,8 @@ def normalize_id(t: str) -> str:
     # t = re.sub(r'([\\`*_{}[\]()#+-.!])', r'\\\1', t)
     return t
 
+def upper_first(t: str) -> str:
+    return t[0].upper() + t[1:]
 
 def match(t: str, keys: Iterable) -> Tuple[str, bool]:
     # raw = t
@@ -145,8 +147,8 @@ with open('arxiv.md', 'w') as f:
         for i, tab in enumerate(sorted(available_tabs)):
             if tab not in domain:
                 continue
-            f.write(f'<li><a class="button{" active" if i == 0 else ""} arxiv-tab" href="#{normalize_id(tab)}">{tab}</a></li>\n')
-        f.write('---\n')
+            f.write(f'<li><a class="button{" active" if i == 0 else ""} arxiv-tab" href="#{normalize_id(tab)}">{upper_first(tab)}</a></li>\n')
+        f.write(f'<hr class="tab-nav-divider {" last" if i == 2 else ""}">\n')
     f.write('</ul>\n\n')
 
     f.write('<div class="tab-content">\n')
