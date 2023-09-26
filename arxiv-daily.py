@@ -150,13 +150,13 @@ with open('arxiv.md', 'w') as f:
         for i, tab in enumerate(sorted(available_tabs)):
             if tab not in domain:
                 continue
-            f.write(f'<li><a class="button{" active" if i == 0 else ""}" href="#{hash(tab)}">{upper_first(tab)}</a></li>\n')
+            f.write(f'<li><a class="button{" active" if i == 0 else ""}" href="#{normalize_id(tab)}">{upper_first(tab)}</a></li>\n')
         f.write(f'<hr class="tab-nav-divider {" last" if i == 2 else ""}">\n')
     f.write('</ul>\n\n')
 
     f.write('<div class="tab-content">\n')
     for i, tab in enumerate(sorted(available_tabs)):
-        f.write(f'<div class="tab-pane{" active" if i == 0 else ""}" id="{hash(tab)}">\n')
+        f.write(f'<div class="tab-pane{" active" if i == 0 else ""}" id="{normalize_id(tab)}">\n')
         for j, date in enumerate(sorted(papers[tab].keys(), reverse=True)):
             # f.write(f'#### {date}\n\n')
             f.write(f'<details {"open" if j == 0 else ""}><summary class="date">{date}</summary>\n\n')
