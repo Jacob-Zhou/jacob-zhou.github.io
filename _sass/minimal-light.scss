@@ -790,6 +790,14 @@ ul.tab-nav li a.button:hover {
   }
 }
 
+.tab-content .tab-pane {
+  display: none;
+}
+
+.tab-content .tab-pane.active {
+  display: block;
+}
+
 hr.tab-nav-divider {
   margin: 9px 0 9px;
 }

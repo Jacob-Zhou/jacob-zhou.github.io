@@ -154,9 +154,9 @@ with open('arxiv.md', 'w') as f:
     f.write('<div class="tab-content">\n')
     for i, tab in enumerate(sorted(available_tabs)):
         f.write(f'<div class="tab-pane {" active" if i == 0 else ""}" id="{normalize_id(tab)}">\n')
-        for date in sorted(papers[tab].keys(), reverse=True):
+        for j, date in enumerate(sorted(papers[tab].keys(), reverse=True)):
             # f.write(f'#### {date}\n\n')
-            f.write(f'<details><summary class="date">{date}</summary>\n\n')
+            f.write(f'<details {"open" if j == 0 else ""}><summary class="date">{date}</summary>\n\n')
             f.write('<ul>\n')
             for title, paper in papers[tab][date].items():
                 f.write('<li class="arxiv-paper">\n')
