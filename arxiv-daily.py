@@ -79,7 +79,8 @@ def cover_timezones(date: datetime) -> datetime:
     # to UTF+8
     return date.astimezone(timezone(timedelta(hours=8)))
 
-papers = defaultdict(defaultdict(dict))
+# papers = defaultdict(defaultdict(dict))
+papers = defaultdict(lambda: defaultdict(dict))
 # for day in range(7):
 max_day = 7
 available_tabs = set()
