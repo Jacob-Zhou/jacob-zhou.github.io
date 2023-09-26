@@ -5,6 +5,7 @@ from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from typing import Iterable, Tuple
 import unicodedata
+from urllib.parse import quote
 
 import arxiv
 
@@ -68,14 +69,15 @@ def link(t: str) -> str:
     return f'<a href="{t}">{t}</a>'
 
 def normalize_id(t: str) -> str:
-    t = unicodedata.normalize('NFD', t)
-    t = ''.join([c for c in t if not unicodedata.combining(c)])
-    t = t.lower()
-    # space to _
-    t = re.sub(r'\s+', '_', t)
-    # escape special characters
-    # t = re.sub(r'([\\`*_{}[\]()#+-.!])', r'\\\1', t)
-    return t
+    # t = unicodedata.normalize('NFD', t)
+    # t = ''.join([c for c in t if not unicodedata.combining(c)])
+    # t = t.lower()
+    # # space to _
+    # t = re.sub(r'\s+', '_', t)
+    # # escape special characters
+    # # t = re.sub(r'([\\`*_{}[\]()#+-.!])', r'\\\1', t)
+    # return t
+    return quote(t)
 
 def upper_first(t: str) -> str:
     return t[0].upper() + t[1:]
@@ -148,13 +150,13 @@ with open('arxiv.md', 'w') as f:
         for i, tab in enumerate(sorted(available_tabs)):
             if tab not in domain:
                 continue
-            f.write(f'<li><a class="button{" active" if i == 0 else ""}" href="#{normalize_id(tab)}">{upper_first(tab)}</a></li>\n')
+            f.write(f'<li><a class="button{" active" if i == 0 else ""}" href="#{hash(tab)}">{upper_first(tab)}</a></li>\n')
         f.write(f'<hr class="tab-nav-divider {" last" if i == 2 else ""}">\n')
     f.write('</ul>\n\n')
 
     f.write('<div class="tab-content">\n')
     for i, tab in enumerate(sorted(available_tabs)):
-        f.write(f'<div class="tab-pane {" active" if i == 0 else ""}" id="{normalize_id(tab)}">\n')
+        f.write(f'<div class="tab-pane{" active" if i == 0 else ""}" id="{hash(tab)}">\n')
         for j, date in enumerate(sorted(papers[tab].keys(), reverse=True)):
             # f.write(f'#### {date}\n\n')
             f.write(f'<details {"open" if j == 0 else ""}><summary class="date">{date}</summary>\n\n')
