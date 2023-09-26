@@ -21,7 +21,8 @@ KEYS = [
     'seq2seq', 'sequence', 'sequence to sequence', 'sequence-to-sequence',
     'stochasticity', 'struct', 'structural', 'structure', 'structured', 'syntax',
     'question generation',
-    'compression', 'compressor', 'compressors'
+    'compression', 'compressor', 'compressors', 
+    'legal', 'law', 
     # 'transducer', 'transduction', 'transformer', 'translation', 
 ]
 
@@ -77,6 +78,8 @@ def normalize_id(t: str) -> str:
     # # escape special characters
     # # t = re.sub(r'([\\`*_{}[\]()#+-.!])', r'\\\1', t)
     # return t
+    # replace "." with "%2E"
+    t = t.replace('.', '%2E')
     return quote(t)
 
 def upper_first(t: str) -> str:
