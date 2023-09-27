@@ -818,9 +818,12 @@ hr.tab-nav-divider {
 
 ul.tab-nav li span.new-dot {
   background-color: #d11a2d;
-  width: 8px;
-  height: 8px;
-  margin-left: -5px;
+  width: 10px;
+  height: 10px;
+  margin-left: -7px;
   margin-top: -3px;
+  margin-right: -6px;
   border-radius: 50%;
+  z-index: 100;
+  border: 1px solid #7c1823;
 }
