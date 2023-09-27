@@ -137,7 +137,7 @@ def normalize_id(t: str) -> str:
     t = re.sub(r'\s+', '_', t)
     # check if start with number
     if str.isdigit(t[0]):
-        t = '_' + t
+        t = 'N' + t
     return t
 
 def upper_first(t: str) -> str:
