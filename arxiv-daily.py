@@ -9,22 +9,79 @@ import unicodedata
 
 import arxiv
 
-KEYS = [
-    'adversarial', 'algebraic', 'algebratic', 'auto-encoding', 'autoencoder', 'autoencoding',
-    'autoregressive',
-    'parse', 'parser', 'parsing',
-    'evaluation', 'evaluating', 'evaluations', 'benchmark', 'benchmarks', 
-    'grammar', 'grammatical', 'grammatical error', 'grammar error correction', 
-    'decoding', 
-    'agent', 'agents', 
-    'feedback', 'feedbacks', 
-    'seq2seq', 'sequence', 'sequence to sequence', 'sequence-to-sequence',
-    'stochasticity', 'struct', 'structural', 'structure', 'structured', 'syntax',
-    'question generation',
-    'compression', 'compressor', 'compressors', 
-    'legal', 'law', 
-    # 'transducer', 'transduction', 'transformer', 'translation', 
-]
+# KEYS = [
+#     'adversarial', 'algebraic', 'algebratic', 'auto-encoding', 'autoencoder', 'autoencoding',
+#     'autoregressive',
+#     'parse', 'parser', 'parsing',
+#     'evaluation', 'evaluating', 'evaluations', 'benchmark', 'benchmarks', 
+#     'grammar', 'grammatical', 'grammatical error', 'grammar error correction', 
+#     'decoding', 
+#     'agent', 'agents', 
+#     'feedback', 'feedbacks', 
+#     'seq2seq', 'sequence', 'sequence to sequence', 'sequence-to-sequence',
+#     'struct', 'structural', 'structure', 'structured', 'syntax',
+#     'question generation',
+#     'compression', 'compressor', 'compressors', 
+#     'legal', 'law', 
+# ]
+KEYS = {
+    # Adversarial related
+    'adversarial': 'Adversarial',
+    # Algebraic related
+    'algebraic': 'Algebraic',
+    'algebratic': 'Algebraic',
+    # Auto-encoding related
+    'auto-encoding': 'AutoEncoder',
+    'autoencoder': 'AutoEncoder',
+    'autoencoding': 'AutoEncoder',
+    # Auto-regressive related
+    'autoregressive': 'AutoRegressive',
+    'auto-regressive': 'AutoRegressive',
+    # Parsing related
+    'parse': 'Parsing',
+    'parser': 'Parsing',
+    'parsing': 'Parsing',
+    # Evaluation related
+    'evaluation': 'Evaluation',
+    'evaluating': 'Evaluation',
+    'evaluations': 'Evaluation',
+    'benchmark': 'Evaluation',
+    'benchmarks': 'Evaluation',
+    # Grammar related
+    'grammar': 'Grammatical',
+    'grammatical': 'Grammatical',
+    'grammatical error': 'Grammatical',
+    'grammar error correction': 'Grammatical',
+    # Decoding related
+    'decoding': 'Decoding',
+    # Agent related
+    'agent': 'Agent',
+    'agents': 'Agent',
+    # Feedback related
+    'feedback': 'Feedback',
+    'feedbacks': 'Feedback',
+    # Seq2Seq related
+    'seq2seq': 'Seq2Seq',
+    'sequence to sequence': 'Seq2Seq',
+    'sequence-to-sequence': 'Seq2Seq',
+    # Structural related
+    'struct': 'Structural',
+    'structural': 'Structural',
+    'structure': 'Structural',
+    'structured': 'Structural',
+    # Syntax related
+    'syntax': 'Syntax',
+    'syntactic': 'Syntax',
+    # Question generation related
+    'question generation': 'Question Generation',
+    # Compression related
+    'compression': 'Compression',
+    'compressor': 'Compression',
+    'compressors': 'Compression',
+    # Legal related
+    'legal': 'Legal',
+    'law': 'Legal',
+}
 
 AUTHORS = [
     'Albert Gu', 'Alexander M. Rush', 'André F. T. Martins',
@@ -73,8 +130,9 @@ def normalize_id(t: str) -> str:
     t = unicodedata.normalize('NFD', t)
     t = ''.join([c for c in t if not unicodedata.combining(c)])
     t = t.lower()
-    # remove "."
+    # remove "." and ","
     t = t.replace('.', '')
+    t = t.replace(',', '')
     # space to _
     t = re.sub(r'\s+', '_', t)
     # # escape special characters
@@ -90,7 +148,10 @@ def match(t: str, keys: Iterable) -> Tuple[str, bool]:
     matched_keys = []
     for key in keys:
         if re.search(fr'\b{key}\b', t, flags=re.I):
-            matched_keys.append(key)
+            if isinstance(keys, dict):
+                matched_keys.append(keys[key])
+            else:
+                matched_keys.append(key)
             t = re.sub(fr'\b{key}\b', lambda m: red(m.group()), t, flags=re.I)
     return t, matched_keys
 
@@ -98,20 +159,20 @@ def cover_timezones(date: datetime) -> datetime:
     # to UTF+8
     return date.astimezone(timezone(timedelta(hours=8)))
 
-# papers = defaultdict(defaultdict(dict))
 papers = defaultdict(lambda: defaultdict(dict))
-# for day in range(7):
+papers_by_date = defaultdict(dict)
 max_day = 7
+new_day = 1
 available_tabs = set()
+tabs_info = defaultdict(dict)
+new_date = cover_timezones(datetime.now() - timedelta(new_day)).strftime("%Y %b %d, %a")
 for name in CLASSES:
     search = arxiv.Search(query=name, sort_by=arxiv.SortCriterion.LastUpdatedDate)
     for paper in search.results():
-        # date = datetime.now(paper.updated.tzinfo) - timedelta(day)
         date = datetime.now(paper.updated.tzinfo) - timedelta(max_day)
         if paper.updated.date() < date.date():
             break
         # Convert to UTC+8
-        # date = cover_timezones(paper.updated).strftime("%a, %d %b %Y")
         date = cover_timezones(paper.updated).strftime("%Y %b %d, %a")
         any_match = []
         title, matched = match(paper.title, KEYS)
@@ -128,42 +189,42 @@ for name in CLASSES:
         paper_content = f'<strong>{title}</strong><br>\n'
         paper_content += f'{text_title("[AUTHORS]")}{authors} <br>\n'
         paper_content += f'{text_title("[ABSTRACT]")}{abstract} <br>\n'
-        # paper_content += f'{text_title("[ABSTRACT]")}<details><summary>Click to expand</summary>{abstract}</details> <br>\n'
         if comments:
             paper_content += f'{text_title("[COMMENTS]")}{comments} <br>\n'
         paper_content += f'{text_title("[LINK]")}{link(paper.entry_id)} <br>\n'
-        # paper_content += f'{text_title("[DATE]")}{paper.updated} <br>\n'
         paper_content += f'{text_title("[DATE]")}{cover_timezones(paper.updated)} <br>\n'
         categories = '    '.join([texttt(c) for c in paper.categories if c in CLASSES])
         paper_content += f'{text_title("[CATEGORIES]")}{categories} <br>\n'
         for key in any_match:
+            if date >= new_date:
+                tabs_info[key]["new"] = True
             papers[key][date][paper.title] = paper_content
+            papers_by_date[date][paper.title] = paper_content
 
 with open('arxiv.md', 'w') as f:
     f.write('---\nlayout: default\n---\n\n')
-    # f.write('<details><summary>Contents</summary><ul>')
-    # for date in sorted(papers.keys(), reverse=True):
-    #     f.write(f'<li><a href="#{date.replace(" ", "-").replace(",", "").lower()}">{date}</a></li>')
-    # f.write('</ul></details><br>\n\n')
-    # for date in sorted(papers.keys(), reverse=True):
-    #     f.write(f'#### {date}\n\n')
-    #     for title, paper in papers[key][date].items():
-    #         f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
     f.write('<ul class="tab-nav">\n')
     for i, domain in enumerate([KEYS, AUTHORS, CONFS]):
+        if isinstance(domain, dict):
+            domain = set(domain.values())
         for i, tab in enumerate(sorted(available_tabs)):
             if tab not in domain:
                 continue
-            f.write(f'<li><a class="button{" active" if i == 0 else ""}" href="#{normalize_id(tab)}">{upper_first(tab)}</a></li>\n')
+            f.write(f'<li><a class="button" href="#{normalize_id(tab)}">{upper_first(tab)}</a>')
+            if tabs_info[tab].get("new", False):
+                f.write('<span class="new-dot"> </span>')
+            f.write('</li>\n')
         f.write('<li style="margin-right: auto;"><div></div></li>\n')
         f.write(f'<hr class="tab-nav-divider {" last" if i == 2 else ""}">\n')
+    for i, date in enumerate(sorted(papers_by_date.keys(), reverse=True)):
+        f.write(f'<li><a class="button{" active" if i == 0 else ""}" href="#{normalize_id(date)}">{date}</a></li>\n')
     f.write('</ul>\n\n')
+    f.write(f'<hr>\n')
 
     f.write('<div class="tab-content">\n')
     for i, tab in enumerate(sorted(available_tabs)):
         f.write(f'<div class="tab-pane{" active" if i == 0 else ""}" id="{normalize_id(tab)}">\n')
         for j, date in enumerate(sorted(papers[tab].keys(), reverse=True)):
-            # f.write(f'#### {date}\n\n')
             f.write(f'<details {"open" if j == 0 else ""}><summary class="date">{date}</summary>\n\n')
             f.write('<ul>\n')
             for title, paper in papers[tab][date].items():
@@ -172,5 +233,14 @@ with open('arxiv.md', 'w') as f:
                 f.write('</li>\n')
             f.write('</ul>\n')
             f.write('</details>\n\n')
+        f.write('</div>\n')
+    for i, date in enumerate(sorted(papers_by_date.keys(), reverse=True)):
+        f.write(f'<div class="tab-pane{" active" if i == 0 else ""}" id="{normalize_id(date)}">\n')
+        f.write('<ul>\n')
+        for title, paper in papers_by_date[date].items():
+            f.write('<li class="arxiv-paper">\n')
+            f.write(paper.replace('{', '\{').replace('}', '\}') + '\n\n')
+            f.write('</li>\n')
+        f.write('</ul>\n')
         f.write('</div>\n')
     f.write('</div>\n')

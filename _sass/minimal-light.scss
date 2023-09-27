@@ -815,3 +815,12 @@ hr.tab-nav-divider {
   margin: 9px 0 9px;
   width: 100%;
 }
+
+ul.tab-nav li span.new-dot {
+  background-color: #d11a2d;
+  width: 8px;
+  height: 8px;
+  margin-left: -5px;
+  margin-top: -3px;
+  border-radius: 50%;
+}
