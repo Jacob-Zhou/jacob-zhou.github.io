@@ -108,7 +108,20 @@ AUTHORS = [
     'Luke Zettlemoyer'
 ]
 
-CONFS = ['ACL', 'EMNLP', 'NAACL', 'COLING', 'ICLR', 'NIPS', 'NEURIPS', 'ICML', 'JMLR']
+# CONFS = ['ACL', 'EMNLP', 'NAACL', 'COLING', 'ICLR', 'NIPS', 'NEURIPS', 'ICML', 'JMLR']
+
+CONFS = {
+    "ACL": "ACL",
+    "EMNLP": "EMNLP",
+    "NAACL": "NAACL",
+    "COLING": "COLING",
+    "ICLR": "ICLR",
+    "NIPS": "NeurIPS",
+    "NEURIPS": "NeurIPS",
+    "ICML": "ICML",
+    "JMLR": "JMLR"
+}
+
 CLASSES = ['cs.CL', 'cs.LG']
 
 
