@@ -235,7 +235,7 @@ with open('arxiv.md', 'w') as f:
             f.write('</details>\n\n')
         f.write('</div>\n')
     for i, date in enumerate(sorted(papers_by_date.keys(), reverse=True)):
-        f.write(f'<div class="tab-pane{" active" if i == 0 else ""}" id="{normalize_id(date)}">\n')
+        f.write(f'<div class="tab-pane" id="{normalize_id(date)}">\n')
         f.write('<ul>\n')
         for title, paper in papers_by_date[date].items():
             f.write('<li class="arxiv-paper">\n')
