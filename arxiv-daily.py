@@ -135,9 +135,9 @@ def normalize_id(t: str) -> str:
     t = t.replace(',', '')
     # space to _
     t = re.sub(r'\s+', '_', t)
-    # # escape special characters
-    # # t = re.sub(r'([\\`*_{}[\]()#+-.!])', r'\\\1', t)
-    # return quote(t)
+    # check if start with number
+    if str.isdigit(t[0]):
+        t = '_' + t
     return t
 
 def upper_first(t: str) -> str:
