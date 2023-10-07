@@ -179,9 +179,22 @@ new_day = 1
 available_tabs = set()
 tabs_info = defaultdict(dict)
 new_date = cover_timezones(datetime.now() - timedelta(new_day)).strftime("%Y %b %d, %a")
+client = arxiv.Client(num_retries=10, page_size=500)
 for name in CLASSES:
     search = arxiv.Search(query=name, sort_by=arxiv.SortCriterion.LastUpdatedDate)
-    for paper in search.results():
+    results = client.results(search)
+    # for paper in search.results():
+    max_iter = 1000
+    while True:
+        try:
+            paper = next(results)
+        except StopIteration:
+            break
+        except arxiv.arxiv.UnexpectedEmptyPageError:
+            continue
+        max_iter -= 1
+        if max_iter < 0:
+            break
         date = datetime.now(paper.updated.tzinfo) - timedelta(max_day)
         if paper.updated.date() < date.date():
             break
