@@ -18,7 +18,9 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     <p class="vspace"></p>
     *__Houquan Zhou__, Yumeng Liu, Zhenghua Li, Min Zhang, Bo Zhang, Chen Li, Ji Zhang, Fei Huang* <br>
     **EMNLP (Findings) 2023**
-    <!-- <p class="vspace"></p> -->
+    <p class="vspace"></p>
+    [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2310.14534)
+    [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/gecdi)
 
 * **CCL23-Eval Task 7 Track 1 System Report: Suda &Alibaba Team Text Error Correction System**
     <p class="vspace"></p>
