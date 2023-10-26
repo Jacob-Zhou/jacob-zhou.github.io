@@ -21,6 +21,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     <p class="vspace"></p>
     [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2310.14534)
     [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/gecdi)
+    [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F4711f26c0295fed15161b6145800b3df1ab9c0f6%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/Improving-Seq2Seq-Grammatical-Error-Correction-via-Zhou-Liu/4711f26c0295fed15161b6145800b3df1ab9c0f6)
 
 * **CCL23-Eval Task 7 Track 1 System Report: Suda &Alibaba Team Text Error Correction System**
     <p class="vspace"></p>
