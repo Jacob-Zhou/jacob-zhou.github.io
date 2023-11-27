@@ -81,6 +81,9 @@ KEYS = {
     # Legal related
     'legal': 'Legal',
     'law': 'Legal',
+    # Rewrite related
+    'rewrite': 'Rewrite',
+    'rewriting': 'Rewrite',
 }
 
 AUTHORS = [
