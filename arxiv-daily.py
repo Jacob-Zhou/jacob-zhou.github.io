@@ -108,7 +108,8 @@ AUTHORS = [
     'Vlad Niculae',
     'Xiang Lisa Li', 'Xuezhe Ma',
     'Yao Fu', 'Yang Feng', 'Yoon Kim', 'Yuntian Deng',
-    'Luke Zettlemoyer'
+    'Luke Zettlemoyer',
+    'Diyi Yang',
 ]
 
 # CONFS = ['ACL', 'EMNLP', 'NAACL', 'COLING', 'ICLR', 'NIPS', 'NEURIPS', 'ICML', 'JMLR']
