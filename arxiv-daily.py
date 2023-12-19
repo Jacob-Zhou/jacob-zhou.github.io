@@ -179,7 +179,7 @@ def cover_timezones(date: datetime) -> datetime:
 papers = defaultdict(lambda: defaultdict(dict))
 papers_by_date = defaultdict(dict)
 max_day = 7
-new_day = 1
+new_day = 2
 available_tabs = set()
 tabs_info = defaultdict(dict)
 new_date = cover_timezones(datetime.now() - timedelta(new_day)).strftime("%Y %b %d, %a")
