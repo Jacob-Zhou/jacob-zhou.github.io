@@ -84,6 +84,11 @@ KEYS = {
     # Rewrite related
     'rewrite': 'Rewrite',
     'rewriting': 'Rewrite',
+    # Large language model related
+    'large language model': 'Large Language Model',
+    'large language models': 'Large Language Model',
+    'LLM': 'Large Language Model',
+    'LLMs': 'Large Language Model',
 }
 
 AUTHORS = [
