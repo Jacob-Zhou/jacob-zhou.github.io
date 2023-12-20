@@ -205,6 +205,7 @@ for name in CLASSES:
         if max_iter < 0:
             break
         date = datetime.now(paper.updated.tzinfo) - timedelta(max_day)
+        print(f"Find paper {paper.entry_id} {paper.title} {paper.updated}")
         if paper.updated.date() < date.date():
             break
         # Convert to UTC+8
