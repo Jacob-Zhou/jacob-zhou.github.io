@@ -26,17 +26,17 @@ import arxiv
 # ]
 KEYS = {
     # Adversarial related
-    'adversarial': 'Adversarial',
+    # 'adversarial': 'Adversarial',
     # Algebraic related
-    'algebraic': 'Algebraic',
-    'algebratic': 'Algebraic',
+    # 'algebraic': 'Algebraic',
+    # 'algebratic': 'Algebraic',
     # Auto-encoding related
-    'auto-encoding': 'AutoEncoder',
-    'autoencoder': 'AutoEncoder',
-    'autoencoding': 'AutoEncoder',
+    # 'auto-encoding': 'AutoEncoder',
+    # 'autoencoder': 'AutoEncoder',
+    # 'autoencoding': 'AutoEncoder',
     # Auto-regressive related
-    'autoregressive': 'AutoRegressive',
-    'auto-regressive': 'AutoRegressive',
+    # 'autoregressive': 'AutoRegressive',
+    # 'auto-regressive': 'AutoRegressive',
     # Parsing related
     'parse': 'Parsing',
     'parser': 'Parsing',
@@ -73,11 +73,11 @@ KEYS = {
     'syntax': 'Syntax',
     'syntactic': 'Syntax',
     # Question generation related
-    'question generation': 'Question Generation',
+    # 'question generation': 'Question Generation',
     # Compression related
-    'compression': 'Compression',
-    'compressor': 'Compression',
-    'compressors': 'Compression',
+    # 'compression': 'Compression',
+    # 'compressor': 'Compression',
+    # 'compressors': 'Compression',
     # Legal related
     'legal': 'Legal',
     'law': 'Legal',
@@ -89,6 +89,22 @@ KEYS = {
     'large language models': 'Large Language Model',
     'LLM': 'Large Language Model',
     'LLMs': 'Large Language Model',
+    # Refinement related
+    'refinement': 'Refinement',
+    'Refinement': 'Refinement',
+    'refine': 'Refinement',
+    'Refine': 'Refinement',
+    'Self-Refinement': 'Refinement',
+    'Self-refinement': 'Refinement',
+    'self-refinement': 'Refinement',
+    'Self-Refine': 'Refinement',
+    'Self-refine': 'Refinement',
+    'self-refine': 'Refinement',
+    'Reflection': 'Refinement',
+    'reflection': 'Refinement',
+    'Self-Reflection': 'Refinement',
+    'Self-reflection': 'Refinement',
+    'self-reflection': 'Refinement',
 }
 
 AUTHORS = [
