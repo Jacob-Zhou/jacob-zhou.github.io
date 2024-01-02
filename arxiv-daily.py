@@ -215,7 +215,7 @@ for name in CLASSES:
             paper = next(results)
         except StopIteration:
             break
-        except arxiv.arxiv.UnexpectedEmptyPageError:
+        except arxiv.UnexpectedEmptyPageError:
             continue
         max_iter -= 1
         if max_iter < 0:
