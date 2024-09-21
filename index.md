@@ -16,7 +16,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 * **A Simple yet Effective Training-free Prompt-free Approach to Chinese Spelling Correction Based on Large Language Models**
     <p class="vspace"></p>
-    *__Houquan Zhou__, Zhenghua Li✉️, Bo Zhang, Chen Li, Shaopeng Lai, Ji Zhang, Fei Huang, Min Zhang* <br>
+    *__Houquan Zhou__, Zhenghua Li, Bo Zhang, Chen Li, Shaopeng Lai, Ji Zhang, Fei Huang, Min Zhang* <br>
     **EMNLP 2024**
     <p class="vspace"></p>
     [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2024.emnlp-main.xxx/)
@@ -26,7 +26,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 * **Improving Seq2Seq Grammatical Error Correction via Decoding Interventions**
     <p class="vspace"></p>
-    *__Houquan Zhou__, Yumeng Liu, Zhenghua Li✉️, Min Zhang, Bo Zhang, Chen Li, Ji Zhang, Fei Huang* <br>
+    *__Houquan Zhou__, Yumeng Liu, Zhenghua Li, Min Zhang, Bo Zhang, Chen Li, Ji Zhang, Fei Huang* <br>
     **EMNLP (Findings) 2023**
     <p class="vspace"></p>
     [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2023.findings-emnlp.495/)
@@ -36,7 +36,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 * **CCL23-Eval Task 7 Track 1 System Report: Suda &Alibaba Team Text Error Correction System**
     <p class="vspace"></p>
-    *Haochen Jiang, Yumeng Liu, __Houquan Zhou__, Ziheng Qiao, Bo Zhang, Chen Li, Zhenghua Li✉️, Min Zhang* <br>
+    *Haochen Jiang, Yumeng Liu, __Houquan Zhou__, Ziheng Qiao, Bo Zhang, Chen Li, Zhenghua Li, Min Zhang* <br>
     **CCL 2023**
     <p class="vspace"></p>
     [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2023.ccl-3.25/)
@@ -45,7 +45,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 * **Bridging Pre-trained Language Models and Hand-crafted Features for Unsupervised POS Tagging**
     <p class="vspace"></p>
-    *__Houquan Zhou__\*, Yang Li\*, Zhenghua Li✉️, Min Zhang* <br>
+    *__Houquan Zhou__\*, Yang Li\*, Zhenghua Li, Min Zhang* <br>
     **ACL (Findings) 2022**
     <p class="vspace"></p>
     [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2022.findings-acl.259/)
@@ -57,7 +57,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 * **An In-depth Study on Internal Structure of Chinese Words** 
     <p class="vspace"></p>
-    *Chen Gong, Saihao Huang, **Houquan Zhou**, Zhenghua Li✉️, Min Zhang, Zhefeng Wang, Baoxing Huai, Nicholas Jing Yuan* <br>
+    *Chen Gong, Saihao Huang, **Houquan Zhou**, Zhenghua Li, Min Zhang, Zhefeng Wang, Baoxing Huai, Nicholas Jing Yuan* <br>
     **ACL-IJCNLP 2021** 
     <p class="vspace"></p>
     [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2021.acl-long.452/)
@@ -69,7 +69,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 * **A Coarse-to-Fine Labeling Framework for Joint Word Segmentation, POS Tagging, and Constituent Parsing**
     <p class="vspace"></p>
-    *Yang Hou, **Houquan Zhou**, Zhenghua Li✉️, Yu Zhang, Min Zhang, Zhefeng Wang, Baoxing Huai, Nicholas Jing Yuan* <br>
+    *Yang Hou, **Houquan Zhou**, Zhenghua Li, Yu Zhang, Min Zhang, Zhefeng Wang, Baoxing Huai, Nicholas Jing Yuan* <br>
     **CoNLL 2021**
     <p class="vspace"></p>
     [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2021.conll-1.23/)
@@ -79,7 +79,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 * **Fast and Accurate Neural CRF Constituency Parsing**
     <p class="vspace"></p>
-    *Yu Zhang\*, **Houquan Zhou**\*, Zhenghua Li✉️* <br>
+    *Yu Zhang\*, **Houquan Zhou**\*, Zhenghua Li* <br>
     **IJCAI 2020**
     <p class="vspace"></p>
     [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://www.ijcai.org/Proceedings/2020/560/)
@@ -90,7 +90,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 * **Is POS Tagging Necessary or Even Helpful for Neural Dependency Parsing?**
     <p class="vspace"></p>
-    *__Houquan Zhou__\*, Yu Zhang\*, Zhenghua Li✉️, Min Zhang* <br>
+    *__Houquan Zhou__\*, Yu Zhang\*, Zhenghua Li, Min Zhang* <br>
     **NLPCC 2020** (<strong><i style="color:#e74d3c">Best Paper Award</i></strong>)
     <p class="vspace"></p>
     [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2003.03204)
@@ -100,7 +100,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 ### Preprints
 * **How Well Do Large Language Models Understand Syntax? An Evaluation by Asking Natural Language Questions**
     <p class="vspace"></p>
-    *__Houquan Zhou__, Yang Hou, Zhenghua Li✉️, Xuebin Wang, Zhefeng Wang, Xinyu Duan, Min Zhang* <br>
+    *__Houquan Zhou__, Yang Hou, Zhenghua Li, Xuebin Wang, Zhefeng Wang, Xinyu Duan, Min Zhang* <br>
     **arXiv 2023** 
     <p class="vspace"></p>
     [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2311.08287)
