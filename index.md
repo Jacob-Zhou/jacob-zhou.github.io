@@ -12,7 +12,9 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 ### Publications:
 
-[[Semantic Scholar](https://www.semanticscholar.org/author/Houquan-Zhou/50986473)] [[Google Scholar](https://scholar.google.com/citations?user=hJWovmAAAAAJ)] [[DBLP](https://dblp.org/pid/221/7847-1.html)] (* denotes equal contributions)
+[[Semantic Scholar](https://www.semanticscholar.org/author/Houquan-Zhou/50986473)] [[Google Scholar](https://scholar.google.com/citations?user=hJWovmAAAAAJ)] [[DBLP](https://dblp.org/pid/221/7847-1.html)] [[ACL Anthology](https://aclanthology.org/people/h/houquan-zhou/)]
+
+(* denotes equal contributions)
 
 * **A Simple yet Effective Training-free Prompt-free Approach to Chinese Spelling Correction Based on Large Language Models**
     <p class="vspace"></p>
