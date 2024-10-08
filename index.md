@@ -21,10 +21,10 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     *__Houquan Zhou__, Zhenghua Li, Bo Zhang, Chen Li, Shaopeng Lai, Ji Zhang, Fei Huang, Min Zhang* <br>
     **EMNLP 2024**
     <p class="vspace"></p>
-    [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2024.emnlp-main.xxx/)
-    [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/xxx)
-    [![bib](https://img.shields.io/badge/bib-68b88e.svg?style=flat)](https://aclanthology.org/2024.emnlp-main.xxx.bib)
-    [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/llm-csc)
+    <!-- [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2024.emnlp-main.xxx/) -->
+    [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2410.04027)
+    <!-- [![bib](https://img.shields.io/badge/bib-68b88e.svg?style=flat)](https://aclanthology.org/2024.emnlp-main.xxx.bib) -->
+    [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/simple-csc)
 
 * **Improving Seq2Seq Grammatical Error Correction via Decoding Interventions**
     <p class="vspace"></p>
@@ -112,7 +112,10 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 * 🏆 **First** prize in the [CCL 2023](http://cips-cl.org/static/CCL2023/cclEval/taskResults/index.html#评测任务-7汉语学习者文本纠错cltc) Task 7: Chinese Learner Text Correction (Track 1)
     <p class="vspace"></p>
     2023.08
- 
+
+### Education
+* B.S. in Computer Science and Technology at China University of Mining and Technology, 2015 - 2019
+
 ### Experience
 
 * PhD student at Soochow University, co-advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli) and [Prof. Min Zhang](https://zhangminsuda.github.io/cn_homepage/)
@@ -120,5 +123,5 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     2021 - present
 * M.S. student at Soochow University, advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli)
     <p class="vspace"></p>
-    2018 - 2021
+    2019 - 2021
 
