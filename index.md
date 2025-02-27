@@ -21,10 +21,12 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     *__Houquan Zhou__, Zhenghua Li, Bo Zhang, Chen Li, Shaopeng Lai, Ji Zhang, Fei Huang, Min Zhang* <br>
     **EMNLP 2024**
     <p class="vspace"></p>
-    <!-- [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2024.emnlp-main.xxx/) -->
+    [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2024.emnlp-main.966)
     [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2410.04027)
-    <!-- [![bib](https://img.shields.io/badge/bib-68b88e.svg?style=flat)](https://aclanthology.org/2024.emnlp-main.xxx.bib) -->
-    [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/simple-csc)
+    [![bib](https://img.shields.io/badge/bib-68b88e.svg?style=flat)](https://aclanthology.org/2024.emnlp-main.966.bib)
+    [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/simple-csc/tree/v1.0.0)
+    [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F4711f26c0295fed15161b6145800b3df1ab9c0f6%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/A-Simple-yet-Effective-Training-free-Prompt-free-to-Zhou-Li/619346184ae157741fc1c4ac74447ab2455cd6f3)
+
 
 * **Improving Seq2Seq Grammatical Error Correction via Decoding Interventions**
     <p class="vspace"></p>
@@ -100,6 +102,14 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F3bb577d87ae8e0d45a223f65db24ab479fbda174%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/Is-POS-Tagging-Necessary-or-Even-Helpful-for-Neural-Zhang-Li/3bb577d87ae8e0d45a223f65db24ab479fbda174)
 
 ### Preprints
+* **A Training-free LLM-based Approach to General Chinese Character Error Correction**
+    <p class="vspace"></p>
+    *__Houquan Zhou__, Bo Zhang, Zhenghua Li, Ming Yan, Min Zhang* <br>
+    **arXiv 2025**
+    <p class="vspace"></p>
+    [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2502.15266)
+    [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/simple-csc/tree/v2.0.0)
+
 * **How Well Do Large Language Models Understand Syntax? An Evaluation by Asking Natural Language Questions**
     <p class="vspace"></p>
     *__Houquan Zhou__, Yang Hou, Zhenghua Li, Xuebin Wang, Zhefeng Wang, Xinyu Duan, Min Zhang* <br>
@@ -109,6 +119,9 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/SynEval)
 
 ### Competition
+* 🏆 **First** prize in the [Kingsoft Office 2024 Algorithm Challenge: Chinese Text Correction Competition](https://datastudio.wps.cn/matchcenter/competition/1/introduction)
+    <p class="vspace"></p>
+    2024.11 (Notably, our solution achieved an F0.5 score that was **2.02** points higher than the second-place team.)
 * 🏆 **First** prize in the [CCL 2023](http://cips-cl.org/static/CCL2023/cclEval/taskResults/index.html#评测任务-7汉语学习者文本纠错cltc) Task 7: Chinese Learner Text Correction (Track 1)
     <p class="vspace"></p>
     2023.08
