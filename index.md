@@ -25,7 +25,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2410.04027)
     [![bib](https://img.shields.io/badge/bib-68b88e.svg?style=flat)](https://aclanthology.org/2024.emnlp-main.966.bib)
     [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/simple-csc/tree/v1.0.0)
-    [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F4711f26c0295fed15161b6145800b3df1ab9c0f6%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/A-Simple-yet-Effective-Training-free-Prompt-free-to-Zhou-Li/619346184ae157741fc1c4ac74447ab2455cd6f3)
+    [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F619346184ae157741fc1c4ac74447ab2455cd6f3%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/A-Simple-yet-Effective-Training-free-Prompt-free-to-Zhou-Li/619346184ae157741fc1c4ac74447ab2455cd6f3)
 
 
 * **Improving Seq2Seq Grammatical Error Correction via Decoding Interventions**
