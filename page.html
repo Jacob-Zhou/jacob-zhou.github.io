@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houquan Zhou | Academic Profile</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- MathJax for LaTeX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- AOS for animations -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#68b88e',
+                        secondary: '#2c3e50',
+                        accent: '#e74d3c',
+                        light: '#f8f9fa',
+                        dark: '#343a40'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styles */
+        .publication-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .badge {
+            transition: all 0.2s ease;
+        }
+
+        .badge:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: #68b88e;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #68b88e;
+            border: 3px solid white;
+        }
+
+        .vspace {
+            height: 0.5rem;
+        }
+
+        /* MBE style elements */
+        .mbe-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mbe-element {
+            position: relative;
+        }
+
+        .mbe-element::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            background-color: rgba(104, 184, 142, 0.2);
+            z-index: -1;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 20%;
+            left: 20%;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background-color: #68b88e;
+        }
+    </style>
+</head>
+
+<body class="bg-light font-sans text-gray-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Header Section -->
+        <header class="mb-16">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
+                <div class="mbe-container" data-aos="fade-right">
+                    <div class="mbe-element">
+                        <h1 class="text-4xl md:text-5xl font-bold text-secondary mb-2">Houquan Zhou <span
+                                class="text-2xl md:text-3xl text-gray-600">周厚全</span></h1>
+                        <p class="text-xl text-gray-600 mb-4">PhD Student at HLT@SUDA</p>
+                    </div>
+                </div>
+
+                <div class="flex space-x-3 mt-4 md:mt-0" data-aos="fade-left">
+                    <a href="https://www.semanticscholar.org/author/Houquan-Zhou/50986473" target="_blank"
+                        class="badge text-primary hover:text-secondary">
+                        <i class="fas fa-book-open text-xl"></i>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=hJWovmAAAAAJ" target="_blank"
+                        class="badge text-primary hover:text-secondary">
+                        <i class="fas fa-graduation-cap text-xl"></i>
+                    </a>
+                    <a href="https://dblp.org/pid/221/7847-1.html" target="_blank"
+                        class="badge text-primary hover:text-secondary">
+                        <i class="fas fa-database text-xl"></i>
+                    </a>
+                    <a href="https://aclanthology.org/people/h/houquan-zhou/" target="_blank"
+                        class="badge text-primary hover:text-secondary">
+                        <i class="fas fa-scroll text-xl"></i>
+                    </a>
+                    <a href="https://github.com/Jacob-Zhou" target="_blank"
+                        class="badge text-primary hover:text-secondary">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row">
+                    <div class="w-full md:w-2/3">
+                        <p class="text-lg mb-4">
+                            I am a second-year PhD student at <a href="http://hlt.suda.edu.cn"
+                                class="text-primary hover:underline">HLT@SUDA</a>,
+                            co-advised by <a href="http://hlt.suda.edu.cn/~zhli"
+                                class="text-primary hover:underline">Prof. Zhenghua Li</a> and
+                            <a href="https://zhangminsuda.github.io/cn_homepage/"
+                                class="text-primary hover:underline">Prof. Min Zhang</a>.
+                        </p>
+
+                        <div class="mb-6">
+                            <h2 class="text-xl font-semibold mb-3 section-title">Research Interests</h2>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full">Text Error
+                                    Correction</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full">Spelling
+                                    Correction</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full">Grammatical Error
+                                    Correction</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full">Large Language
+                                    Models</span>
+                                <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full">Constituency
+                                    Parsing</span>
+                                <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full">Dependency Parsing</span>
+                                <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full">POS Tagging</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/3 flex justify-center items-start mt-6 md:mt-0">
+                        <div class="relative">
+                            <!-- Placeholder for profile photo -->
+                            <div
+                                class="w-48 h-48 bg-gray-200 rounded-full overflow-hidden flex items-center justify-center">
+                                <span class="text-6xl text-gray-400">HZ</span>
+                            </div>
+                            <div
+                                class="absolute -bottom-4 -right-4 bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center">
+                                <span class="text-sm font-medium">PhD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Publications Section -->
+        <section class="mb-16" id="publications">
+            <h2 class="text-3xl font-bold mb-8 section-title" data-aos="fade-right">Publications</h2>
+
+            <div class="mb-4 flex flex-wrap gap-3" data-aos="fade-up">
+                <a href="https://www.semanticscholar.org/author/Houquan-Zhou/50986473" target="_blank"
+                    class="badge px-3 py-1 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100">
+                    <i class="fas fa-book-open mr-1"></i> Semantic Scholar
+                </a>
+                <a href="https://scholar.google.com/citations?user=hJWovmAAAAAJ" target="_blank"
+                    class="badge px-3 py-1 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100">
+                    <i class="fas fa-graduation-cap mr-1"></i> Google Scholar
+                </a>
+                <a href="https://dblp.org/pid/221/7847-1.html" target="_blank"
+                    class="badge px-3 py-1 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100">
+                    <i class="fas fa-database mr-1"></i> DBLP
+                </a>
+                <a href="https://aclanthology.org/people/h/houquan-zhou/" target="_blank"
+                    class="badge px-3 py-1 bg-white border border-gray-300 rounded-full text-sm hover:bg-gray-100">
+                    <i class="fas fa-scroll mr-1"></i> ACL Anthology
+                </a>
+            </div>
+
+            <p class="text-sm text-gray-600 mb-6 italic">(* denotes equal contributions)</p>
+
+            <div class="space-y-8">
+                <!-- Publication 1 -->
+                <div class="publication-card bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">A Simple yet Effective Training-free Prompt-free Approach to
+                        Chinese Spelling Correction Based on Large Language Models</h3>
+                    <p class="text-gray-600 mb-3">
+                        <strong>Houquan Zhou</strong>, Zhenghua Li, Bo Zhang, Chen Li, Shaopeng Lai, Ji Zhang, Fei
+                        Huang, Min Zhang
+                    </p>
+                    <p class="text-primary font-medium mb-4">EMNLP 2024</p>
+
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <a href="https://aclanthology.org/2024.emnlp-main.966" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-file-alt mr-1"></i> Paper
+                        </a>
+                        <a href="https://arxiv.org/abs/2410.04027" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-archive mr-1"></i> arXiv
+                        </a>
+                        <a href="https://aclanthology.org/2024.emnlp-main.966.bib" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-quote-right mr-1"></i> BibTeX
+                        </a>
+                        <a href="https://github.com/Jacob-Zhou/simple-csc/tree/v1.0.0" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fab fa-github mr-1"></i> Code
+                        </a>
+                        <a href="https://www.semanticscholar.org/paper/A-Simple-yet-Effective-Training-free-Prompt-free-to-Zhou-Li/619346184ae157741fc1c4ac74447ab2455cd6f3"
+                            target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-chart-line mr-1"></i> Citations
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Publication 2 -->
+                <div class="publication-card bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">Improving Seq2Seq Grammatical Error Correction via Decoding
+                        Interventions</h3>
+                    <p class="text-gray-600 mb-3">
+                        <strong>Houquan Zhou</strong>, Yumeng Liu, Zhenghua Li, Min Zhang, Bo Zhang, Chen Li, Ji Zhang,
+                        Fei Huang
+                    </p>
+                    <p class="text-primary font-medium mb-4">EMNLP (Findings) 2023</p>
+
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <a href="https://aclanthology.org/2023.findings-emnlp.495/" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-file-alt mr-1"></i> Paper
+                        </a>
+                        <a href="https://arxiv.org/abs/2310.14534" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-archive mr-1"></i> arXiv
+                        </a>
+                        <a href="https://github.com/Jacob-Zhou/gecdi" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fab fa-github mr-1"></i> Code
+                        </a>
+                        <a href="https://www.semanticscholar.org/paper/Improving-Seq2Seq-Grammatical-Error-Correction-via-Zhou-Liu/4711f26c0295fed15161b6145800b3df1ab9c0f6"
+                            target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-chart-line mr-1"></i> Citations
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Publication 3 -->
+                <div class="publication-card bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">CCL23-Eval Task 7 Track 1 System Report: Suda &Alibaba Team
+                        Text Error Correction System</h3>
+                    <p class="text-gray-600 mb-3">
+                        Haochen Jiang, Yumeng Liu, <strong>Houquan Zhou</strong>, Ziheng Qiao, Bo Zhang, Chen Li,
+                        Zhenghua Li, Min Zhang
+                    </p>
+                    <p class="text-primary font-medium mb-4">CCL 2023</p>
+
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <a href="https://aclanthology.org/2023.ccl-3.25/" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-file-alt mr-1"></i> Paper
+                        </a>
+                        <a href="https://aclanthology.org/2023.ccl-3.25.bib" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-quote-right mr-1"></i> BibTeX
+                        </a>
+                        <a href="https://www.semanticscholar.org/paper/CCL23-Eval任务7赛道一系统报告%3ASuda-%26Alibaba-Task-7-Track-1-Haochen浩辰Jiang-Yumeng雨萌Liu/22895ce93d629a7f3129bcd228ee3968721c071f"
+                            target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-chart-line mr-1"></i> Citations
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Publication 4 -->
+                <div class="publication-card bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">Bridging Pre-trained Language Models and Hand-crafted
+                        Features for Unsupervised POS Tagging</h3>
+                    <p class="text-gray-600 mb-3">
+                        <strong>Houquan Zhou*</strong>, Yang Li*, Zhenghua Li, Min Zhang
+                    </p>
+                    <p class="text-primary font-medium mb-4">ACL (Findings) 2022</p>
+
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <a href="https://aclanthology.org/2022.findings-acl.259/" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-file-alt mr-1"></i> Paper
+                        </a>
+                        <a href="https://arxiv.org/abs/2203.10315" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-archive mr-1"></i> arXiv
+                        </a>
+                        <a href="https://aclanthology.org/2022.findings-acl.259.bib" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-quote-right mr-1"></i> BibTeX
+                        </a>
+                        <a href="https://github.com/Jacob-Zhou/FeatureCRFAE" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fab fa-github mr-1"></i> Code
+                        </a>
+                        <a href="https://www.semanticscholar.org/paper/Bridging-Pre-trained-Language-Models-and-Features-Zhou-Li/40e8fcca89dca2a426f23ed8596b259667ec177a"
+                            target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-chart-line mr-1"></i> Citations
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Publication 5 -->
+                <div class="publication-card bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">An In-depth Study on Internal Structure of Chinese Words</h3>
+                    <p class="text-gray-600 mb-3">
+                        Chen Gong, Saihao Huang, <strong>Houquan Zhou</strong>, Zhenghua Li, Min Zhang, Zhefeng Wang,
+                        Baoxing Huai, Nicholas Jing Yuan
+                    </p>
+                    <p class="text-primary font-medium mb-4">ACL-IJCNLP 2021</p>
+
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <a href="https://aclanthology.org/2021.acl-long.452/" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-file-alt mr-1"></i> Paper
+                        </a>
+                        <a href="https://arxiv.org/abs/2106.00334" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-archive mr-1"></i> arXiv
+                        </a>
+                        <a href="https://aclanthology.org/2021.acl-long.452.bib" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-quote-right mr-1"></i> BibTeX
+                        </a>
+                        <a href="https://github.com/SUDA-LA/wist" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fab fa-github mr-1"></i> Code
+                        </a>
+                        <a href="https://www.semanticscholar.org/paper/An-In-depth-Study-on-Internal-Structure-of-Chinese-Gong-Huang/38d052313e6cce936926f2168987b9edeb85a496"
+                            target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-chart-line mr-1"></i> Citations
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Publication 6 -->
+                <div class="publication-card bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">A Coarse-to-Fine Labeling Framework for Joint Word
+                        Segmentation, POS Tagging, and Constituent Parsing</h3>
+                    <p class="text-gray-600 mb-3">
+                        Yang Hou, <strong>Houquan Zhou</strong>, Zhenghua Li, Yu Zhang, Min Zhang, Zhefeng Wang, Baoxing
+                        Huai, Nicholas Jing Yuan
+                    </p>
+                    <p class="text-primary font-medium mb-4">CoNLL 2021</p>
+
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <a href="https://aclanthology.org/2021.conll-1.23/" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-file-alt mr-1"></i> Paper
+                        </a>
+                        <a href="https://aclanthology.org/2021.conll-1.23.bib" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-quote-right mr-1"></i> BibTeX
+                        </a>
+                        <a href="https://github.com/ironsword666/jointparser" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fab fa-github mr-1"></i> Code
+                        </a>
+                        <a href="https://www.semanticscholar.org/paper/A-Coarse-to-Fine-Labeling-Framework-for-Joint-Word-Hou-Zhou/7a78d8adc8c10a66e4c04bc28351f4fd865fd409"
+                            target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-chart-line mr-1"></i> Citations
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Publication 7 -->
+                <div class="publication-card bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">Fast and Accurate Neural CRF Constituency Parsing</h3>
+                    <p class="text-gray-600 mb-3">
+                        Yu Zhang*, <strong>Houquan Zhou*</strong>, Zhenghua Li
+                    </p>
+                    <p class="text-primary font-medium mb-4">IJCAI 2020</p>
+
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <a href="https://www.ijcai.org/Proceedings/2020/560/" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-file-alt mr-1"></i> Paper
+                        </a>
+                        <a href="https://arxiv.org/abs/2008.03736" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-archive mr-1"></i> arXiv
+                        </a>
+                        <a href="https://www.ijcai.org/proceedings/2020/bibtex/560" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-quote-right mr-1"></i> BibTeX
+                        </a>
+                        <a href="https://github.com/yzhangcs/crfpar" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fab fa-github mr-1"></i> Code
+                        </a>
+                        <a href="https://www.semanticscholar.org/paper/Fast-and-Accurate-Neural-CRF-Constituency-Parsing-Zhang-Zhou/46fe2ae301aeb75b25ebca0bdc26132ca46f5101"
+                            target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-chart-line mr-1"></i> Citations
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Publication 8 -->
+                <div class="publication-card bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">Is POS Tagging Necessary or Even Helpful for Neural
+                        Dependency Parsing?</h3>
+                    <p class="text-gray-600 mb-3">
+                        <strong>Houquan Zhou*</strong>, Yu Zhang*, Zhenghua Li, Min Zhang
+                    </p>
+                    <p class="text-primary font-medium mb-4">NLPCC 2020 <span
+                            class="text-accent italic font-semibold">Best Paper Award</span></p>
+
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <a href="https://arxiv.org/abs/2003.03204" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-archive mr-1"></i> arXiv
+                        </a>
+                        <a href="https://github.com/Jacob-Zhou/stack-parser" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fab fa-github mr-1"></i> Code
+                        </a>
+                        <a href="https://www.semanticscholar.org/paper/Is-POS-Tagging-Necessary-or-Even-Helpful-for-Neural-Zhang-Li/3bb577d87ae8e0d45a223f65db24ab479fbda174"
+                            target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-chart-line mr-1"></i> Citations
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preprints Section -->
+        <section class="mb-16" id="preprints">
+            <h2 class="text-3xl font-bold mb-8 section-title" data-aos="fade-right">Preprints</h2>
+
+            <div class="space-y-8">
+                <!-- Preprint 1 -->
+                <div class="publication-card bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">A Training-free LLM-based Approach to General Chinese
+                        Character Error Correction</h3>
+                    <p class="text-gray-600 mb-3">
+                        <strong>Houquan Zhou</strong>, Bo Zhang, Zhenghua Li, Ming Yan, Min Zhang
+                    </p>
+                    <p class="text-primary font-medium mb-4">arXiv 2025</p>
+
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <a href="https://arxiv.org/abs/2502.15266" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-archive mr-1"></i> arXiv
+                        </a>
+                        <a href="https://github.com/Jacob-Zhou/simple-csc/tree/v2.0.0" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fab fa-github mr-1"></i> Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Preprint 2 -->
+                <div class="publication-card bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">How Well Do Large Language Models Understand Syntax? An
+                        Evaluation by Asking Natural Language Questions</h3>
+                    <p class="text-gray-600 mb-3">
+                        <strong>Houquan Zhou</strong>, Yang Hou, Zhenghua Li, Xuebin Wang, Zhefeng Wang, Xinyu Duan, Min
+                        Zhang
+                    </p>
+                    <p class="text-primary font-medium mb-4">arXiv 2023</p>
+
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        <a href="https://arxiv.org/abs/2311.08287" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fas fa-archive mr-1"></i> arXiv
+                        </a>
+                        <a href="https://github.com/Jacob-Zhou/SynEval" target="_blank"
+                            class="badge px-3 py-1 bg-primary text-white rounded-full text-sm hover:bg-primary/90">
+                            <i class="fab fa-github mr-1"></i> Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Competitions Section -->
+        <section class="mb-16" id="competitions">
+            <h2 class="text-3xl font-bold mb-8 section-title" data-aos="fade-right">Competitions</h2>
+
+            <div class="space-y-8">
+                <!-- Competition 1 -->
+                <div class="bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-4xl text-primary">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">First Prize in the Kingsoft Office 2024 Algorithm
+                                Challenge: Chinese Text Correction Competition</h3>
+                            <p class="text-gray-600 mb-2">2024.11</p>
+                            <p class="text-gray-700">Notably, our solution achieved an F0.5 score that was
+                                <strong>2.02</strong> points higher than the second-place team.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competition 2 -->
+                <div class="bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                    <div class="flex items-start">
+                        <div class="mr-4 text-4xl text-primary">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">First Prize in the CCL 2023 Task 7: Chinese Learner
+                                Text Correction (Track 1)</h3>
+                            <p class="text-gray-600 mb-2">2023.08</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Experience Section -->
+        <section class="mb-16" id="education-experience">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Education Section -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-8 section-title" data-aos="fade-right">Education</h2>
+
+                    <div class="relative pl-10" data-aos="fade-up">
+                        <div class="timeline-item pb-8">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-white rounded-lg p-6 shadow-md">
+                                <h3 class="text-xl font-semibold mb-2">PhD in Computer Science</h3>
+                                <p class="text-gray-600 mb-1">Soochow University</p>
+                                <p class="text-gray-600 mb-3">2021 - present</p>
+                                <p class="text-gray-700">
+                                    Co-advised by <a href="http://hlt.suda.edu.cn/~zhli"
+                                        class="text-primary hover:underline">Prof. Zhenghua Li</a> and
+                                    <a href="https://zhangminsuda.github.io/cn_homepage/"
+                                        class="text-primary hover:underline">Prof. Min Zhang</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item pb-8">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-white rounded-lg p-6 shadow-md">
+                                <h3 class="text-xl font-semibold mb-2">M.S. in Computer Science</h3>
+                                <p class="text-gray-600 mb-1">Soochow University</p>
+                                <p class="text-gray-600 mb-3">2019 - 2021</p>
+                                <p class="text-gray-700">
+                                    Advised by <a href="http://hlt.suda.edu.cn/~zhli"
+                                        class="text-primary hover:underline">Prof. Zhenghua Li</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-white rounded-lg p-6 shadow-md">
+                                <h3 class="text-xl font-semibold mb-2">B.S. in Computer Science and Technology</h3>
+                                <p class="text-gray-600 mb-1">China University of Mining and Technology</p>
+                                <p class="text-gray-600 mb-3">2015 - 2019</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Section -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-8 section-title" data-aos="fade-right">Experience</h2>
+
+                    <div class="relative pl-10" data-aos="fade-up">
+                        <div class="timeline-item pb-8">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-white rounded-lg p-6 shadow-md">
+                                <h3 class="text-xl font-semibold mb-2">PhD Student</h3>
+                                <p class="text-gray-600 mb-1">HLT@SUDA, Soochow University</p>
+                                <p class="text-gray-600 mb-3">2021 - present</p>
+                                <p class="text-gray-700">
+                                    Research focus: Text error correction, LLM evaluation and application
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="bg-white rounded-lg p-6 shadow-md">
+                                <h3 class="text-xl font-semibold mb-2">M.S. Student</h3>
+                                <p class="text-gray-600 mb-1">Soochow University</p>
+                                <p class="text-gray-600 mb-3">2019 - 2021</p>
+                                <p class="text-gray-700">
+                                    Research focus: Constituency parsing, dependency parsing, and POS tagging
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Visualization Section -->
+        <section class="mb-16" id="research-visualization">
+            <h2 class="text-3xl font-bold mb-8 section-title" data-aos="fade-right">Research Focus</h2>
+
+            <div class="bg-white rounded-lg p-6 shadow-md" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row">
+                    <div class="w-full md:w-1/2 mb-6 md:mb-0 md:pr-6">
+                        <h3 class="text-xl font-semibold mb-4">Research Trajectory</h3>
+                        <div class="relative">
+                            <!-- Research timeline visualization -->
+                            <div class="h-2 bg-gray-200 rounded-full mb-8">
+                                <div class="h-full bg-primary rounded-full" style="width: 100%;"></div>
+
+                                <div
+                                    class="absolute -top-3 left-[15%] w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                    <span class="text-white text-xs">2019</span>
+                                </div>
+                                <div class="absolute -top-10 left-[15%] transform -translate-x-1/2">
+                                    <div class="bg-primary/10 text-primary px-3 py-1 rounded-lg text-sm">
+                                        Parsing
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="absolute -top-3 left-[40%] w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                    <span class="text-white text-xs">2021</span>
+                                </div>
+                                <div class="absolute -top-10 left-[40%] transform -translate-x-1/2">
+                                    <div class="bg-primary/10 text-primary px-3 py-1 rounded-lg text-sm">
+                                        POS Tagging
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="absolute -top-3 left-[65%] w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                    <span class="text-white text-xs">2022</span>
+                                </div>
+                                <div class="absolute -top-10 left-[65%] transform -translate-x-1/2">
+                                    <div class="bg-primary/10 text-primary px-3 py-1 rounded-lg text-sm">
+                                        Error Correction
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="absolute -top-3 left-[90%] w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                    <span class="text-white text-xs">2023</span>
+                                </div>
+                                <div class="absolute -top-10 left-[90%] transform -translate-x-1/2">
+                                    <div class="bg-primary/10 text-primary px-3 py-1 rounded-lg text-sm">
+                                        LLMs
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-700 mt-12">
+                            My research journey began with fundamental NLP tasks like parsing and POS tagging,
+                            and has evolved to focus on text error correction and the evaluation of large language
+                            models.
+                        </p>
+                    </div>
+
+                    <div
+                        class="w-full md:w-1/2 md:pl-6 border-t md:border-t-0 md:border-l border-gray-200 pt-6 md:pt-0 md:pl-6">
+                        <h3 class="text-xl font-semibold mb-4">Publication Distribution</h3>
+
+                        <!-- Publication distribution visualization -->
+                        <div class="flex items-end h-64 mb-4">
+                            <div class="w-1/5 mx-1">
+                                <div class="bg-primary h-[20%] rounded-t-lg relative group">
+                                    <div
+                                        class="opacity-0 group-hover:opacity-100 absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 mb-1 transition-opacity duration-200">
+                                        1 paper
+                                    </div>
+                                </div>
+                                <p class="text-center text-xs mt-2">2019</p>
+                            </div>
+                            <div class="w-1/5 mx-1">
+                                <div class="bg-primary h-[40%] rounded-t-lg relative group">
+                                    <div
+                                        class="opacity-0 group-hover:opacity-100 absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 mb-1 transition-opacity duration-200">
+                                        2 papers
+                                    </div>
+                                </div>
+                                <p class="text-center text-xs mt-2">2020</p>
+                            </div>
+                            <div class="w-1/5 mx-1">
+                                <div class="bg-primary h-[40%] rounded-t-lg relative group">
+                                    <div
+                                        class="opacity-0 group-hover:opacity-100 absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 mb-1 transition-opacity duration-200">
+                                        2 papers
+                                    </div>
+                                </div>
+                                <p class="text-center text-xs mt-2">2021</p>
+                            </div>
+                            <div class="w-1/5 mx-1">
+                                <div class="bg-primary h-[20%] rounded-t-lg relative group">
+                                    <div
+                                        class="opacity-0 group-hover:opacity-100 absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 mb-1 transition-opacity duration-200">
+                                        1 paper
+                                    </div>
+                                </div>
+                                <p class="text-center text-xs mt-2">2022</p>
+                            </div>
+                            <div class="w-1/5 mx-1">
+                                <div class="bg-primary h-[40%] rounded-t-lg relative group">
+                                    <div
+                                        class="opacity-0 group-hover:opacity-100 absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 mb-1 transition-opacity duration-200">
+                                        2 papers
+                                    </div>
+                                </div>
+                                <p class="text-center text-xs mt-2">2023</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <h4 class="font-medium mb-2">Research Areas</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <div
+                                    class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm flex items-center">
+                                    <span class="w-3 h-3 bg-primary rounded-full mr-2"></span>
+                                    Text Error Correction (4)
+                                </div>
+                                <div class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm flex items-center">
+                                    <span class="w-3 h-3 bg-gray-500 rounded-full mr-2"></span>
+                                    Parsing (3)
+                                </div>
+                                <div class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm flex items-center">
+                                    <span class="w-3 h-3 bg-gray-500 rounded-full mr-2"></span>
+                                    POS Tagging (2)
+                                </div>
+                                <div
+                                    class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm flex items-center">
+                                    <span class="w-3 h-3 bg-primary rounded-full mr-2"></span>
+                                    LLM Evaluation (1)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-20 pt-10 border-t border-gray-200" data-aos="fade-up">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold text-secondary">Houquan Zhou</h2>
+                    <p class="text-gray-600">PhD Student at HLT@SUDA</p>
+                </div>
+
+                <div class="flex space-x-4">
+                    <a href="https://www.semanticscholar.org/author/Houquan-Zhou/50986473" target="_blank"
+                        class="text-gray-600 hover:text-primary transition-colors">
+                        <i class="fas fa-book-open text-xl"></i>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=hJWovmAAAAAJ" target="_blank"
+                        class="text-gray-600 hover:text-primary transition-colors">
+                        <i class="fas fa-graduation-cap text-xl"></i>
+                    </a>
+                    <a href="https://github.com/Jacob-Zhou" target="_blank"
+                        class="text-gray-600 hover:text-primary transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2024 Houquan Zhou. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize AOS animations
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        });
+    </script>
+</body>
+
+</html>
