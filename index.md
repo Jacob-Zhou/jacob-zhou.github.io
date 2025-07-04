@@ -23,7 +23,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     <p class="vspace"></p>
     [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2502.15266)
     [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/simple-csc/tree/v2.0.0)
-    [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F9a6479bdd7605029d3972dea4c64a2e914f2755a6%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/A-Training-free-LLM-based-Approach-to-General-Error-Zhou-Zhang/9a6479bdd7605029d3972dea4c64a2e914f2755a)
+    [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F9a6479bdd7605029d3972dea4c64a2e914f2755a%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/A-Training-free-LLM-based-Approach-to-General-Error-Zhou-Zhang/9a6479bdd7605029d3972dea4c64a2e914f2755a)
 
 * **Mixture of Small and Large Models for Chinese Spelling Check**
     <p class="vspace"></p>
