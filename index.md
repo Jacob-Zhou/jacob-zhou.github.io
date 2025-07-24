@@ -3,7 +3,7 @@ layout: default
 ---
 
 Hi, my name is **Houquan Zhou** (**周厚全**). 
-I am a second-year PhD student at [HLT@SUDA](http://hlt.suda.edu.cn), co-advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli) and [Prof. Min Zhang](https://zhangminsuda.github.io/cn_homepage/).
+I am a PhD student at [HLT@SUDA](http://hlt.suda.edu.cn), co-advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli) and [Prof. Min Zhang](https://zhangminsuda.github.io/cn_homepage/).
 
 
 My main research interest focuses on text error correction (including spelling correction, grammatical error correction, etc.) and the evaluation and application of large language models.
@@ -21,6 +21,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     *__Houquan Zhou__, Bo Zhang, Zhenghua Li, Ming Yan, Min Zhang* <br>
     **ACL 2025**
     <p class="vspace"></p>
+    [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2025.acl-long.678)
     [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2502.15266)
     [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/simple-csc/tree/v2.0.0)
     [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F9a6479bdd7605029d3972dea4c64a2e914f2755a%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/A-Training-free-LLM-based-Approach-to-General-Error-Zhou-Zhang/9a6479bdd7605029d3972dea4c64a2e914f2755a)
@@ -30,6 +31,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     *Ziheng Qiao, __Houquan Zhou__, Zhenghua Li* <br>
     **ACL 2025**
     <p class="vspace"></p>
+    [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2025.acl-long.1372)
     [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2506.06887)
     [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/zhqiao-nlp/MSLLM)
     [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F87a2958bd75a72e61b5b2549a63a222d7ca2a1ec%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/Mixture-of-Small-and-Large-Models-for-Chinese-Check-Qiao-Zhou/87a2958bd75a72e61b5b2549a63a222d7ca2a1ec)
@@ -39,6 +41,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     *Ziheng Qiao, __Houquan Zhou__, Yumeng Liu, Zhenghua Li, Min Zhang, Bo Zhang, Chen Li, Ji Zhang, Fei Huang* <br>
     **ACL 2025**
     <p class="vspace"></p>
+    [![paper](https://img.shields.io/badge/paper-68b88e.svg?style=flat)](https://aclanthology.org/2025.acl-long.1373)
     [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2412.12863)
     [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/zhqiao-nlp/DISC)
     [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fce38ac3362e9509e75209db83cc67546a302c7cc%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/DISC%3A-Plug-and-Play-Decoding-Intervention-with-of-Qiao-Zhou/ce38ac3362e9509e75209db83cc67546a302c7cc)
@@ -129,13 +132,6 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     [![citation](https://img.shields.io/badge/dynamic/json?label=citation&query=citationCount&url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F3bb577d87ae8e0d45a223f65db24ab479fbda174%3Ffields%3DcitationCount&color=68b88e&style=flat&logo=semanticscholar)](https://www.semanticscholar.org/paper/Is-POS-Tagging-Necessary-or-Even-Helpful-for-Neural-Zhang-Li/3bb577d87ae8e0d45a223f65db24ab479fbda174)
 
 ### Preprints
-* **A Training-free LLM-based Approach to General Chinese Character Error Correction**
-    <p class="vspace"></p>
-    *__Houquan Zhou__, Bo Zhang, Zhenghua Li, Ming Yan, Min Zhang* <br>
-    **arXiv 2025**
-    <p class="vspace"></p>
-    [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2502.15266)
-    [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/simple-csc/tree/v2.0.0)
 
 * **How Well Do Large Language Models Understand Syntax? An Evaluation by Asking Natural Language Questions**
     <p class="vspace"></p>
@@ -158,12 +154,12 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 ### Experience
 
+* Research Intern at **Alibaba DAMO Academy**, mentored by Ming Yan
+    <p class="vspace"></p>
+    2024 - present
 * PhD student at Soochow University, co-advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli) and [Prof. Min Zhang](https://zhangminsuda.github.io/cn_homepage/)
     <p class="vspace"></p>
     2021 - present
-* Research Intern at Alibaba DAMO Academy, mentored by Ming Yan
-    <p class="vspace"></p>
-    2024 - present
 * M.S. student at Soochow University, advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli)
     <p class="vspace"></p>
     2019 - 2021
