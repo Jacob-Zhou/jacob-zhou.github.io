@@ -3,7 +3,7 @@ layout:     post
 title:      "概率图模型"
 date:       2018-11-26 10:32:00 +0800
 author:     "Zo"
-header-img: "./assets/img/probabilistic-graphical-models/post-bg.jpg"
+header-img: "/assets/img/probabilistic-graphical-models/post-bg.jpg"
 mathjax: true
 catalog: true
 tags:
@@ -29,7 +29,7 @@ $$\begin{equation}P(A_1, A_2, A_3, \dotsc, A_i, \dotsc,A_n)\end{equation}$$
 #### 图论与概率论的几个重要概念
 **图中的亲属关系**{: #graphic-relatives}
 
-![graphic-relatives](./assets/img/probabilistic-graphical-models/graphic-relatives.png)
+![graphic-relatives](/assets/img/probabilistic-graphical-models/graphic-relatives.png)
 
 **链式法则**{: #chain-rule}  
 
@@ -39,7 +39,7 @@ $$\begin{equation}P(A_1, \dotsc, A_n)=P(A_1)P(A_2|A_1)P(A_3|A_2,A_1)\dotsm P(A_n
 首先我们需要了解如何使用图来表示概率。我们通过一个例子来说明：**T公司**打算招应届生，他们希望招到的员工有很强的**代码能力** $C$，所以他们想到了通过在线笔试来获得**笔试成绩** $G$，以此来确定学生的代码能力。
 于是他们首先构造了一个只有两个随机变量 $C,G$ 的模型。首先我们将每个随机变量作为一个结点。接着我们要确定随机变量间的关系。根据直觉，我们知道是**代码能力**在很大程度上决定了**笔试成绩**。我们将这样一个模型 $P(C,G)$ 用概率图模型表现出来如下
 
-![code-to-grade](./assets/img/probabilistic-graphical-models/code-to-grade.png)
+![code-to-grade](/assets/img/probabilistic-graphical-models/code-to-grade.png)
 
 这个简单的有向图为我们给出了概率图模型的第一个好处：让我们可以将一个关于 $n$ 个随机变量的联合分布可以分解为多个紧凑的因子
 
@@ -47,7 +47,7 @@ $$ \begin{equation}P(C,G)=P(C)P(G|C)\end{equation} $$
 
 在前面的例子中，**T公司**发现单纯使用**笔试成绩**就来判断**代码能力**的高低有点过于武断。他们在应聘者的简历上给出了他们技术博客的地址，在博客中可以看到**点赞数量** $L$，我们假设**点赞数量**只和**博客质量** $Q$ 有关，而要写出一篇高质量的博客不但要求**代码能力**，还要求他们的**表达能力** $E$。为此面试官对模型进行升级改造：
 
-![recruit-model](./assets/img/probabilistic-graphical-models/recruit-model.svg){: #recruit-model}
+![recruit-model](/assets/img/probabilistic-graphical-models/recruit-model.svg){: #recruit-model}
 
 我们使用[链式法则](#chain-rule)可以轻易地将模型的联合分布变成多个条件概率的乘积的形式
 
@@ -64,7 +64,7 @@ $$
 
 我们很容易可以在概率图中找到每一项乘积的对应
 
-![factor-of-model](./assets/img/probabilistic-graphical-models/factor-of-model.png)
+![factor-of-model](/assets/img/probabilistic-graphical-models/factor-of-model.png)
 
 我们可以看到一般地，我们可以得到这样的公式
 
@@ -84,7 +84,7 @@ $$ \begin{equation}P(A_1,\dotsc,A_n)=\prod_{i=1}^n P(X_i|\mathbf{Pa}_{X_i}^\math
 
 如下面这个例子  
 
-![markov-model-exmple](./assets/img/probabilistic-graphical-models/markov-model-exmple.svg)
+![markov-model-exmple](/assets/img/probabilistic-graphical-models/markov-model-exmple.svg)
 
 一个矩形水缸被划分为 $A, B, C, D$ 四个区域，区域被玻璃板隔开。但相邻两个区域间的玻璃板上有缺口，允许分子自由地穿过。这就意味着如果发现一个区域被污染了，那么因为分子的自由扩散，它相邻的区域也有可能会受到污染。  
 在这样的例子中存在着这样的独立假设，在知道 $B,D$ 区域是否受污染的时候， $A,C$ 之间不会有影响；同理在知道 $A,C$ 区域是否受污染的时候， $B,D$ 之间不会有影响，除了这两个独立假设外不再存在别的独立假设即
@@ -96,7 +96,7 @@ $$ \begin{equation}\begin{cases}
 
 但是使用贝叶斯网是无法表示这样的独立关系而不带入额外的独立关系。因此我们需要使用无向图来表示这种独立假设
 
-![markov-model](./assets/img/probabilistic-graphical-models/markov-model.svg){: #markov-model}
+![markov-model](/assets/img/probabilistic-graphical-models/markov-model.svg){: #markov-model}
 
 我们把形如[上图](#markov-model)的无向图$\mathcal{H}$，叫做马尔可夫网，结点为随机变量，边表示两个结点间具有亲密关系。
 
@@ -132,7 +132,7 @@ $$ \begin{equation}
 我们知道，使用贝叶斯网网络无法表示[前面例子](#markov-independence)所描述的独立性；那么有没有什么独立性是贝叶斯网可以描述的而马尔可夫网是不能描述的呢？  
 我们考虑贝叶斯网中一个经典的结构：v-结构。在这个图 $\mathcal{G}$ 中，存在着边缘独立 $(I\bot D)$ 并且不存在着条件独立 $(I\bot D|G)$ ，但我们试图构建满足这样独立性的马尔可夫网的时候，我们会发现并不能找到满足这样独立性的图 $\mathcal{H}$ 
 
-![markov-v](./assets/img/probabilistic-graphical-models/markov-v.png)
+![markov-v](/assets/img/probabilistic-graphical-models/markov-v.png)
 
 # 最后
 本来打算在这篇文章中就吧HMM和CRF都讲了的，结果发现还是高估自己了。光是概率图的部分就写了3天，所以果断将概率图模型的部分截出来，单独作为一篇文章。

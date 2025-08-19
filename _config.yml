@@ -20,11 +20,11 @@ github_link: https://github.com/Jacob-Zhou
 arxiv_link: https://cv.hqzhou.com/arxiv
 affiliation_link: https://www.suda.edu.cn
 
-avatar: ./assets/img/avatar.jpg
-# favicon: ./assets/img/favicon.svg
-favicon_svg: ./assets/img/favicon-3.min.svg
-favicon: ./assets/img/favicon.png
-favicon_dark: ./assets/img/favicon-dark.png
+avatar: /assets/img/avatar.jpg
+# favicon: /assets/img/favicon.svg
+favicon_svg: /assets/img/favicon-3.min.svg
+favicon: /assets/img/favicon.png
+favicon_dark: /assets/img/favicon-dark.png
 
 # jekyll_analytics:
 #   GoogleAnalytics:

@@ -3,6 +3,11 @@ layout: default
 ---
 
 <article class="post">
+    {% if page.header-img %}
+    <div class="post-header-img">
+        <img src="{{ page.header-img | relative_url }}" alt="{{ page.title }}">
+    </div>
+    {% endif %}
     <header class="post-header">
         <h1 class="post-title">{{ page.title }}</h1>
         <p class="post-meta">
@@ -49,6 +54,19 @@ layout: default
 <style>
     .post {
         margin-bottom: 2rem;
+    }
+
+    .post-header-img {
+        margin-bottom: 2rem;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .post-header-img img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
     }
 
     .post-header {
@@ -189,3 +207,17 @@ layout: default
         }
     }
 </style>
+
+<script>
+    // 修复博客内容中的图像路径
+    document.addEventListener('DOMContentLoaded', function () {
+        var baseUrl = '{{ site.baseurl }}';
+        var images = document.querySelectorAll('.post-content img');
+        images.forEach(function (img) {
+            var src = img.getAttribute('src');
+            if (src && src.startsWith('/assets/')) {
+                img.setAttribute('src', baseUrl + src);
+            }
+        });
+    });
+</script>
