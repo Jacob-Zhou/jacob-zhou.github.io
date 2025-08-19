@@ -2,6 +2,27 @@
 layout: default
 ---
 
+<!-- MathJax配置 -->
+{% if page.mathjax %}
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"]
+    }
+  });
+</script>
+<script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+{% endif %}
+
 <article class="post">
     {% if page.header-img %}
     <div class="post-header-img">
@@ -52,8 +73,40 @@ layout: default
 </article>
 
 <style>
+    /* 修复滚动问题 */
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .wrapper {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* 确保侧边栏不会遮挡主内容 */
+    header {
+        z-index: 10;
+    }
+
+    section {
+        z-index: 1;
+        background-color: transparent;
+        min-height: 100vh;
+    }
+
+    /* 防止标题被固定元素遮挡 */
+    @media screen and (min-width: 961px) {
+        section {
+            margin-left: 0;
+            clear: right;
+        }
+    }
+
     .post {
         margin-bottom: 2rem;
+        position: relative;
+        z-index: 1;
     }
 
     .post-header-img {
@@ -73,12 +126,17 @@ layout: default
         margin-bottom: 2rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid #e1e1e1;
+        position: relative;
+        z-index: 1;
+        background-color: #fff;
     }
 
     .post-title {
         font-size: 2rem;
         margin-bottom: 0.5rem;
         color: #333;
+        position: relative;
+        z-index: 1;
     }
 
     .post-meta {
@@ -105,28 +163,88 @@ layout: default
     .post-content {
         line-height: 1.8;
         color: #333;
+        font-size: 1rem;
+        position: relative;
+        z-index: 1;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
     }
 
-    .post-content h1,
-    .post-content h2,
-    .post-content h3,
-    .post-content h4,
-    .post-content h5,
-    .post-content h6 {
+    .post-content ul,
+    .post-content ol {
+        margin: 1rem 0;
+        padding-left: 2rem;
+    }
+
+    .post-content li {
+        margin: 0.5rem 0;
+    }
+
+    .post-content h1 {
+        font-size: 1.8rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.3rem;
+        border-bottom: 2px solid #e1e1e1;
+    }
+
+    .post-content h2 {
+        font-size: 1.5rem;
         margin-top: 2rem;
         margin-bottom: 1rem;
+        padding-bottom: 0.2rem;
+        border-bottom: 1px solid #e1e1e1;
+    }
+
+    .post-content h3 {
+        font-size: 1.3rem;
+        margin-top: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .post-content h4 {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.6rem;
+        font-weight: 600;
+    }
+
+    .post-content h5,
+    .post-content h6 {
+        font-size: 1rem;
+        margin-top: 1.2rem;
+        margin-bottom: 0.5rem;
     }
 
     .post-content p {
         margin-bottom: 1rem;
+        text-align: justify;
+    }
+
+    .post-content strong {
+        font-weight: 600;
+        color: #222;
+    }
+
+    .post-content em {
+        font-style: italic;
+    }
+
+    .post-content hr {
+        border: none;
+        border-top: 1px solid #e1e1e1;
+        margin: 2rem 0;
     }
 
     .post-content pre {
-        background-color: #f4f4f4;
+        background-color: #282c34;
+        color: #abb2bf;
         padding: 1rem;
         border-radius: 5px;
         overflow-x: auto;
         margin: 1rem 0;
+        font-size: 0.9rem;
+        line-height: 1.5;
     }
 
     .post-content code {
@@ -134,11 +252,114 @@ layout: default
         padding: 0.2rem 0.4rem;
         border-radius: 3px;
         font-size: 0.9rem;
+        font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
     }
 
     .post-content pre code {
         background-color: transparent;
         padding: 0;
+        color: inherit;
+    }
+
+    /* 语法高亮基础样式 */
+    .post-content .highlight {
+        background: #282c34;
+        color: #abb2bf;
+        border-radius: 5px;
+        margin: 1rem 0;
+    }
+
+    .post-content .highlight pre {
+        margin: 0;
+        background: transparent;
+    }
+
+    .post-content .highlight .c {
+        color: #5c6370;
+        font-style: italic
+    }
+
+    /* Comment */
+    .post-content .highlight .k {
+        color: #c678dd
+    }
+
+    /* Keyword */
+    .post-content .highlight .o {
+        color: #abb2bf
+    }
+
+    /* Operator */
+    .post-content .highlight .p {
+        color: #abb2bf
+    }
+
+    /* Punctuation */
+    .post-content .highlight .n {
+        color: #abb2bf
+    }
+
+    /* Name */
+    .post-content .highlight .s {
+        color: #98c379
+    }
+
+    /* String */
+    .post-content .highlight .m {
+        color: #d19a66
+    }
+
+    /* Number */
+
+    /* 数学公式样式 */
+    .post-content .MathJax_Display {
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
+    }
+
+    .post-content .MathJax {
+        font-size: 1.1rem !important;
+    }
+
+    /* 表格样式 */
+    .post-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+
+    .post-content table th,
+    .post-content table td {
+        padding: 0.5rem;
+        border: 1px solid #e1e1e1;
+        text-align: left;
+    }
+
+    .post-content table th {
+        background-color: #f4f4f4;
+        font-weight: 600;
+    }
+
+    .post-content table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* 脚注样式 */
+    .post-content .footnotes {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid #e1e1e1;
+        font-size: 0.9rem;
+    }
+
+    .post-content .footnotes ol {
+        padding-left: 1.5rem;
+    }
+
+    .post-content sup {
+        font-size: 0.75rem;
+        vertical-align: super;
     }
 
     .post-content blockquote {
@@ -146,6 +367,14 @@ layout: default
         padding-left: 1rem;
         margin: 1rem 0;
         color: #666;
+        font-style: italic;
+        background-color: #f9f9f9;
+        padding: 1rem;
+        border-radius: 0 5px 5px 0;
+    }
+
+    .post-content blockquote p {
+        margin: 0;
     }
 
     .post-content img {
@@ -209,15 +438,39 @@ layout: default
 </style>
 
 <script>
-    // 修复博客内容中的图像路径
+    // 修复博客内容中的图像路径和链接
     document.addEventListener('DOMContentLoaded', function () {
         var baseUrl = '{{ site.baseurl }}';
-        var images = document.querySelectorAll('.post-content img');
-        images.forEach(function (img) {
-            var src = img.getAttribute('src');
-            if (src && src.startsWith('/assets/')) {
-                img.setAttribute('src', baseUrl + src);
-            }
-        });
+
+        // 只有当baseUrl不为空时才进行路径修复
+        if (baseUrl && baseUrl !== '') {
+            // 修复图像路径
+            var images = document.querySelectorAll('.post-content img');
+            images.forEach(function (img) {
+                var src = img.getAttribute('src');
+                if (src && src.startsWith('/assets/')) {
+                    // 避免重复添加baseurl
+                    if (!src.startsWith(baseUrl + '/assets/')) {
+                        img.setAttribute('src', baseUrl + src);
+                    }
+                }
+            });
+
+            // 修复内部链接
+            var links = document.querySelectorAll('.post-content a');
+            links.forEach(function (link) {
+                var href = link.getAttribute('href');
+                if (href && href.startsWith('/') && !href.startsWith('//') && !href.startsWith(baseUrl)) {
+                    link.setAttribute('href', baseUrl + href);
+                }
+            });
+        }
+
+        // 确保MathJax重新渲染
+        if (typeof MathJax !== 'undefined' && MathJax.Hub) {
+            setTimeout(function () {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            }, 500);
+        }
     });
 </script>

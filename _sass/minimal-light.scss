@@ -528,6 +528,8 @@ section {
   float: right;
   padding-top: 4.0em;
   padding-bottom: 50px;
+  position: relative;
+  z-index: 1;
 }
 
 small {
