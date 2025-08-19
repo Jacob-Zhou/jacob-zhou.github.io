@@ -25,10 +25,29 @@ layout: default
 
 <article class="post">
     {% if page.header-img %}
-    <div class="post-header-img">
-        <img src="{{ page.header-img | relative_url }}" alt="{{ page.title }}">
-    </div>
-    {% endif %}
+    <header class="post-header"
+        style="background-image: url('{{ page.header-img | relative_url }}'); background-size: cover; background-position: center; min-height: 250px;">
+        <div class="post-header-content">
+            <h1 class="post-title">{{ page.title }}</h1>
+            <p class="post-meta">
+                <time datetime="{{ page.date | date_to_xmlschema }}">
+                    {{ page.date | date: "%B %d, %Y" }}
+                </time>
+                {% if page.author %}
+                • <span class="post-author">{{ page.author }}</span>
+                {% endif %}
+                {% if page.tags %}
+                <br>
+                <span class="post-tags">
+                    {% for tag in page.tags %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </span>
+                {% endif %}
+            </p>
+        </div>
+    </header>
+    {% else %}
     <header class="post-header">
         <h1 class="post-title">{{ page.title }}</h1>
         <p class="post-meta">
@@ -48,6 +67,7 @@ layout: default
             {% endif %}
         </p>
     </header>
+    {% endif %}
 
     <div class="post-content">
         {{ content }}
@@ -109,38 +129,40 @@ layout: default
         z-index: 1;
     }
 
-    .post-header-img {
-        margin-bottom: 2rem;
-        border-radius: 5px;
-        overflow: hidden;
-    }
-
-    .post-header-img img {
-        width: 100%;
-        height: auto;
-        max-height: 400px;
-        object-fit: cover;
-    }
-
     .post-header {
         margin-bottom: 2rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid #e1e1e1;
         position: relative;
         z-index: 1;
-        background-color: #fff;
+        width: 100%;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .post-header-content {
+        position: relative;
+        z-index: 1;
+        padding: 3rem 2rem;
+        /* Increase padding for better appearance */
+        color: white;
+        /* Ensure text is visible on image */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        /* Add text shadow for better readability */
+        background-color: rgba(0, 0, 0, 0.3);
+        /* Add semi-transparent overlay for better text visibility */
     }
 
     .post-title {
         font-size: 2rem;
         margin-bottom: 0.5rem;
-        color: #333;
+        color: white;
         position: relative;
         z-index: 1;
     }
 
     .post-meta {
-        color: #666;
+        color: white;
         font-size: 0.9rem;
         margin: 0;
     }
@@ -152,7 +174,8 @@ layout: default
 
     .tag {
         display: inline-block;
-        background-color: #68b88e;
+        background-color: rgba(255, 255, 255, 0.2);
+        /* Semi-transparent white background */
         color: white;
         padding: 0.2rem 0.5rem;
         margin-right: 0.3rem;
@@ -388,6 +411,8 @@ layout: default
         margin-top: 3rem;
         padding-top: 2rem;
         border-top: 1px solid #e1e1e1;
+        position: relative;
+        width: 100%;
     }
 
     .post-nav {
