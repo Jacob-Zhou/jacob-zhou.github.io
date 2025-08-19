@@ -1,0 +1,191 @@
+---
+layout: default
+---
+
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <p class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}">
+                {{ page.date | date: "%B %d, %Y" }}
+            </time>
+            {% if page.author %}
+            • <span class="post-author">{{ page.author }}</span>
+            {% endif %}
+            {% if page.tags %}
+            <br>
+            <span class="post-tags">
+                {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </span>
+            {% endif %}
+        </p>
+    </header>
+
+    <div class="post-content">
+        {{ content }}
+    </div>
+
+    <footer class="post-footer">
+        <div class="post-nav">
+            {% if page.previous %}
+            <a href="{{ page.previous.url | relative_url }}" class="prev-post">
+                ← {{ page.previous.title | truncate: 50 }}
+            </a>
+            {% endif %}
+            {% if page.next %}
+            <a href="{{ page.next.url | relative_url }}" class="next-post">
+                {{ page.next.title | truncate: 50 }} →
+            </a>
+            {% endif %}
+        </div>
+        <div class="back-to-list">
+            <a href="/blogs">← Back to Blog List</a>
+        </div>
+    </footer>
+</article>
+
+<style>
+    .post {
+        margin-bottom: 2rem;
+    }
+
+    .post-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e1e1e1;
+    }
+
+    .post-title {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .post-meta {
+        color: #666;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .post-tags {
+        display: inline-block;
+        margin-top: 0.5rem;
+    }
+
+    .tag {
+        display: inline-block;
+        background-color: #68b88e;
+        color: white;
+        padding: 0.2rem 0.5rem;
+        margin-right: 0.3rem;
+        border-radius: 3px;
+        font-size: 0.85rem;
+    }
+
+    .post-content {
+        line-height: 1.8;
+        color: #333;
+    }
+
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-content h4,
+    .post-content h5,
+    .post-content h6 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .post-content p {
+        margin-bottom: 1rem;
+    }
+
+    .post-content pre {
+        background-color: #f4f4f4;
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin: 1rem 0;
+    }
+
+    .post-content code {
+        background-color: #f4f4f4;
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-size: 0.9rem;
+    }
+
+    .post-content pre code {
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .post-content blockquote {
+        border-left: 4px solid #68b88e;
+        padding-left: 1rem;
+        margin: 1rem 0;
+        color: #666;
+    }
+
+    .post-content img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1rem auto;
+    }
+
+    .post-footer {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e1e1e1;
+    }
+
+    .post-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    .prev-post,
+    .next-post {
+        color: #68b88e;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .prev-post:hover,
+    .next-post:hover {
+        color: #4a8a6a;
+        text-decoration: underline;
+    }
+
+    .back-to-list {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .back-to-list a {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s;
+    }
+
+    .back-to-list a:hover {
+        color: #68b88e;
+    }
+
+    @media screen and (max-width: 720px) {
+        .post-title {
+            font-size: 1.5rem;
+        }
+
+        .post-nav {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+</style>

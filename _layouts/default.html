@@ -71,6 +71,30 @@
   <link rel="stylesheet" href="./assets/css/pub.css">
   <!-- <link rel="stylesheet" href="./assets/css/skeleton-tabs.css"> -->
 
+  <style>
+    .nav-links {
+      text-align: center;
+      margin: 0.5rem 0;
+    }
+
+    .nav-link {
+      color: #666;
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 0.3rem 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #68b88e;
+    }
+
+    .nav-separator {
+      color: #ccc;
+      margin: 0 0.5rem;
+    }
+  </style>
+
   <script src="./assets/js/github-stars.js"></script>
   <script src="./assets/js/scale.fix.js"></script>
   <script src="./assets/js/skeleton-tabs.js"></script>
@@ -128,6 +152,13 @@
         <a style="margin: 0 5px 0 0" href="{{ site.arxiv_link }}" aria-label="Go to My ArXiv New Papers Page">
           <i class="ai ai-arxiv"></i>
         </a>
+      </div>
+      <br>
+
+      <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <span class="nav-separator">•</span>
+        <a href="/blogs" class="nav-link">Blog</a>
       </div>
       <br>
 

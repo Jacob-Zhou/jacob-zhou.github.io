@@ -1,0 +1,15 @@
+---
+layout:     post
+title:      "国内访问变快啦"
+date:       2018-12-17 17:32:00 +0800
+author:     "Zo"
+header-img: "assets/img/post-bg.jpg"
+catalog: true
+tags:
+    - 博客
+---
+
+
+感谢[Alex](http://alexitboy.icu/)帮我把博客同步部署到腾讯云上！现在国内的访问变得更快捷啦！
+
+![alex-photo](http://alexitboy.icu/wp-content/uploads/2018/12/IMG_20181129_003531_processed.jpg)
