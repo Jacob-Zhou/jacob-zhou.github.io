@@ -3,7 +3,7 @@ layout:     post
 title:      "词法标记中的HMM和CRF"
 date:       2018-11-28 10:15:0+0800
 author:     "Zo"
-header-img: "assets/img/post-bg.jpg"
+header-img: "./assets/img/post-bg.jpg"
 mathjax: true
 catalog: true
 tags:
@@ -24,15 +24,15 @@ tags:
 
 下面给出一个包含5个状态 $Y \in \lbrace y_1,y_2,y_3,y_4,y_5\rbrace$ 的状态机，其中 $\mathcal{T}(y_4 \to y_5)$ 表示马尔可夫链中由状态 $y_4$ 转移到状态 $y_5$ 的概率
 
-![markov-chains](assets/img/hmm-and-crf/markov-chains.png)
+![markov-chains](./assets/img/hmm-and-crf/markov-chains.png)
 
 下面是该马尔可夫链可能生成的一条状态随机序列
 
-![state-sequence](assets/img/hmm-and-crf/state-sequence.png)
+![state-sequence](./assets/img/hmm-and-crf/state-sequence.png)
 
 在隐马尔可夫模型中，我们假设由马尔可夫链生成的隐藏状态我们是无法直接观测到的，我们只能够观察到由这些隐藏状态随机生成的观测量。
 
-![hmm-model](assets/img/hmm-and-crf/hmm-model.svg)
+![hmm-model](./assets/img/hmm-and-crf/hmm-model.svg)
 
 在日常生活中我们也能够找到这样的例子，我们用水壶煮水，水的温度我们往往是无法观测的*(在这里我们使用的水壶，是最简单的那种纯粹的不锈钢水壶没有任何的附加功能)*，但是有些状态我们是可以观察到的，比如：水壶发出的声响、壶口冒出的水汽。通过隐马尔可夫模型我们对水温随着时间的变化和水温和声响之间进行建模，我们就可以通过发出的响声来估算水温。另外，在某些领域，就算状态量可以被直接测量，但是因为仪器原因，或者由于线路干扰，最终测量人员看到的数值和原始数值会存在出入，通过隐马尔可夫模型我们也能在一定程度上消除这样的误差或干扰。  
 在词性标注任务中，我们可以将词性作为无法被直接观测到的隐藏状态，而将词语作为观测值。下面我们都以词性标注为例子讲解隐马尔可夫模型中的三个问题。
@@ -41,7 +41,7 @@ tags:
 隐马尔可夫模型有三个基本问题：概率计算问题、预测问题和学习问题。  
 为了方便计算，我对隐马尔可夫模型进行一些拓展，其中 $\text{Start}$ 表示开始状态，$\text{Stop}$ 表示结束状态，隐藏状态 $\lbrace Y_1,\dotsc,Y_n\rbrace$ 为词性标注，观测状态 $\lbrace S_1,\dotsc,S_n\rbrace$ 为句子 $S$ 位于位置 $i$ 的词语，我们规定 $P(\text{Start}) = P(\text{Stop}) = 1$
 
-![hmm-pos-model](assets/img/hmm-and-crf/hmm-pos-model.png)
+![hmm-pos-model](./assets/img/hmm-and-crf/hmm-pos-model.png)
 
 #### 概率计算问题  
 概率计算问题是给定句子 $S=(s_1,s_2,\dotsc,s_n)$ 计算 $P(S)$，其实这在词性标注中用得不多， 但是会出现在使用隐马尔可夫模型解决其他问题中。  
@@ -140,7 +140,7 @@ $$\begin{split}
 
 在隐马尔可夫模型中有一个很好的性质，方便我们的计算，那就是给定 $Y_j$ 的条件下会阻断所有途径 $Y_j$ 的概率影响，即存在着很多有关 $Y_j$ 的条件独立
 
-![condition-block](assets/img/hmm-and-crf/condition-block.png)
+![condition-block](./assets/img/hmm-and-crf/condition-block.png)
 
 因为存在 $S_i$ 与 $\mathbf S_{-i}$在给定 $Y_i$ 的条件下独立，即 $(S_i\bot \mathbf S_{-i} \|Y_i)$，其中 $S_{-i}$ 代表模型 $S$ 中除位置 $i$ 外的其他观察变量的集合,我们有如下公式
 
@@ -259,7 +259,7 @@ $$
 
 在词性标注中我们常用的是线性链条件随机场，在线性链随机场中句子 $S$ 不再像在隐马尔可夫模型那样展开到每一个位置，而是作为一个整体出现，将句子的信息尽可能地保留  
 
-![crf-model](assets/img/hmm-and-crf/crf-model.png)
+![crf-model](./assets/img/hmm-and-crf/crf-model.png)
 
 #### 线性链条件随机场的分布
 由于条件随机场是无向图模型，因此它的分布不能像隐马尔可夫模型那样，计算条件分布的乘积即可。而是需要计算团上的因子的乘积。在线性链条件随机场中，由于模型的形状特别好——图可以被分为许多个以 $\{Y_{i-1},Y_i,S\}$ 构成的三角形团。因此我们可以将线性链条件随机场中的分布表示为  
@@ -393,7 +393,7 @@ $$\begin{split}
 
 对于一个条件随机场 $\mathcal{H}$ 我们考虑两个子图
 
-![meanning-of-alpha-beta](assets/img/hmm-and-crf/meanning-of-alpha-beta.png)
+![meanning-of-alpha-beta](./assets/img/hmm-and-crf/meanning-of-alpha-beta.png)
 
 我们可以看到 $\alpha_i$ 是在前部分子图上求未归一化概率 $\tilde{P}(Y_i,S)$，而 $\beta_i$ 是在后部分子图上求未归一化概率 $\tilde{P}(Y_i,S)$
 
