@@ -113,7 +113,8 @@
     <header>
 
       {% if site.avatar %}
-      <a href="{{ site.canonical }}" class="image avatar"><img src="{{ site.avatar }}" alt="avatar" /></a>
+      <a href="{{ site.canonical }}" class="image avatar"><img src="{{ site.avatar | relative_url }}"
+          alt="avatar" /></a>
       {% endif %}
 
       <a href="{{ site.canonical }}">
@@ -156,9 +157,9 @@
       <br>
 
       <div class="nav-links">
-        <a href="/" class="nav-link">Home</a>
+        <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
         <span class="nav-separator">•</span>
-        <a href="/blogs" class="nav-link">Blog</a>
+        <a href="{{ '/blogs' | relative_url }}" class="nav-link">Blog</a>
       </div>
       <br>
 
