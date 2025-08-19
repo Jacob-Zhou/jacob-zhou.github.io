@@ -93,42 +93,6 @@ layout: default
 </article>
 
 <style>
-    /* 修复滚动问题 */
-    html,
-    body {
-        overflow-x: hidden;
-    }
-
-    .wrapper {
-        position: relative;
-        z-index: 1;
-    }
-
-    /* 确保侧边栏不会遮挡主内容 */
-    header {
-        z-index: 10;
-    }
-
-    section {
-        z-index: 1;
-        background-color: transparent;
-        min-height: 100vh;
-    }
-
-    /* 防止标题被固定元素遮挡 */
-    @media screen and (min-width: 961px) {
-        section {
-            margin-left: 0;
-            clear: right;
-        }
-    }
-
-    .post {
-        margin-bottom: 2rem;
-        position: relative;
-        z-index: 1;
-    }
-
     .post-header {
         margin-bottom: 2rem;
         padding-bottom: 1rem;
@@ -138,6 +102,7 @@ layout: default
         width: 100%;
         border-radius: 5px;
         overflow: hidden;
+        font-family: 'Noto Sans SC', sans-serif;
     }
 
     .post-header-content {
@@ -153,7 +118,7 @@ layout: default
         /* Add semi-transparent overlay for better text visibility */
     }
 
-    .post-title {
+    .post-header .post-title {
         font-size: 2rem;
         margin-bottom: 0.5rem;
         color: white;
@@ -161,18 +126,13 @@ layout: default
         z-index: 1;
     }
 
-    .post-meta {
+    .post-header .post-meta {
         color: white;
         font-size: 0.9rem;
         margin: 0;
     }
 
-    .post-tags {
-        display: inline-block;
-        margin-top: 0.5rem;
-    }
-
-    .tag {
+    .post-header .tag {
         display: inline-block;
         background-color: rgba(255, 255, 255, 0.2);
         /* Semi-transparent white background */
@@ -183,282 +143,12 @@ layout: default
         font-size: 0.85rem;
     }
 
-    .post-content {
-        line-height: 1.8;
-        color: #333;
-        font-size: 1rem;
-        position: relative;
-        z-index: 1;
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-    }
-
-    .post-content ul,
-    .post-content ol {
-        margin: 1rem 0;
-        padding-left: 2rem;
-    }
-
-    .post-content li {
-        margin: 0.5rem 0;
-    }
-
-    .post-content h1 {
-        font-size: 1.8rem;
-        margin-top: 2.5rem;
-        margin-bottom: 1.2rem;
-        padding-bottom: 0.3rem;
-        border-bottom: 2px solid #e1e1e1;
-    }
-
-    .post-content h2 {
-        font-size: 1.5rem;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        padding-bottom: 0.2rem;
-        border-bottom: 1px solid #e1e1e1;
-    }
-
-    .post-content h3 {
-        font-size: 1.3rem;
-        margin-top: 1.8rem;
-        margin-bottom: 0.8rem;
-    }
-
-    .post-content h4 {
-        font-size: 1.1rem;
-        margin-top: 1.5rem;
-        margin-bottom: 0.6rem;
-        font-weight: 600;
-    }
-
-    .post-content h5,
-    .post-content h6 {
-        font-size: 1rem;
-        margin-top: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .post-content p {
-        margin-bottom: 1rem;
-        text-align: justify;
-    }
-
-    .post-content strong {
-        font-weight: 600;
-        color: #222;
-    }
-
-    .post-content em {
-        font-style: italic;
-    }
-
-    .post-content hr {
-        border: none;
-        border-top: 1px solid #e1e1e1;
-        margin: 2rem 0;
-    }
-
-    .post-content pre {
-        background-color: #282c34;
-        color: #abb2bf;
-        padding: 1rem;
-        border-radius: 5px;
-        overflow-x: auto;
-        margin: 1rem 0;
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
-
-    .post-content code {
-        background-color: #f4f4f4;
-        padding: 0.2rem 0.4rem;
-        border-radius: 3px;
-        font-size: 0.9rem;
-        font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
-    }
-
-    .post-content pre code {
-        background-color: transparent;
-        padding: 0;
-        color: inherit;
-    }
-
-    /* 语法高亮基础样式 */
-    .post-content .highlight {
-        background: #282c34;
-        color: #abb2bf;
-        border-radius: 5px;
-        margin: 1rem 0;
-    }
-
-    .post-content .highlight pre {
-        margin: 0;
-        background: transparent;
-    }
-
-    .post-content .highlight .c {
-        color: #5c6370;
-        font-style: italic
-    }
-
-    /* Comment */
-    .post-content .highlight .k {
-        color: #c678dd
-    }
-
-    /* Keyword */
-    .post-content .highlight .o {
-        color: #abb2bf
-    }
-
-    /* Operator */
-    .post-content .highlight .p {
-        color: #abb2bf
-    }
-
-    /* Punctuation */
-    .post-content .highlight .n {
-        color: #abb2bf
-    }
-
-    /* Name */
-    .post-content .highlight .s {
-        color: #98c379
-    }
-
-    /* String */
-    .post-content .highlight .m {
-        color: #d19a66
-    }
-
-    /* Number */
-
-    /* 数学公式样式 */
-    .post-content .MathJax_Display {
-        overflow-x: auto;
-        overflow-y: hidden;
-        max-width: 100%;
-    }
-
-    .post-content .MathJax {
-        font-size: 1.1rem !important;
-    }
-
-    /* 表格样式 */
-    .post-content table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 1rem 0;
-    }
-
-    .post-content table th,
-    .post-content table td {
-        padding: 0.5rem;
-        border: 1px solid #e1e1e1;
-        text-align: left;
-    }
-
-    .post-content table th {
-        background-color: #f4f4f4;
-        font-weight: 600;
-    }
-
-    .post-content table tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-    /* 脚注样式 */
-    .post-content .footnotes {
-        margin-top: 2rem;
-        padding-top: 1rem;
-        border-top: 1px solid #e1e1e1;
-        font-size: 0.9rem;
-    }
-
-    .post-content .footnotes ol {
-        padding-left: 1.5rem;
-    }
-
-    .post-content sup {
-        font-size: 0.75rem;
-        vertical-align: super;
-    }
-
-    .post-content blockquote {
-        border-left: 4px solid #68b88e;
-        padding-left: 1rem;
-        margin: 1rem 0;
-        color: #666;
-        font-style: italic;
-        background-color: #f9f9f9;
-        padding: 1rem;
-        border-radius: 0 5px 5px 0;
-    }
-
-    .post-content blockquote p {
-        margin: 0;
-    }
-
-    .post-content img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 1rem auto;
-    }
-
     .post-footer {
         margin-top: 3rem;
         padding-top: 2rem;
         border-top: 1px solid #e1e1e1;
         position: relative;
         width: 100%;
-    }
-
-    .post-nav {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-    }
-
-    .prev-post,
-    .next-post {
-        color: #68b88e;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-    .prev-post:hover,
-    .next-post:hover {
-        color: #4a8a6a;
-        text-decoration: underline;
-    }
-
-    .back-to-list {
-        text-align: center;
-        margin-top: 2rem;
-    }
-
-    .back-to-list a {
-        color: #666;
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: color 0.3s;
-    }
-
-    .back-to-list a:hover {
-        color: #68b88e;
-    }
-
-    @media screen and (max-width: 720px) {
-        .post-title {
-            font-size: 1.5rem;
-        }
-
-        .post-nav {
-            flex-direction: column;
-            gap: 0.5rem;
-        }
     }
 </style>
 
