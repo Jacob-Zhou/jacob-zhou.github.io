@@ -8,6 +8,7 @@ permalink: /blogs/
 
 <div class="blog-list">
   {% for post in site.posts %}
+    {% unless post.published == false or post.hidden == true %}
     <article class="blog-item">
       <h3 class="blog-title">
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -33,9 +34,11 @@ permalink: /blogs/
         </div>
       {% endif %}
     </article>
+    {% endunless %}
   {% endfor %}
 
-  {% if site.posts.size == 0 %}
+  {% assign visible_posts = site.posts | where_exp: "post", "post.published != false and post.hidden != true" %}
+  {% if visible_posts.size == 0 %}
     <p class="no-posts">No blog posts yet. Stay tuned!</p>
   {% endif %}
 </div>
