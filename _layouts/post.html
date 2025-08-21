@@ -71,6 +71,12 @@ layout: default
     </header>
     {% endif %}
 
+    {% if page.hidden %}
+    <div class="post-in-progress">
+        This post is in progress.
+    </div>
+    {% endif %}
+
     <div class="post-content">
         {{ content }}
     </div>
@@ -151,6 +157,20 @@ layout: default
         border-top: 1px solid #e1e1e1;
         position: relative;
         width: 100%;
+    }
+
+    .post-in-progress {
+        font-size: 2rem;
+        font-weight: 500;
+        font-family: 'Noto Sans SC', sans-serif;
+        text-align: center;
+        width: 100%;
+        color: #2563eb;
+        padding: 1.5rem 2rem;
+        background: #f1f5f9;
+        border-radius: 8px;
+        border: 4px solid #2563eb;
+        margin: 1.5rem 0;
     }
 
     .post-content p {
