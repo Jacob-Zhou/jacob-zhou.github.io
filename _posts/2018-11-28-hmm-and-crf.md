@@ -2,7 +2,7 @@
 layout:     post
 title:      "词法标记中的HMM和CRF"
 date:       2018-11-28 10:15:0+0800
-author:     "Zo"
+author:     "Houquan Zhou"
 header-img: "/assets/img/post-bg.jpg"
 mathjax: true
 catalog: true

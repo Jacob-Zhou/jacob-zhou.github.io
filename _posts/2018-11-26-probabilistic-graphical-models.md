@@ -2,7 +2,7 @@
 layout:     post
 title:      "概率图模型"
 date:       2018-11-26 10:32:00 +0800
-author:     "Zo"
+author:     "Houquan Zhou"
 header-img: "/assets/img/probabilistic-graphical-models/post-bg.jpg"
 mathjax: true
 catalog: true

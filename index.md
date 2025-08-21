@@ -150,6 +150,12 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     2023.08
 
 ### Education
+* PhD student at Soochow University, co-advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli) and [Prof. Min Zhang](https://zhangminsuda.github.io/cn_homepage/)
+    <p class="vspace"></p>
+    2021 - present
+* M.S. student at Soochow University, advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli)
+    <p class="vspace"></p>
+    2019 - 2021
 * B.S. in Computer Science and Technology at China University of Mining and Technology, 2015 - 2019
 
 ### Experience
@@ -157,10 +163,4 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 * Research Intern at **Alibaba DAMO Academy**, mentored by Ming Yan
     <p class="vspace"></p>
     2024 - present
-* PhD student at Soochow University, co-advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli) and [Prof. Min Zhang](https://zhangminsuda.github.io/cn_homepage/)
-    <p class="vspace"></p>
-    2021 - present
-* M.S. student at Soochow University, advised by [Prof. Zhenghua Li](http://hlt.suda.edu.cn/~zhli)
-    <p class="vspace"></p>
-    2019 - 2021
 

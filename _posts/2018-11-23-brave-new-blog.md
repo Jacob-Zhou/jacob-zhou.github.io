@@ -3,7 +3,7 @@ layout:     post
 title:      "Brave new Blog"
 subtitle:   "今天起要开始学着写博客了"
 date:       2018-11-23 15:28:00 +0800
-author:     "Zo"
+author:     "Houquan Zhou"
 header-img: "/assets/img/brave_new_blog/post-bg.jpg"
 catalog: true
 tags:
