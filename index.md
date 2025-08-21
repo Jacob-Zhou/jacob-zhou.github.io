@@ -142,7 +142,7 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     [![code](https://img.shields.io/badge/code-68b88e.svg?style=flat&logo=github)](https://github.com/Jacob-Zhou/SynEval)
 
 ### Competition
-* 🏆 **First** prize in the [Kingsoft Office 2024 Algorithm Challenge: Chinese Text Correction Competition](https://datastudio.wps.cn/matchcenter/competition/1/introduction)
+* 🏆 **First** prize in the [Kingsoft Office 2024 Algorithm Challenge: Chinese Text Correction Competition](https://datastudio.wps.cn/matchcenter/competition/1/introduction) (<strong><i style="color:#e74d3c">Team leader</i></strong>)
     <p class="vspace"></p>
     2024.11 (Notably, our solution achieved an F0.5 score that was **2.02** points higher than the second-place team.)
 * 🏆 **First** prize in the [CCL 2023](http://cips-cl.org/static/CCL2023/cclEval/taskResults/index.html#评测任务-7汉语学习者文本纠错cltc) Task 7: Chinese Learner Text Correction (Track 1)
