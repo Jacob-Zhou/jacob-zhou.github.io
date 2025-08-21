@@ -29,9 +29,7 @@ Triton 的[官网文档](https://triton-lang.org/main/index.html) 中是这样�
 
 这篇 Blog 是我学习 Triton 的笔记。作为初学者，我不可避免地会犯一些错误，欢迎大家指正。
 
-# Triton 的基本概念
-
-## 单程序多数据
+# 单程序多数据
 第一个概念是**单程序多数据**。
 
 Triton 使用单程序多数据（Single Program Multiple Data, SPMD）的编程模型。
@@ -94,7 +92,7 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 **注**：调研了一些资料，目前暂时没有找到 `grid` 维度设置的最佳实践，似乎高维只是为了方便用户理解。
 
-## Tensor 的读取和存储
+# Tensor 的读取和存储
 在阅读前面的[zero-kernel](#zero-kernel)时，你可能已经注意到，在`zero`函数中，我们传递向 `zero_kernel` 传递了一个 tensor，但是为什么 `zero_kernel` 的参数是 `x_ptr`？
 为什么 `x_ptr + offset` 表示第 `offset` 个元素？
 为什么不是像 Pytorch 那样直接使用 `x[offset]`？
@@ -105,8 +103,23 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 **指针**可以理解为一个整数，它指向了显存中的一个位置。我们可以通过对指针进行加减运算来访问显存中的不同位置。
 
+## Tensor 的存储布局
 TODO，连续显存和矩阵布局。
 
+### 多维矩阵和 Strides
+
+常见的 Stride 用法:
+**矩阵转置**
+
+**Expand Dims**
+
+### 批量读取
+
+**多维指针**
+
+**块指针**
+
+## 注意事项
 **输入连续性**：（如果输入不是连续的，那么在 kernel 中读取的时候就会出现问题。）
 
 推荐实现：Flash-linear-attention 中的 `input_guard` 装饰器是很好的参考。

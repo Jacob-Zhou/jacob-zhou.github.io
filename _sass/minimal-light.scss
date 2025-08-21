@@ -303,13 +303,14 @@ h1 {
   font-weight: 700;
   color: #223e36;
   margin: 0 0 20px;
+  font-size: 28px;
 }
 
 h2 {
-  color: #223e36;
   font-weight: 600;
+  color: #223e36;
   margin: 2px 0px 15px;
-  font-size: 157%;
+  font-size: 24px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -343,10 +344,6 @@ h1,
 h2,
 h3 {
   line-height: 1.1;
-}
-
-h1 {
-  font-size: 28px;
 }
 
 a {
