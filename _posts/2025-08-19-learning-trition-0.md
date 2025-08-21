@@ -17,14 +17,13 @@ tags:
 Triton 的[官网文档](https://triton-lang.org/main/index.html) 中是这样介绍的：
 > Triton is a language and compiler for parallel programming. It aims to provide a Python-based programming environment for productively writing custom DNN compute kernels capable of running at maximal throughput on modern GPU hardware.
 
-简单来说 Triton 是一个允许你在 Python 中自定义如何在 GPU 上并行计算的包。
+简单来说 Triton 是一个允许你在 Python 中以 Python 风格的代码来写 GPU 并行计算程序的包。
 
-我们知道在神经网络经常涉及大量的运算，其中有非常多的运算是可以并行处理的。例如对一个 $1024 \times 1024$ 的矩阵进行 ReLU 运算，由于 ReLU 运算对每个元素都是独立的，因此可以将这个矩阵切分为数个小的矩阵，然后并行地对这些小矩阵进行 ReLU 运算。
+我们知道在神经网络经常涉及大量的运算，其中有非常多的运算是可以并行处理的。例如，对一个 $1024 \times 1024$ 的矩阵进行 ReLU 运算。由于 ReLU 运算对每个元素都是独立的，因此我们可以将这个矩阵切分为数个小的矩阵，然后并行地对这些小矩阵进行 ReLU 运算，从而加速整个运算。
+事实上 pytorch、tensorflow 等深度学习框架所提供的函数的背后都或多或少使用了 CUDA 及其类似的技术来实现并行加速。
 
-事实上 pytorch、tensorflow 等深度学习框架提供了大量的函数，这些函数的背后都使用了 CUDA 及其类似的技术来实现并行加速。但是他们的并行化细节对用户隐藏，用户只能使用这些函数，而不能控制并行化细节。
-
+然而这些函数并行化细节对用户隐藏，用户只能使用这些函数，而不能控制并行化细节。
 假设我们现在构思出了一个全新的函数，我们希望并行优化这个函数，但是这个函数又不是 pytorch 或 tensorflow 中的函数，我们该怎么办？
-
 这时候 Triton 就派上用场了。他提供了一个相对简单的语言（Python + 类 numpy 的语法），让用户可以在这个语言中控制 GPU 的并行化和运算细节，充分挖掘 GPU 的潜力。
 
 这篇 Blog 是我学习 Triton 的笔记。作为初学者，我不可避免地会犯一些错误，欢迎大家指正。
