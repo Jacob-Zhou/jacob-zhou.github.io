@@ -37,7 +37,7 @@ Triton 的[官网文档](https://triton-lang.org/main/index.html) 中是这样�
 Triton 使用单程序多数据（Single Program Multiple Data, SPMD）的编程模型。
 也就是说在并发的时候，在同一时间运行的是**同一份程序**。这份代码在运行时通过通过某些系统提供的标识符来区分自己要**处理哪份数据**。
 
-在 Triton 中，这份程序通常被称作**kernel**。下面是一个简单的例子：
+在 Triton 中，这份程序通常被称作 **kernel**。下面是一个简单的例子：
 
 <span id="zero-kernel"></span>
 
@@ -105,8 +105,11 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 **指针**可以理解为一个整数，它指向了显存中的一个位置。我们可以通过对指针进行加减运算来访问显存中的不同位置。
 
-TODO
+TODO，连续显存和矩阵布局。
 
 **输入连续性**：（如果输入不是连续的，那么在 kernel 中读取的时候就会出现问题。）
+
+推荐实现：Flash-linear-attention 中的 `input_guard` 装饰器是很好的参考。
+[fla/utils.py](https://github.com/fla-org/flash-linear-attention/blob/b1d766994c7ac53c4d0a53a1b6e8f94de363abe1/fla/utils.py#L131)
 
 **安全**：在 Kernel 中，我们可以通过指针访问到整个显存空间。如果不多加小心，例如没有检查边界时，计算错误的偏移量，可能会导致 Kernel 访问到不属于它的数据，甚至修改其他数据。因此在读写，尤其是写的时候，需要格外注意检查边界。
