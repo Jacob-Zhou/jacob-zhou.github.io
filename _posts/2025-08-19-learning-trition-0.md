@@ -6,7 +6,7 @@ author:     "Houquan Zhou"
 header-img: "/assets/img/post-bg.jpg"
 mathjax: true
 catalog: true
-published: false
+hidden: true
 tags:
     - Triton
 ---
