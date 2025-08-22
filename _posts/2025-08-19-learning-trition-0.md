@@ -118,11 +118,89 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 常见的 Stride 用法:
 
+**View**
+```python
+import torch
+
+m = 4
+n = 5
+x = torch.arange(m * n).view(m, n)
+print(x)
+
+print(x.view(m // 2, n * 2))
+print(
+    x.as_strided(
+        size=(m // 2, n * 2),
+        stride=(2 * n, 1),
+    )
+)
+```
+
 **矩阵转置**
+```python
+import torch
+
+m = 3
+n = 4
+x = torch.arange(m * n).view(m, n)
+print(x)
+
+print(x.T)
+print(
+    x.as_strided(
+        size=(n, m),
+        stride=(1, m),
+    )
+)
+```
 
 **Diagonal**
+```python
+import torch
+
+m = 4
+n = 4
+x = torch.arange(m * n).view(m, n)
+print(x)
+
+print(x.diagonal())
+print(
+    x.as_strided(
+        size=(m,),
+        stride=(n + 1,),
+    )
+)
+```
+
 
 **Expand Dims**
+```python
+import torch
+
+m = 3
+n = 4
+x = torch.arange(m * n).view(m, n)
+print(x)
+
+print(x[None, ...])
+print(
+    x.as_strided(
+        size=(1, m, n),
+        stride=(n, n, 1),
+    )
+)
+
+print(x[..., None])
+print(
+    x.as_strided(
+        size=(m, n, 1),
+        stride=(n, 1, 1),
+    )
+)
+```
+
+由于 Triton 要求用户主动管理显存的读取和写入，在书写 Triton Kernel 时，很重要的一个步骤就是如何找到需要读取或者写入的元素在显存中的位置。
+了解 Strides 将会为这一步骤提供很大的帮助。
 
 ## 获取子 Tensor
 
