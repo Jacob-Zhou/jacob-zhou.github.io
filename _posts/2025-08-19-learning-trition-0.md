@@ -108,35 +108,70 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 当我们新建一个 Tensor 时，无论这个 Tensor 是几维的，它都会被连续地被存储在显存中。
 
-![memory_space.png](/assets/img/learning-trition-0/memory_space-2.png "一个新建的 (2 * 3) 矩阵在显存中的布局")
+![memory_space.png](/assets/img/learning-trition-0/memory_space-3.png "一个新建的 (2 * 3) 矩阵在显存中的布局")
 
-如上图所示，一个新建的矩阵会在内存中申请一块连续的空间，然后按照行优先(也即，先排右侧维度)的顺序，将元素依次存储在显存中。
+当我们使用 `x = torch.empty((2, 3))` 新建一个 Tensor 时，如上图所示，这个新建的矩阵会在内存中申请一块连续的空间，然后按照行优先(也即，先排右侧维度)的顺序，将元素依次存储在显存中。
 
-## Tensor 和 Strides
+## Sizes 和 Strides
 
-**TODO**：什么是 Stride？
+**Size** 相信大家都比较熟悉，它表示 Tensor 的形状。
+**Stride** 这个词在英文中有步伐的意思，它定义了在每一维度，当前维度的索引加一后 (例如 `x[0, 0]` -> `x[1, 0]`) 对应的元素在显存中的地址需要相应地向前移动多少步。
 
-常见的 Stride 用法:
+![sizes_and_strides.png](/assets/img/learning-trition-0/sizes_and_strides.png "Sizes 和 Strides 的示意图")
+
+上图中给出了几种不同 size 和 stride 所描述的 Tensor。
+
+**TODO**：
+
 
 **View**
+
 ```python
 import torch
 
-m = 4
-n = 5
+m = 2
+n = 3
 x = torch.arange(m * n).view(m, n)
 print(x)
 
-print(x.view(m // 2, n * 2))
+print(x.view(m, n))
 print(
     x.as_strided(
-        size=(m // 2, n * 2),
-        stride=(2 * n, 1),
+        size=(m, n),
+        stride=(n, 1),
+    )
+)
+```
+
+**Expand Dims**
+
+```python
+import torch
+
+m = 3
+n = 4
+x = torch.arange(m * n).view(m, n)
+print(x)
+
+print(x[None, ...])
+print(
+    x.as_strided(
+        size=(1, m, n),
+        stride=(0, n, 1),
+    )
+)
+
+print(x[..., None])
+print(
+    x.as_strided(
+        size=(m, n, 1),
+        stride=(n, 1, 0),
     )
 )
 ```
 
 **矩阵转置**
+
 ```python
 import torch
 
@@ -155,6 +190,7 @@ print(
 ```
 
 **Diagonal**
+
 ```python
 import torch
 
@@ -168,33 +204,6 @@ print(
     x.as_strided(
         size=(m,),
         stride=(n + 1,),
-    )
-)
-```
-
-
-**Expand Dims**
-```python
-import torch
-
-m = 3
-n = 4
-x = torch.arange(m * n).view(m, n)
-print(x)
-
-print(x[None, ...])
-print(
-    x.as_strided(
-        size=(1, m, n),
-        stride=(n, n, 1),
-    )
-)
-
-print(x[..., None])
-print(
-    x.as_strided(
-        size=(m, n, 1),
-        stride=(n, 1, 1),
     )
 )
 ```
