@@ -98,30 +98,87 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 下面我们介绍 Triton 中的 Tensor 的读取和存储。
 
+## 指针
 和 Pytorch 编程不太一样，Tensor 是以**指针**的形式传递给 Triton Kernel 的。这一设计的初衷是为了**方便用户可以更精确地控制读取哪些元素**。
 
-**指针**可以理解为一个整数，它指向了显存中的一个位置。我们可以通过对指针进行加减运算来访问显存中的不同位置。
+我们可以把显存理解为一个巨大的一维数组，而**指针**是这个数组中的一个索引。
+类似索引，我们可以通过对指针加上或者减去一个整数来访问显存中的不同位置。
 
-## Tensor 的存储布局
-TODO，连续显存和矩阵布局。
+## Tensor 在显存中的布局
 
-### 多维矩阵和 Strides
+当我们新建一个 Tensor 时，无论这个 Tensor 是几维的，它都会被连续地被存储在显存中。
+![memory_space.png](/assets/img/learning-trition-0/memory_space-2.png "一个新建的 (2 * 3) 矩阵在显存中的布局")
+如上图所示，一个新建的矩阵会**TODO**
+
+## 多维矩阵和 Strides
 
 常见的 Stride 用法:
+
 **矩阵转置**
+
+**Diagonal**
 
 **Expand Dims**
 
-### 批量读取
+## 批量读取
 
 **多维指针**
 
 **块指针**
 
 ## 注意事项
-**输入连续性**：（如果输入不是连续的，那么在 kernel 中读取的时候就会出现问题。）
+### 注意输入 Tensor 是否连续
+如果输入不是连续的，那么在 kernel 中读取的时候就会出现问题。
 
-推荐实现：Flash-linear-attention 中的 `input_guard` 装饰器是很好的参考。
+推荐实现：Flash-linear-attention 中的 `input_guard` 装饰器是很好的参考。（TODO）
 [fla/utils.py](https://github.com/fla-org/flash-linear-attention/blob/b1d766994c7ac53c4d0a53a1b6e8f94de363abe1/fla/utils.py#L131)
 
-**安全**：在 Kernel 中，我们可以通过指针访问到整个显存空间。如果不多加小心，例如没有检查边界时，计算错误的偏移量，可能会导致 Kernel 访问到不属于它的数据，甚至修改其他数据。因此在读写，尤其是写的时候，需要格外注意检查边界。
+### 边界检查
+在 Kernel 中，我们可以通过指针访问到整个显存空间。如果不多加小心，例如没有检查边界时，计算错误的偏移量，可能会导致 Kernel 访问到不属于它的数据，甚至修改其他数据。因此在读写，尤其是写的时候，需要格外注意检查边界。
+
+```python
+import triton.language as tl
+import triton
+import torch
+
+@triton.jit
+def set_value_kernel(x_ptr, offset, value):
+    # 将 offset 对应的元素设置为 value
+    tl.store(x_ptr + offset, value)
+
+if __name__ == "__main__":
+    # 初始化
+    x = torch.zeros((2, 3)).to("cuda")
+    a, b = x
+    print(f"a.shape: {a.shape}; b.shape: {b.shape}")
+    print(f"a: {a}; b: {b}\n")
+
+    print("对 a 进行越界赋值")
+    try:
+        a[3] = 1.0
+    except Exception as e:
+        print(e)
+    print(f"a: {a}; b: {b}\n")
+
+    print("使用 triton 对 a 进行越界赋值")
+    set_value_kernel[(1,)](a, 3, 1.0)
+    print(f"a: {a}; b: {b}\n")
+```
+
+运行上面代码，我们会得到如下输出：
+
+> ```text
+> a.shape: torch.Size([3]); b.shape: torch.Size([3])
+> a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([0., 0., 0.], device='cuda:0')
+>
+> 对 a 进行越界赋值
+> index 3 is out of bounds for dimension 0 with size 3
+> a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([0., 0., 0.], device='cuda:0')
+>
+> 使用 triton 对 a 进行越界赋值
+> a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([1., 0., 0.], device='cuda:0')
+> ```
+
+我们可以看到，尽管我们只向 `set_value_kernel` 传递了 Tensor `a` 的指针，但是最终 `b` 也被修改了。
+
+因此，在 Triton 中，我们在进行读写操作时**需要格外注意**，避免意外修改其他数据。
