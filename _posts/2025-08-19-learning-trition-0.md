@@ -96,13 +96,14 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 为什么 `x_ptr + offset` 表示第 `offset` 个元素？
 为什么不是像 Pytorch 那样直接使用 `x[offset]`？
 
-下面我们介绍 Triton 中的 Tensor 的读取和存储。
-
 ## 指针
 和 Pytorch 编程不太一样，Tensor 是以**指针**的形式传递给 Triton Kernel 的。这一设计的初衷是为了**方便用户可以更精确地控制读取哪些元素**。
 
 我们可以把显存理解为一个巨大的一维数组，而**指针**是这个数组中的一个索引。
 类似索引，我们可以通过对指针加上或者减去一个整数来访问显存中的不同位置。
+
+在正式介绍 Triton 中的 Tensor 的读取和存储之前，我们先来介绍一些前置的知识。
+如果读者对 Tensor 是如何在显存中布局的已经很熟悉，同时也了解 Strides 的含义，可以直接跳过下面两个小节。
 
 ## Tensor 在显存中的布局
 
@@ -121,10 +122,19 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 上图中给出了几种不同 size 和 stride 所描述的 Tensor。
 
-**TODO**：
+一个矩阵按照行优先的顺序读取时，若显存地址是连续的，那么我们就认为该矩阵是连续的 (contiguous)。即该矩阵是按照一个**约定俗成**的顺序连续地存储在显存中的。
+例如上图中的 a) 和 b) 都是连续的，而 c) 和 d) 则不是连续的。
 
+**注意**: 传入 kernel 的 Tensor 我们需要确保它是连续的。否则在 kernel 内读取时，可能会出现意想不到的错误。后续的 [注意事项](#注意事项) 中会介绍如何确保 Tensor 是连续的方法。
 
-**View**
+下面我们简单介绍如何通过设置 stride 来实现一些常见的功能。
+
+### View
+
+在利用 `view` 时，我们的目的是将 Tensor 转为目标形状。
+假设我们希望目标 Tensor 的形状为 $(D_n, D_{n-1}, \cdots, D_1)$。
+这时候我们只需要将 `stride` 设置为 $(\prod_{i=1}^{n-1} D_i, \prod_{i=1}^{n-2} D_i, \cdots, D_1, 1)$ 即可。
+例如，对于一个维度为 $(2, 3, 4)$ 的张量，我们只需要将 `stride` 设置为 $(3 \times 4, 4, 1)$ 即可。
 
 ```python
 import torch
@@ -141,36 +151,41 @@ print(
         stride=(n, 1),
     )
 )
+
+k = 4
+x = torch.arange(m * n * k).view(m, n, k)
+print(x.view(m, n, k))
+print(
+    x.as_strided(
+        size=(m, n, k),
+        stride=(n * k, k, 1),
+    )
+)
 ```
 
-**Expand Dims**
+### Expand
 
 ```python
 import torch
 
 m = 3
 n = 4
+k = 10
 x = torch.arange(m * n).view(m, n)
 print(x)
 
-print(x[None, ...])
+print(x[..., None].expand(m, n, k))
 print(
     x.as_strided(
-        size=(1, m, n),
-        stride=(0, n, 1),
-    )
-)
-
-print(x[..., None])
-print(
-    x.as_strided(
-        size=(m, n, 1),
+        size=(m, n, k),
         stride=(n, 1, 0),
     )
 )
 ```
 
-**矩阵转置**
+### Transpose
+
+**TODO**：我们只需要交换我们需要 transposed 的两个维度所对应的 stride 即可。
 
 ```python
 import torch
@@ -189,7 +204,9 @@ print(
 )
 ```
 
-**Diagonal**
+### Diagonal
+
+**TODO**: 我们只需要将 `stride` 设置为 $(n + 1,)$ 即可。（还需要解释一下）
 
 ```python
 import torch
@@ -208,17 +225,12 @@ print(
 )
 ```
 
-由于 Triton 要求用户主动管理显存的读取和写入，在书写 Triton Kernel 时，很重要的一个步骤就是如何找到需要读取或者写入的元素在显存中的位置。
-了解 Strides 将会为这一步骤提供很大的帮助。
-
 ## 获取子 Tensor
 
 **多维指针**
 
 **块指针**
 make block ptr
-
-**Offset 计算**
 
 ## 注意事项
 ### 注意输入 Tensor 是否连续
