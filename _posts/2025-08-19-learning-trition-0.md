@@ -107,10 +107,14 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 ## Tensor 在显存中的布局
 
 当我们新建一个 Tensor 时，无论这个 Tensor 是几维的，它都会被连续地被存储在显存中。
-![memory_space.png](/assets/img/learning-trition-0/memory_space-2.png "一个新建的 (2 * 3) 矩阵在显存中的布局")
-如上图所示，一个新建的矩阵会**TODO**
 
-## 多维矩阵和 Strides
+![memory_space.png](/assets/img/learning-trition-0/memory_space-2.png "一个新建的 (2 * 3) 矩阵在显存中的布局")
+
+如上图所示，一个新建的矩阵会在内存中申请一块连续的空间，然后按照行优先(也即，先排右侧维度)的顺序，将元素依次存储在显存中。
+
+## Tensor 和 Strides
+
+**TODO**：什么是 Stride？
 
 常见的 Stride 用法:
 
@@ -120,11 +124,14 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 **Expand Dims**
 
-## 批量读取
+## 获取子 Tensor
 
 **多维指针**
 
 **块指针**
+make block ptr
+
+**Offset 计算**
 
 ## 注意事项
 ### 注意输入 Tensor 是否连续
@@ -167,17 +174,17 @@ if __name__ == "__main__":
 
 运行上面代码，我们会得到如下输出：
 
-> ```text
-> a.shape: torch.Size([3]); b.shape: torch.Size([3])
-> a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([0., 0., 0.], device='cuda:0')
->
-> 对 a 进行越界赋值
-> index 3 is out of bounds for dimension 0 with size 3
-> a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([0., 0., 0.], device='cuda:0')
->
-> 使用 triton 对 a 进行越界赋值
-> a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([1., 0., 0.], device='cuda:0')
-> ```
+```text
+a.shape: torch.Size([3]); b.shape: torch.Size([3])
+a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([0., 0., 0.], device='cuda:0')
+
+对 a 进行越界赋值
+index 3 is out of bounds for dimension 0 with size 3
+a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([0., 0., 0.], device='cuda:0')
+
+使用 triton 对 a 进行越界赋值
+a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([1., 0., 0.], device='cuda:0')
+```
 
 我们可以看到，尽管我们只向 `set_value_kernel` 传递了 Tensor `a` 的指针，但是最终 `b` 也被修改了。
 
