@@ -39,7 +39,7 @@ Triton 使用单程序多数据（Single Program Multiple Data, SPMD）的编程
 <span id="zero-kernel"></span>
 
 ```python
-import triton.language as tl
+import triton.language as tl # 简单起见我们利用 `tl` 来指代 `triton.language` 模块
 import triton
 import torch
 
@@ -134,7 +134,7 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 在利用 `view` 时，我们的目的是将 Tensor 转为目标形状。
 假设我们希望目标 Tensor 的形状为 $(D_n, D_{n-1}, \cdots, D_1)$。
 这时候我们只需要将 `stride` 设置为 $(\prod_{i=1}^{n-1} D_i, \prod_{i=1}^{n-2} D_i, \cdots, D_1, 1)$ 即可。
-例如，对于一个维度为 $(2, 3, 4)$ 的张量，我们只需要将 `stride` 设置为 $(3 \times 4, 4, 1)$ 即可。
+例如，对于一个维度为 $(2, 3, 4)$ 的张量 `stride` 应该设置为 $(3 \times 4, 4, 1)$。
 
 ```python
 import torch
@@ -165,6 +165,13 @@ print(
 
 ### Expand
 
+在深度学习中，我们经常需要扩展某个维度并重复该维度上的元素形成新的形状。
+例如，对于一个维度为 $(2, 3, 4)$ 的张量 `x`，我们希望将其扩展为 $(10, 2, 3, 4)$。
+即我们希望新的矩阵 `y` 中 `y[0]`, `y[1]`, ... , `y[9]` 都等于 `x`。
+这一操作就可以通过将第 0 维度上的 stride 设置为 0 来实现。
+
+下面是一个简单的维度扩展例子:
+
 ```python
 import torch
 
@@ -185,7 +192,8 @@ print(
 
 ### Transpose
 
-**TODO**：我们只需要交换我们需要 transposed 的两个维度所对应的 stride 即可。
+转置，也就是交换行列，是一个非常常见的操作，通过修改 stride 可以很方便地实现。
+如果我们需要将一个矩阵转置，我们只需要交换我们需要 transposed 的两个维度所对应的 stride 即可。
 
 ```python
 import torch
@@ -206,31 +214,98 @@ print(
 
 ### Diagonal
 
-**TODO**: 我们只需要将 `stride` 设置为 $(n + 1,)$ 即可。（还需要解释一下）
+最后一个例子展示如何通过设置 stride 来获取矩阵的对角元素。
+对于在 $n \times n$ 矩阵中的一个对角元素 $(i, i)$，它的下一个元素应该在 $(i + 1, i + 1)$ 的位置。即在矩阵中下移一步 ($+n$) 后再右移一步 ($+1$)。因此我们只需要将 `stride` 设置为 $(n + 1,)$ 即可。
 
 ```python
 import torch
 
-m = 4
 n = 4
-x = torch.arange(m * n).view(m, n)
+x = torch.arange(n * n).view(n, n)
 print(x)
 
 print(x.diagonal())
 print(
     x.as_strided(
-        size=(m,),
+        size=(n,),
         stride=(n + 1,),
     )
 )
 ```
 
-## 获取子 Tensor
+## Triton 中的读与写
 
-**多维指针**
+在 `triton.language` 中提供了 `load` 和 `store` 两个函数，用于从显存中读取和写入数据。
 
-**块指针**
+最为基础的用法是读取或写入指针指向的元素。
+
+```python
+x = tl.load(x_ptr)     # 读取指针指向的元素
+tl.store(x_ptr, value) # 写入指针指向的元素
+```
+
+然而在大部分情况下，我们并不仅仅希望只对单个元素进行操作，而是希望像在 Pytorch 中那样对一个 Tensor 进行操作。
+
+下面将介绍三种在 Triton 中通过指针来访问 Tensor 的方法。
+
+<!-- 值得注意的是如前文说的那样，一个 Tensor 被传递到 Triton Kernel 中时，它是以 Tensor 中首个元素的地址来传递的。因此要想正确地访问 Tensor 中的元素，我们还需要将 Tensor 的形状信息传递给 Kernel。例如下面是一个处理形状为 $(N, M)$ 的 Tensor 的简单例子：
+
+```python
+@triton.jit
+def kernel(
+        x_ptr,
+        N: tl.constexpr,
+        M: tl.constexpr
+    ):
+    pass
+``` -->
+
+### 多维指针
+
+第一种方式是通过多维指针的形式来描述 Tensor 的形状。
+简单来说我们算出 Tensor 中每个元素的地址，组成一个地址矩阵，然后通过这个地址矩阵来访问 Tensor 中的元素。
+值得注意的是，为了正确还原 Tensor 的形状，我们需要将 Tensor 的形状信息传递给 Kernel，例如在下面例子中，我们通过 `N` 和 `M` 来传递一个形状为 $(N, M)$ 的 Tensor 的形状信息。
+
+```python
+@triton.jit
+def plus_one_kernel(
+        x_ptr,
+        N: tl.constexpr,
+        M: tl.constexpr,
+        BLOCK_N: tl.constexpr,
+        BLOCK_M: tl.constexpr,
+    ):
+    row_offset = tl.arange(0, BLOCK_N)
+    col_offset = tl.arange(0, BLOCK_M)
+
+    index = col_offset[:, None] * N + row_offset[None, :]
+    tensor_ptr = x_ptr + index
+    mask = (row_offset[:, None] < N) & (col_offset[None, :] < M)
+
+    x = tl.load(tensor_ptr, mask=mask) # 读取 mask 为 True 的元素
+    tl.store(tensor_ptr, x + 1, mask=mask) # 写入 mask 为 True 的元素
+```
+
+此外在这个代码中，我们还额外传递了 `BLOCK_N` 和 `BLOCK_M` 两个参数。这是因为我们在代码使用了 `tl.arange` 这一创建 Tensor 的函数。
+而在 Triton 中，所有的创建 Tensor 的函数都需要 **确保每一维度的大小都是 2 的幂**。
+为了避免 `N` 和 `M` 不是 2 的幂而出现错误，我们需要利用 `triton.next_power_of_2` 来对 `N` 和 `M` 进行向上取整。
+
+```python
+BLOCK_N = triton.next_power_of_2(N)
+BLOCK_M = triton.next_power_of_2(M)
+```
+
+由于 `BLOCK_N` 和 `BLOCK_M` 和 `N` 与 `M` 的值可能不一致，在计算 offset 时，我们需要利用引入一个掩码 `musk` 来确保我们只读写 `N` 和 `M` 范围内的元素。
+
+![load_mask.png](/assets/img/learning-trition-0/load_mask.png "mask 的示意图")
+
+上图是我们加载 $(2, 3)$ 矩阵的示意图。由于 `BLOCK_M` 需要设置为 $2$ 的幂 ($4$), 因此在计算 offset 时，每一行的末尾会多出 $1$ 个元素。我们需要通过 `mask` 来确保屏蔽掉这些多出的元素。
+
+### 块指针
 make block ptr
+
+### Tensor Descriptor
+
 
 ## 注意事项
 ### 注意输入 Tensor 是否连续
