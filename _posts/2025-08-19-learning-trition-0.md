@@ -281,7 +281,7 @@ def plus_one_kernel(
     row_offset = tl.arange(0, BLOCK_N) + n_id * BLOCK_N
     col_offset = tl.arange(0, BLOCK_M) + m_id * BLOCK_M
 
-    index = col_offset[:, None] * N + row_offset[None, :]
+    index = row_offset[:, None] * M + col_offset[None, :]
     block_ptr = x_ptr + index
     mask = (row_offset[:, None] < N) & (col_offset[None, :] < M)
 
@@ -326,7 +326,7 @@ def plus_one_kernel(
         x_ptr, # 父 Tensor 的指针，指向第一个元素
         shape=(N, M), # 描述父 Tensor 的形状
         strides=(M, 1), # 描述父 Tensor 的 strides
-        offset=(n_id * BLOCK_N, m_id * BLOCK_M), # 描述每个维度上的偏移量
+        offsets=(n_id * BLOCK_N, m_id * BLOCK_M), # 描述每个维度上的偏移量
         block_shape=(BLOCK_N, BLOCK_M), # 描述块的大小
         order=(1, 0) # 描述在原始 Tensor 中每一维度的顺序。例如如果 strides 为 (1, M), 既转置后的 `x`，这时候 order 应该设置为 (0, 1)
     )
@@ -339,6 +339,9 @@ def plus_one_kernel(
 
 最后一种方法是利用张量描述符 (Tensor Descriptor) 来描述 Tensor 的形状并进行加载。
 从用法来看它和块指针非常相似，但是它利用了 [TMA 技术](https://pytorch.org/blog/hopper-tma-unit/) 来进一步压榨 GPU 的性能。
+
+该方法在 `3.3.0` 版本中作为实验 API (`_experimental_make_tensor_descriptor`) 被加入，并在 `3.4.0` 中成为正式 API (`make_tensor_descriptor`)
+值得注意的是，只有在 Hopper 之后的 GPU，即 H 系列和 B 系列以后的 GPU，才支持 TMA 技术。
 
 ```python
 @triton.jit
@@ -359,13 +362,15 @@ def plus_one_kernel(
         block_shape=(BLOCK_N, BLOCK_M) # 要处理的块的大小
     )
 
-    x = tensor_desc.load(n_id * BLOCK_N, m_id * BLOCK_M)
+    x = tensor_desc.load(n_id * BLOCK_N, m_id * BLOCK_M) # 根据 offset 读取指定的块
     tensor_desc.store(n_id * BLOCK_N, m_id * BLOCK_M, x + 1)
 ```
 
-值得注意的是，只有在 Hopper 之后的 GPU， 即 H 系列和 B 系列以后的 GPU，才支持 TMA 技术。
 
 ## 注意事项
+
+在 Triton 中进行读写操作时，我们需要注意以下两点。
+
 ### 注意输入 Tensor 是否连续
 如果输入不是连续的，那么在 kernel 中读取的时候就会出现问题。
 
