@@ -275,20 +275,23 @@ def plus_one_kernel(
         BLOCK_N: tl.constexpr,
         BLOCK_M: tl.constexpr,
     ):
-    row_offset = tl.arange(0, BLOCK_N)
-    col_offset = tl.arange(0, BLOCK_M)
+    n_id = tl.program_id(0)
+    m_id = tl.program_id(1)
+
+    row_offset = tl.arange(0, BLOCK_N) + n_id * BLOCK_N
+    col_offset = tl.arange(0, BLOCK_M) + m_id * BLOCK_M
 
     index = col_offset[:, None] * N + row_offset[None, :]
-    tensor_ptr = x_ptr + index
+    block_ptr = x_ptr + index
     mask = (row_offset[:, None] < N) & (col_offset[None, :] < M)
 
-    x = tl.load(tensor_ptr, mask=mask) # 读取 mask 为 True 的元素
-    tl.store(tensor_ptr, x + 1, mask=mask) # 写入 mask 为 True 的元素
+    x = tl.load(block_ptr, mask=mask) # 读取 mask 为 True 的元素
+    tl.store(block_ptr, x + 1, mask=mask) # 写入 mask 为 True 的元素
 ```
 
 此外在这个代码中，我们还额外传递了 `BLOCK_N` 和 `BLOCK_M` 两个参数。这是因为我们在代码使用了 `tl.arange` 这一创建 Tensor 的函数。
 而在 Triton 中，所有的创建 Tensor 的函数都需要 **确保每一维度的大小都是 2 的幂**。
-为了避免 `N` 和 `M` 不是 2 的幂而出现错误，我们需要利用 `triton.next_power_of_2` 来对 `N` 和 `M` 进行向上取整。
+为了避免 `N` 和 `M` 不是 2 的幂而出现错误，我们需要利用 `triton.next_power_of_2` 来对 `N` 和 `M` 进行向上取整。此外在 `N` 和 `M` 太大的时候，我们可以通过设置一个较小的 `BLOCK_N` 和 `BLOCK_M` 将大 Tensor 分为多个小矩阵并行处理。
 
 ```python
 BLOCK_N = triton.next_power_of_2(N)
@@ -301,11 +304,66 @@ BLOCK_M = triton.next_power_of_2(M)
 
 上图是我们加载 $(2, 3)$ 矩阵的示意图。由于 `BLOCK_M` 需要设置为 $2$ 的幂 ($4$), 因此在计算 offset 时，每一行的末尾会多出 $1$ 个元素。我们需要通过 `mask` 来确保屏蔽掉这些多出的元素。
 
-### 块指针
-make block ptr
+### 块指针 (Block Pointer)
 
-### Tensor Descriptor
+我们可以看到上面一种方法写起来是非常麻烦的。
+第二种方式是利用块指针 (Block Pointer) 来描述 Tensor 的形状。
+它为我们提供了更简洁的写法，我们不再需要手动地构建指针矩阵和手动设置 mask。
 
+```python
+@triton.jit
+def plus_one_kernel(
+        x_ptr,
+        N: tl.constexpr,
+        M: tl.constexpr,
+        BLOCK_N: tl.constexpr,
+        BLOCK_M: tl.constexpr,
+    ):
+    n_id = tl.program_id(0)
+    m_id = tl.program_id(1)
+
+    block_ptr = tl.make_block_ptr(
+        x_ptr, # 父 Tensor 的指针，指向第一个元素
+        shape=(N, M), # 描述父 Tensor 的形状
+        strides=(M, 1), # 描述父 Tensor 的 strides
+        offset=(n_id * BLOCK_N, m_id * BLOCK_M), # 描述每个维度上的偏移量
+        block_shape=(BLOCK_N, BLOCK_M), # 描述块的大小
+        order=(1, 0) # 描述在原始 Tensor 中每一维度的顺序。例如如果 strides 为 (1, M), 既转置后的 `x`，这时候 order 应该设置为 (0, 1)
+    )
+
+    x = tl.load(block_ptr, boundary_check=(0, 1))
+    tl.store(block_ptr, x + 1, boundary_check=(0, 1))
+```
+
+### 张量描述符 (Tensor Descriptor)
+
+最后一种方法是利用张量描述符 (Tensor Descriptor) 来描述 Tensor 的形状并进行加载。
+从用法来看它和块指针非常相似，但是它利用了 [TMA 技术](https://pytorch.org/blog/hopper-tma-unit/) 来进一步压榨 GPU 的性能。
+
+```python
+@triton.jit
+def plus_one_kernel(
+        x_ptr,
+        N: tl.constexpr,
+        M: tl.constexpr,
+        BLOCK_N: tl.constexpr,
+        BLOCK_M: tl.constexpr,
+    ):
+    n_id = tl.program_id(0)
+    m_id = tl.program_id(1)
+
+    tensor_desc = tl.make_tensor_descriptor(
+        x_ptr, # Tensor 的指针，指向第一个元素
+        shape=(N, M), # Tensor 的形状
+        strides=(M, 1), # Tensor 的 strides
+        block_shape=(BLOCK_N, BLOCK_M) # 要处理的块的大小
+    )
+
+    x = tensor_desc.load(n_id * BLOCK_N, m_id * BLOCK_M)
+    tensor_desc.store(n_id * BLOCK_N, m_id * BLOCK_M, x + 1)
+```
+
+值得注意的是，只有在 Hopper 之后的 GPU， 即 H 系列和 B 系列以后的 GPU，才支持 TMA 技术。
 
 ## 注意事项
 ### 注意输入 Tensor 是否连续
