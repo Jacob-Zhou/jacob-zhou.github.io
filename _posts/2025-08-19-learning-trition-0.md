@@ -383,7 +383,7 @@ if not tensor.is_contiguous():
 ```
 
 事实上手动检查输入 Tensor 是否连续是十分烦人的，也很容易忘记。这时候使用装饰器来确保输入 Tensor 是连续的会是一个很好的选择。
-这里十分推荐参考 Flash-linear-attention 中的 [`input_guard`]((https://github.com/fla-org/flash-linear-attention/blob/b1d766994c7ac53c4d0a53a1b6e8f94de363abe1/fla/utils.py#L131)) 装饰器。
+这里十分推荐参考 Flash-linear-attention 中的 [`input_guard`](https://github.com/fla-org/flash-linear-attention/blob/b1d766994c7ac53c4d0a53a1b6e8f94de363abe1/fla/utils.py#L131) 装饰器。
 
 ```python
 def input_guard(
