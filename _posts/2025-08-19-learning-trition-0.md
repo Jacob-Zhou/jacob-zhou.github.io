@@ -6,9 +6,9 @@ author:     "Houquan Zhou"
 header-img: "/assets/img/post-bg.jpg"
 mathjax: true
 catalog: true
-hidden: true
 tags:
     - Triton
+    - 手记
 ---
 
 # 前言
@@ -366,16 +366,59 @@ def plus_one_kernel(
     tensor_desc.store(n_id * BLOCK_N, m_id * BLOCK_M, x + 1)
 ```
 
-
 ## 注意事项
 
-在 Triton 中进行读写操作时，我们需要注意以下两点。
+在 Triton 中进行读写操作时，我们需要注意以下两点 **输入 Tensor 是否连续** 和 **边界检查**。
 
 ### 注意输入 Tensor 是否连续
-如果输入不是连续的，那么在 kernel 中读取的时候就会出现问题。
+如前文所描述的，传入 Kernel 的 Tensor 是一个指针。
+若我们希望在 Kernel 中以 Tensor 的形式访问数据，我们需要利用 `shape` 和 `stride` 等形象来重构 Tensor。
+在重构的时候，为了方便起见，我们一般约定 Tensor 是按照行优先的顺序存储的。即，这个 Tensor 是连续的 (contiguous)。
 
-推荐实现：Flash-linear-attention 中的 `input_guard` 装饰器是很好的参考。（TODO）
-[fla/utils.py](https://github.com/fla-org/flash-linear-attention/blob/b1d766994c7ac53c4d0a53a1b6e8f94de363abe1/fla/utils.py#L131)
+然而，如[前文](#sizes-和-strides)中所提到的，有些操作会改变 Tensor 的连续性。因此我们在将 Tensor 传入 Kernel 之前，需要确保 Tensor 是连续的。
+
+```python
+if not tensor.is_contiguous():
+    tensor = tensor.contiguous()
+```
+
+事实上手动检查输入 Tensor 是否连续是十分烦人的，也很容易忘记。这时候使用装饰器来确保输入 Tensor 是连续的会是一个很好的选择。
+这里十分推荐参考 Flash-linear-attention 中的 [`input_guard`]((https://github.com/fla-org/flash-linear-attention/blob/b1d766994c7ac53c4d0a53a1b6e8f94de363abe1/fla/utils.py#L131)) 装饰器。
+
+```python
+def input_guard(
+    fn: Callable[..., torch.Tensor]
+) -> Callable[..., torch.Tensor]:
+    """
+    A decorator to make sure all input tensors are contiguous and set the device based on input tensors.
+    """
+
+    @functools.wraps(fn)
+    def wrapper(*args, **kwargs):
+        contiguous_args = (i if not isinstance(i, torch.Tensor) else i.contiguous() for i in args)
+        contiguous_kwargs = {k: (v if not isinstance(v, torch.Tensor) else v.contiguous()) for k, v in kwargs.items()}
+
+        tensor = None
+        for arg in args:
+            if isinstance(arg, torch.Tensor):
+                tensor = arg
+                break
+        if tensor is None:
+            for value in kwargs.values():
+                if isinstance(value, torch.Tensor):
+                    tensor = value
+                    break
+
+        if tensor is not None:
+            ctx = custom_device_ctx(tensor.device.index)
+        else:
+            ctx = contextlib.nullcontext()
+
+        with ctx:
+            return fn(*contiguous_args, **contiguous_kwargs)
+
+    return wrapper
+```
 
 ### 边界检查
 在 Kernel 中，我们可以通过指针访问到整个显存空间。如果不多加小心，例如没有检查边界时，计算错误的偏移量，可能会导致 Kernel 访问到不属于它的数据，甚至修改其他数据。因此在读写，尤其是写的时候，需要格外注意检查边界。
@@ -426,3 +469,5 @@ a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([1., 0., 0.], device='cuda:0
 我们可以看到，尽管我们只向 `set_value_kernel` 传递了 Tensor `a` 的指针，但是最终 `b` 也被修改了。
 
 因此，在 Triton 中，我们在进行读写操作时**需要格外注意**，避免意外修改其他数据。
+- 若使用**多维指针**的方式来进行读写，我们可以设置 `mask`，在 mask 中将需要读写的元素设置为 `True`，其余元素设置为 `False`，即可避免越界访问。在默认情况下，padding 位置的元素会被设置为 $0$。但是也可通过 `other` 参数来设置 padding 元素的值。
+- 若使用**块指针**的方式来进行读写，我们可以设置 `boundary_check` 参数来指定对哪些维度进行边界检查。在默认情况下，会使用 $0$ 来填充边界外的元素。
