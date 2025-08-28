@@ -22,11 +22,11 @@ permalink: /blogs/
           • {{ post.author }}
         {% endif %}
       </div>
-      {% if post.excerpt %}
+      <!-- {% if post.excerpt %}
         <div class="blog-excerpt">
           {{ post.excerpt | strip_html | truncatewords: 50 }}
         </div>
-      {% endif %}
+      {% endif %} -->
       {% if post.tags %}
         <div class="blog-tags">
           {% for tag in post.tags %}
