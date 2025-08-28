@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Allow crawling of all content to maximize blog exposure
+Allow: /blogs
+Allow: /index.html
+Allow: /*.html
+
+# Sitemap location (helps search engines discover all pages)
+Sitemap: https://cv.hqzhou.com/sitemap.xml
+
+# Crawl delay (optional - helps prevent overwhelming the server)
+Crawl-delay: 1 
