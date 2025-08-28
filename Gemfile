@@ -39,3 +39,4 @@ gem "jekyll-remote-theme"
 gem "jekyll-spaceship", group: :jekyll_plugins
 gem "jekyll-last-modified-at", group: :jekyll_plugins
 gem "jekyll-analytics", group: :jekyll_plugins
+gem "jekyll-sitemap", group: :jekyll_plugins

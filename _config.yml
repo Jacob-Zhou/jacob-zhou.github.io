@@ -6,6 +6,7 @@ email: Jacob_Zhou (at) outlook.com
 plugins:
   - jekyll-spaceship
   - jekyll-last-modified-at
+  - jekyll-sitemap
   # - jekyll-analytics
 
 keywords: minimal academic
