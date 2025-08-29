@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      "Triton 学习手记 （二）：实现 Flash Attention 2"
+description: "基于 Triton 实现 Flash Attention 2 的实践手记"
 date:       2025-08-29 19:00:0+0800
 author:     "Houquan Zhou"
 header-img: "/assets/img/post-bg.jpg"

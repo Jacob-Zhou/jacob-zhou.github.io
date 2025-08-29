@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      "词法标记中的HMM和CRF"
+description: "系统梳理词法标注中的 HMM 与 CRF：前向后向算法、维特比解码、条件独立性与概率图直观理解，含推导与示意图。"
 date:       2018-11-28 10:15:0+0800
 author:     "Houquan Zhou"
 header-img: "/assets/img/post-bg.jpg"

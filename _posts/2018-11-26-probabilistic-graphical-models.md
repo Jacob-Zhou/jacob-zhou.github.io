@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      "概率图模型"
+description: "通俗介绍概率图模型（贝叶斯网与马尔可夫网）：因子分解、条件独立性、团与配分函数、对数线性模型等核心概念与示例。"
 date:       2018-11-26 10:32:00 +0800
 author:     "Houquan Zhou"
 header-img: "/assets/img/probabilistic-graphical-models/post-bg.jpg"

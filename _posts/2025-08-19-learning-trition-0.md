@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      "Triton 学习手记 （一）：基本概念"
+description: "从零入门 Triton：理解 SPMD 编程模型、kernel 概念、Tensor 在显存中的布局与 stride（view/expand/transpose），附 Python 示例与注意事项。"
 date:       2025-08-19 19:00:0+0800
 author:     "Houquan Zhou"
 header-img: "/assets/img/post-bg.jpg"

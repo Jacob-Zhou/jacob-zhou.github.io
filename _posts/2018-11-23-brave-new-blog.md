@@ -2,6 +2,7 @@
 layout:     post
 title:      "Brave new Blog"
 subtitle:   "今天起要开始学着写博客了"
+description: "开启博客之旅：记录学习与表达的起点，搭建 GitHub+Jekyll 环境与主题选择的一些笔记。"
 date:       2018-11-23 15:28:00 +0800
 author:     "Houquan Zhou"
 header-img: "/assets/img/brave_new_blog/post-bg.jpg"
