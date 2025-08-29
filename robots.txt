@@ -8,6 +8,3 @@ Allow: /*.html
 
 # Sitemap location (helps search engines discover all pages)
 Sitemap: https://cv.hqzhou.com/sitemap.xml
-
-# Crawl delay (optional - helps prevent overwhelming the server)
-Crawl-delay: 1 
