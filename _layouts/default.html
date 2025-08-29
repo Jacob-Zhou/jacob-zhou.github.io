@@ -11,7 +11,7 @@
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ site.title }}'s Homepage">
-  <meta property="og:url" content="{{ site.canonical }}">
+  <meta property="og:url" content="{{ site.canonical }}{{ page.url }}">
   <meta property="og:site_name" content="{{ site.title }}'s Homepage">
   <meta property="og:description" content="{{ site.description }}">
   <meta property="og:locale" content="default">
@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="{{ site.description }}">
   <meta name="twitter:image" content="{{ site.avatar }}">
 
-  <link rel="canonical" href="{{site.canonical}}" />
+  <link rel="canonical" href="{{ site.canonical }}{{ page.url }}" />
   <link rel="icon" type="image/svg+xml" href="{{ site.favicon_svg | relative_url }}" />
   <link rel="mask-icon" href="{{ site.favicon_svg | relative_url }}" color="#000000" />
   <meta name="baidu-site-verification" content="codeva-6RxSUUpptm" />
