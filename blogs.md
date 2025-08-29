@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Blog
+title: Blogs
+description: "Blog posts by Houquan Zhou covering machine learning, natural language processing, and research insights"
+keywords: "blog, machine learning, NLP, natural language processing, research, PhD, Houquan Zhou"
 permalink: /blogs/
 ---
 
