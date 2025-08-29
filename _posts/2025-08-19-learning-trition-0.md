@@ -12,7 +12,6 @@ tags:
 ---
 
 ## 前言
-
 什么是 Triton？
 Triton 的[官网文档](https://triton-lang.org/main/index.html) 中是这样介绍的：
 > Triton is a language and compiler for parallel programming. It aims to provide a Python-based programming environment for productively writing custom DNN compute kernels capable of running at maximal throughput on modern GPU hardware.
