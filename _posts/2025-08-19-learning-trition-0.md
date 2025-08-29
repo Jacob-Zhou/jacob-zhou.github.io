@@ -11,7 +11,7 @@ tags:
     - 手记
 ---
 
-# 前言
+## 前言
 
 什么是 Triton？
 Triton 的[官网文档](https://triton-lang.org/main/index.html) 中是这样介绍的：
@@ -28,7 +28,7 @@ Triton 的[官网文档](https://triton-lang.org/main/index.html) 中是这样�
 
 这篇 Blog 是我学习 Triton 的笔记。作为初学者，我不可避免地会犯一些错误，欢迎大家指正。
 
-# 单程序多数据
+## 单程序多数据
 第一个概念是**单程序多数据**。
 
 Triton 使用单程序多数据（Single Program Multiple Data, SPMD）的编程模型。
@@ -43,7 +43,7 @@ import triton.language as tl # 简单起见我们利用 `tl` 来指代 `triton.l
 import triton
 import torch
 
-# 修饰符，表示这是一个 Triton Kernel
+## 修饰符，表示这是一个 Triton Kernel
 @triton.jit
 def zero_kernel(x_ptr):
     # 获取当前程序的编号
@@ -91,12 +91,12 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 **注**：调研了一些资料，目前暂时没有找到 `grid` 维度设置的最佳实践，似乎高维只是为了方便用户理解。
 
-# Tensor 的读取和存储
+## Tensor 的读取和存储
 在阅读前面的[zero-kernel](#zero-kernel)时，你可能已经注意到，在`zero`函数中，我们传递向 `zero_kernel` 传递了一个 tensor，但是为什么 `zero_kernel` 的参数是 `x_ptr`？
 为什么 `x_ptr + offset` 表示第 `offset` 个元素？
 为什么不是像 Pytorch 那样直接使用 `x[offset]`？
 
-## 指针
+### 指针
 和 Pytorch 编程不太一样，Tensor 是以**指针**的形式传递给 Triton Kernel 的。这一设计的初衷是为了**方便用户可以更精确地控制读取哪些元素**。
 
 我们可以把显存理解为一个巨大的一维数组，而**指针**是这个数组中的一个索引。
@@ -105,7 +105,7 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 在正式介绍 Triton 中的 Tensor 的读取和存储之前，我们先来介绍一些前置的知识。
 如果读者对 Tensor 是如何在显存中布局的已经很熟悉，同时也了解 Strides 的含义，可以直接跳过下面两个小节。
 
-## Tensor 在显存中的布局
+### Tensor 在显存中的布局
 
 当我们新建一个 Tensor 时，无论这个 Tensor 是几维的，它都会被连续地被存储在显存中。
 
@@ -113,7 +113,7 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 当我们使用 `x = torch.empty((2, 3))` 新建一个 Tensor 时，如上图所示，这个新建的矩阵会在内存中申请一块连续的空间，然后按照行优先(也即，先排右侧维度)的顺序，将元素依次存储在显存中。
 
-## Sizes 和 Strides
+### Sizes 和 Strides
 
 **Size** 相信大家都比较熟悉，它表示 Tensor 的形状。
 **Stride** 这个词在英文中有步伐的意思，它定义了在每一维度，当前维度的索引加一后 (例如 `x[0, 0]` -> `x[1, 0]`) 对应的元素在显存中的地址需要相应地向前移动多少步。
@@ -129,7 +129,7 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 
 下面我们简单介绍如何通过设置 stride 来实现一些常见的功能。
 
-### View
+#### View
 
 在利用 `view` 时，我们的目的是将 Tensor 转为目标形状。
 假设我们希望目标 Tensor 的形状为 $(D_n, D_{n-1}, \cdots, D_1)$。
@@ -163,7 +163,7 @@ print(
 )
 ```
 
-### Expand
+#### Expand
 
 在深度学习中，我们经常需要扩展某个维度并重复该维度上的元素形成新的形状。
 例如，对于一个维度为 $(2, 3, 4)$ 的张量 `x`，我们希望将其扩展为 $(10, 2, 3, 4)$。
@@ -190,7 +190,7 @@ print(
 )
 ```
 
-### Transpose
+#### Transpose
 
 转置，也就是交换行列，是一个非常常见的操作，通过修改 stride 可以很方便地实现。
 如果我们需要将一个矩阵转置，我们只需要交换我们需要 transposed 的两个维度所对应的 stride 即可。
@@ -212,7 +212,7 @@ print(
 )
 ```
 
-### Diagonal
+#### Diagonal
 
 最后一个例子展示如何通过设置 stride 来获取矩阵的对角元素。
 对于在 $n \times n$ 矩阵中的一个对角元素 $(i, i)$，它的下一个元素应该在 $(i + 1, i + 1)$ 的位置。即在矩阵中下移一步 ($+n$) 后再右移一步 ($+1$)。因此我们只需要将 `stride` 设置为 $(n + 1,)$ 即可。
@@ -233,7 +233,7 @@ print(
 )
 ```
 
-## Triton 中的读与写
+### Triton 中的读与写
 
 在 `triton.language` 中提供了 `load` 和 `store` 两个函数，用于从显存中读取和写入数据。
 
@@ -260,7 +260,7 @@ def kernel(
     pass
 ``` -->
 
-### 多维指针
+#### 多维指针
 
 第一种方式是通过多维指针的形式来描述 Tensor 的形状。
 简单来说我们算出 Tensor 中每个元素的地址，组成一个地址矩阵，然后通过这个地址矩阵来访问 Tensor 中的元素。
@@ -304,7 +304,7 @@ BLOCK_M = triton.next_power_of_2(M)
 
 上图是我们加载 $(2, 3)$ 矩阵的示意图。由于 `BLOCK_M` 需要设置为 $2$ 的幂 ($4$), 因此在计算 offset 时，每一行的末尾会多出 $1$ 个元素。我们需要通过 `mask` 来确保屏蔽掉这些多出的元素。
 
-### 块指针 (Block Pointer)
+#### 块指针 (Block Pointer)
 
 我们可以看到上面一种方法写起来是非常麻烦的。
 第二种方式是利用块指针 (Block Pointer) 来描述 Tensor 的形状。
@@ -335,7 +335,7 @@ def plus_one_kernel(
     tl.store(block_ptr, x + 1, boundary_check=(0, 1))
 ```
 
-### 张量描述符 (Tensor Descriptor)
+#### 张量描述符 (Tensor Descriptor)
 
 最后一种方法是利用张量描述符 (Tensor Descriptor) 来描述 Tensor 的形状并进行加载。
 从用法来看它和块指针非常相似，但是它利用了 [TMA 技术](https://pytorch.org/blog/hopper-tma-unit/) 来进一步压榨 GPU 的性能。
@@ -366,11 +366,11 @@ def plus_one_kernel(
     tensor_desc.store(n_id * BLOCK_N, m_id * BLOCK_M, x + 1)
 ```
 
-## 注意事项
+### 注意事项
 
 在 Triton 中进行读写操作时，我们需要注意以下两点 **输入 Tensor 是否连续** 和 **边界检查**。
 
-### 注意输入 Tensor 是否连续
+#### 注意输入 Tensor 是否连续
 如前文所描述的，传入 Kernel 的 Tensor 是一个指针。
 若我们希望在 Kernel 中以 Tensor 的形式访问数据，我们需要利用 `shape` 和 `stride` 等形象来重构 Tensor。
 在重构的时候，为了方便起见，我们一般约定 Tensor 是按照行优先的顺序存储的。即，这个 Tensor 是连续的 (contiguous)。
@@ -420,7 +420,7 @@ def input_guard(
     return wrapper
 ```
 
-### 边界检查
+#### 边界检查
 在 Kernel 中，我们可以通过指针访问到整个显存空间。如果不多加小心，例如没有检查边界时，计算错误的偏移量，可能会导致 Kernel 访问到不属于它的数据，甚至修改其他数据。因此在读写，尤其是写的时候，需要格外注意检查边界。
 
 ```python

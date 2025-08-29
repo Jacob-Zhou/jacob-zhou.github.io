@@ -10,10 +10,10 @@ tags:
     - 概率图
 ---
 
-# 前言
+## 前言
 11月22号的时候鼓起勇气来将HMM和CRF里面重要的几个公式推了一下，似乎明白了些什么。最近发现有些东西光是读和看，会以为自己已经懂了，但实际上这只是假象。要真自己动手就才会发现自己其实什么都不懂。所以试着用这种方法巩固知识和分享自己的一点见解。
 
-# 概率图模型
+## 概率图模型
 #### 概率模型的意义
 概率图模型是
 > a general-purpose framework for constructing and using probabilistic models of complex systems.  
@@ -26,7 +26,7 @@ $$\begin{equation}P(A_1, A_2, A_3, \dotsc, A_i, \dotsc,A_n)\end{equation}$$
 
 我们假设 $k_i=\|Val(A_i)\|$ 为每个随机变量可能的取值个数，那么包含 $n$ 个随机变量的联合分布就可能有 $\prod_i^n k_i$ 种可能取值。我们取最极端的情况，所有的随机变量都只有 $2$ 种类取值，那么 $n$ 个随机变量的联合分布的取值也会是 $2^n$ 种，这对我们训练概率模型和使用概率模型来推理是十分不利的。  
 既然我们无法一次性处理那么多随机变量的联合分布，那么我们有没有什么办法将其中的随机变量进行分割，将这个大问题化成许多个小问题呢？或者说，我们如何描述这些随机变量之间的（独立）关系呢？答案肯定是有的，两种概率图模型为我们提供了这种可能。
-#### 图论与概率论的几个重要概念
+##### 图论与概率论的几个重要概念
 **图中的亲属关系**{: #graphic-relatives}
 
 ![graphic-relatives](/assets/img/probabilistic-graphical-models/graphic-relatives.png)
@@ -35,7 +35,7 @@ $$\begin{equation}P(A_1, A_2, A_3, \dotsc, A_i, \dotsc,A_n)\end{equation}$$
 
 $$\begin{equation}P(A_1, \dotsc, A_n)=P(A_1)P(A_2|A_1)P(A_3|A_2,A_1)\dotsm P(A_n|A_{n-1},\dotsc,A_1)\end{equation}$$
 
-#### 概率的图化
+##### 概率的图化
 首先我们需要了解如何使用图来表示概率。我们通过一个例子来说明：**T公司**打算招应届生，他们希望招到的员工有很强的**代码能力** $C$，所以他们想到了通过在线笔试来获得**笔试成绩** $G$，以此来确定学生的代码能力。
 于是他们首先构造了一个只有两个随机变量 $C,G$ 的模型。首先我们将每个随机变量作为一个结点。接着我们要确定随机变量间的关系。根据直觉，我们知道是**代码能力**在很大程度上决定了**笔试成绩**。我们将这样一个模型 $P(C,G)$ 用概率图模型表现出来如下
 
@@ -134,7 +134,7 @@ $$ \begin{equation}
 
 ![markov-v](/assets/img/probabilistic-graphical-models/markov-v.png)
 
-# 最后
+## 最后
 本来打算在这篇文章中就吧HMM和CRF都讲了的，结果发现还是高估自己了。光是概率图的部分就写了3天，所以果断将概率图模型的部分截出来，单独作为一篇文章。
 
 [^1]: Koller D, Friedman N, Bach F. Probabilistic graphical models: principles and techniques\[M\]. MIT press, 2009.
