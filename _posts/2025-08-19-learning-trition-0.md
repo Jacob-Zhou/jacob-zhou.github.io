@@ -267,9 +267,6 @@ if __name__ == "__main__":
     x = torch.randn(n).to("cuda")      # 在 GPU 上分配内存
     y = torch.empty(n).to("cuda")
     copy_kernel[(n, )](x, y)           # y = x.clone()
-    print(x)
-    print(y)
-    print(x.clone())
 ```
 这里的 `y` 实际上是操作的**输出**，但是我们需要在执行 Kernel 之前为它分配空间（**在 GPU 上**），并作为参数传递给 Kernel。
 
