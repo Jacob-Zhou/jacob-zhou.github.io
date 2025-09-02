@@ -32,7 +32,7 @@ Triton 的[官网文档](https://triton-lang.org/main/index.html) 中是这样�
 第一个概念是**单程序多数据**。
 
 Triton 使用单程序多数据（Single Program Multiple Data, SPMD）的编程模型。
-也就是说在并发的时候，在同一时间运行的是**同一份程序**。这份代码在运行时通过通过某些系统提供的标识符来区分自己要**处理哪份数据**。
+也就是说在并发的时候，在同一时间运行的是**同一份程序**。这份代码在运行时通过某些系统提供的标识符来区分自己要**处理哪份数据**。
 
 在 Triton 中，这份程序通常被称作 **kernel**。下面是一个简单的例子：
 
@@ -92,7 +92,7 @@ kernel[grid](*args)                 #             func(*args, pid_n, pid_m, pid_
 **注**：调研了一些资料，目前暂时没有找到 `grid` 维度设置的最佳实践，似乎高维只是为了方便用户理解。
 
 ## Tensor 的读取和存储
-在阅读前面的[zero-kernel](#zero-kernel)时，你可能已经注意到，在`zero`函数中，我们传递向 `zero_kernel` 传递了一个 tensor，但是为什么 `zero_kernel` 的参数是 `x_ptr`？
+在阅读前面的[zero-kernel](#zero-kernel)时，你可能已经注意到，在`zero`函数中，我们向 `zero_kernel` 传递了一个 tensor，但是为什么 `zero_kernel` 的参数是 `x_ptr`？
 为什么 `x_ptr + offset` 表示第 `offset` 个元素？
 为什么不是像 Pytorch 那样直接使用 `x[offset]`？
 
@@ -244,23 +244,42 @@ x = tl.load(x_ptr)     # 读取指针指向的元素
 tl.store(x_ptr, value) # 写入指针指向的元素
 ```
 
+**需要注意的是，与我们平常写 Python 代码不一样，我们并不是使用 `return` 来返回结果，而是使用 `tl.store` 来将结果写入到结果指针指向的元素。**
+这个结果指针也应该是我们在调用 Kernel 时传入的参数之一。
+下面是一个简单的例子，它将一个 Tensor `x` 复制到另一个 Tensor `y` 中：
+
+```python
+import triton.language as tl # 简单起见我们利用 `tl` 来指代 `triton.language` 模块
+import triton
+import torch
+
+@triton.jit
+def copy_kernel(
+    x_ptr,
+    y_ptr
+):
+    pid = tl.program_id(0)
+    value = tl.load(x_ptr + pid)
+    tl.store(y_ptr + pid, value)
+
+if __name__ == "__main__":
+    n = 10
+    x = torch.randn(n).to("cuda")      # 在 GPU 上分配内存
+    y = torch.empty(n).to("cuda")
+    copy_kernel[(n, )](x, y)           # y = x.clone()
+    print(x)
+    print(y)
+    print(x.clone())
+```
+这里的 `y` 实际上是操作的**输出**，但是我们需要在执行 Kernel 之前为它分配空间（**在 GPU 上**），并作为参数传递给 Kernel。
+
+#### 批量读写
+
 然而在大部分情况下，我们并不仅仅希望只对单个元素进行操作，而是希望像在 Pytorch 中那样对一个 Tensor 进行操作。
 
 下面将介绍三种在 Triton 中通过指针来访问 Tensor 的方法。
 
-<!-- 值得注意的是如前文说的那样，一个 Tensor 被传递到 Triton Kernel 中时，它是以 Tensor 中首个元素的地址来传递的。因此要想正确地访问 Tensor 中的元素，我们还需要将 Tensor 的形状信息传递给 Kernel。例如下面是一个处理形状为 $(N, M)$ 的 Tensor 的简单例子：
-
-```python
-@triton.jit
-def kernel(
-        x_ptr,
-        N: tl.constexpr,
-        M: tl.constexpr
-    ):
-    pass
-``` -->
-
-#### 多维指针
+**多维指针**
 
 第一种方式是通过多维指针的形式来描述 Tensor 的形状。
 简单来说我们算出 Tensor 中每个元素的地址，组成一个地址矩阵，然后通过这个地址矩阵来访问 Tensor 中的元素。
@@ -304,7 +323,7 @@ BLOCK_M = triton.next_power_of_2(M)
 
 上图是我们加载 $(2, 3)$ 矩阵的示意图。由于 `BLOCK_M` 需要设置为 $2$ 的幂 ($4$), 因此在计算 offset 时，每一行的末尾会多出 $1$ 个元素。我们需要通过 `mask` 来确保屏蔽掉这些多出的元素。
 
-#### 块指针 (Block Pointer)
+**块指针 (Block Pointer)**
 
 我们可以看到上面一种方法写起来是非常麻烦的。
 第二种方式是利用块指针 (Block Pointer) 来描述 Tensor 的形状。
@@ -335,7 +354,7 @@ def plus_one_kernel(
     tl.store(block_ptr, x + 1, boundary_check=(0, 1))
 ```
 
-#### 张量描述符 (Tensor Descriptor)
+**张量描述符 (Tensor Descriptor)**
 
 最后一种方法是利用张量描述符 (Tensor Descriptor) 来描述 Tensor 的形状并进行加载。
 从用法来看它和块指针非常相似，但是它利用了 [TMA 技术](https://pytorch.org/blog/hopper-tma-unit/) 来进一步压榨 GPU 的性能。
@@ -423,6 +442,9 @@ def input_guard(
 #### 边界检查
 在 Kernel 中，我们可以通过指针访问到整个显存空间。如果不多加小心，例如没有检查边界时，计算错误的偏移量，可能会导致 Kernel 访问到不属于它的数据，甚至修改其他数据。因此在读写，尤其是写的时候，需要格外注意检查边界。
 
+**不进行边界检查会如何？**
+为了探讨这一问题我们看下面的代码。下面的代码实现一个非常简单的功能：为矩阵中第 offset 个元素赋值。 
+
 ```python
 import triton.language as tl
 import triton
@@ -469,5 +491,8 @@ a: tensor([0., 0., 0.], device='cuda:0'); b: tensor([1., 0., 0.], device='cuda:0
 我们可以看到，尽管我们只向 `set_value_kernel` 传递了 Tensor `a` 的指针，但是最终 `b` 也被修改了。
 
 因此，在 Triton 中，我们在进行读写操作时**需要格外注意**，避免意外修改其他数据。
+
+**如何避免越界？**
+
 - 若使用**多维指针**的方式来进行读写，我们可以设置 mask，在 mask 中将需要读写的元素设置为 `True`，其余元素设置为 `False`，即可避免越界访问。在默认情况下，padding 位置的元素会被设置为 $0$。但是也可通过 `other` 参数来设置 padding 元素的值。
 - 若使用**块指针**的方式来进行读写，我们可以设置 `boundary_check` 参数来指定对哪些维度进行边界检查。在默认情况下，会使用 $0$ 来填充边界外的元素。
