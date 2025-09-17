@@ -133,6 +133,14 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 ### Preprints
 
+* **WebWeaver: Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research**
+    <p class="vspace"></p>
+    *Zijian Li, Xin Guan, Bo Zhang, Shen Huang, __Houquan Zhou__, Shaopeng Lai, Ming Yan, Yong Jiang, Pengjun Xie, Fei Huang, Jun Zhang, Jingren Zhou*
+    <p class="vspace"></p>
+    **arXiv 2025**
+    <p class="vspace"></p>
+    [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2509.13312)
+
 * **How Well Do Large Language Models Understand Syntax? An Evaluation by Asking Natural Language Questions**
     <p class="vspace"></p>
     *__Houquan Zhou__, Yang Hou, Zhenghua Li, Xuebin Wang, Zhefeng Wang, Xinyu Duan, Min Zhang* <br>
