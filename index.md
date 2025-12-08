@@ -175,5 +175,5 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 ### Others
 * **A little game powered by LLMs**
     <p class="vspace"></p>
-    I am also interested in building LLM-powered applications. Here is a little game I made: [🫑青椒模拟器](https://tenure-track-chili.hqzhou.com).
+    I am also interested in building LLM-powered applications. Here is a little game I made: [🫑青椒模拟器](https://tenure.hqzhou.com).
     Feel free to play it and give me some feedback!
