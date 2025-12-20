@@ -168,9 +168,12 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 ### Experience
 
-* Research Intern at **Alibaba DAMO Academy**, mentored by Ming Yan
+* Research Intern at **Alibaba DAMO Academy**, mentored by Ming Yan and Bo Zhang
     <p class="vspace"></p>
     2024 - present
+* Project Intern at **Alibaba DAMO Academy**, mentored by Chen Li and Bo Zhang
+    <p class="vspace"></p>
+    2023 - 2024
 
 ### Others
 * **A little game powered by LLMs**
