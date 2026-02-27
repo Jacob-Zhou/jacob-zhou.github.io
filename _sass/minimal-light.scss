@@ -1358,9 +1358,10 @@ small {
     padding: 1rem 1.2rem 0.6rem;
   }
 
-  .paper-stack>li,
-  .competition-list>li,
-  .education-list>li {
+  .paper-stack > li,
+  .competition-list > li,
+  .education-list > li,
+  .experience-list > li {
     width: 100% !important;
 
     &:nth-child(1),
