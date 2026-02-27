@@ -10,11 +10,31 @@ My main research interest focuses on text error correction (including spelling c
 Before that, I worked on constituency parsing, dependency parsing, and part-of-speech tagging.
 
 
+### AI-Native Projects
+* **A little simulator powered by LLMs**
+    <p class="vspace"></p>
+    I am also interested in building LLM-powered applications. Here is a little simulator that [Spico197](https://spico197.github.io) and I made: [🫑青椒模拟器](https://platform.feedscription.com).
+    Feel free to play it and give us some feedback!
+    We also would like to thank [Kimi](https://www.kimi.com/?utm_campaign=TR_Z0K1xPQ0&utm_content=&utm_medium=Youtube&utm_source=CH_kEMBez3l&utm_term=) for providing the API credits for the simulator. And also [Warrier](https://zhaochen0110.github.io/) for helping us contact them.
+* **A Platform for LLM-powered Applications**
+    <p class="vspace"></p>
+    Building on 🫑青椒模拟器, we developed a dedicated platform for LLM-powered applications. Explore it [here](https://platform.feedscription.com). For further technical validation, we have also released two new simulator demos on the platform. Feel free to try them out!
+* **Cyber Crickets(赛博斗蛐蛐)**
+    <p class="vspace"></p>
+    During the Chinese New Year, I played a lot of Texas Hold'em with friends. My struggles as a beginner sparked a question: how would state-of-the-art LLMs fare in such a game of incomplete information? Unlike Werewolf, Texas Hold'em demands a unique blend of skills: "High IQ" for mathematical reasoning (calculating expected values and probabilities) and "High EQ" for psychological tactics (reading opponents, maintaining a persona, and bluffing). To explore this, we built an arena where LLMs like Claude, ChatGPT, Gemini, Qwen, Kimi, and DeepSeek compete in Texas Hold'em—complete with table talk, opponent profiling, and visible chains of thought. Among them, Kimi stood out by effectively using bluffing strategies to reverse unfavorable situations. Check it out [here](https://holdem.ququer.ai). The name 'ququer' is a nod to the Chinese term for 'cricket' (蛐蛐儿), referencing the traditional game of cricket fighting. 
+
 ### Publications:
 
 [[Semantic Scholar](https://www.semanticscholar.org/author/Houquan-Zhou/50986473)] [[Google Scholar](https://scholar.google.com/citations?user=hJWovmAAAAAJ)] [[DBLP](https://dblp.org/pid/221/7847-1.html)] [[ACL Anthology](https://aclanthology.org/people/h/houquan-zhou/)]
 
 (* denotes equal contributions)
+* **WebWeaver: Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research**
+    <p class="vspace"></p>
+    *Zijian Li, Xin Guan, Bo Zhang, Shen Huang, __Houquan Zhou__, Shaopeng Lai, Ming Yan, Yong Jiang, Pengjun Xie, Fei Huang, Jun Zhang, Jingren Zhou*
+    <p class="vspace"></p>
+    **ICLR 2026**
+    <p class="vspace"></p>
+    [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2509.13312)
 
 * **A Training-free LLM-based Approach to General Chinese Character Error Correction**
     <p class="vspace"></p>
@@ -133,14 +153,6 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
 
 ### Preprints
 
-* **WebWeaver: Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research**
-    <p class="vspace"></p>
-    *Zijian Li, Xin Guan, Bo Zhang, Shen Huang, __Houquan Zhou__, Shaopeng Lai, Ming Yan, Yong Jiang, Pengjun Xie, Fei Huang, Jun Zhang, Jingren Zhou*
-    <p class="vspace"></p>
-    **arXiv 2025**
-    <p class="vspace"></p>
-    [![arxiv](https://img.shields.io/badge/arxiv-68b88e.svg?style=flat)](https://arxiv.org/abs/2509.13312)
-
 * **How Well Do Large Language Models Understand Syntax? An Evaluation by Asking Natural Language Questions**
     <p class="vspace"></p>
     *__Houquan Zhou__, Yang Hou, Zhenghua Li, Xuebin Wang, Zhefeng Wang, Xinyu Duan, Min Zhang* <br>
@@ -175,9 +187,3 @@ Before that, I worked on constituency parsing, dependency parsing, and part-of-s
     <p class="vspace"></p>
     2023 - 2024
 
-### Others
-* **A little game powered by LLMs**
-    <p class="vspace"></p>
-    I am also interested in building LLM-powered applications. Here is a little game that [Spico197](https://spico197.github.io) and I made: [🫑青椒模拟器](https://tenure.feedscription.com).
-    Feel free to play it and give us some feedback!
-    We also would like to thank [Kimi](https://www.kimi.com/?utm_campaign=TR_Z0K1xPQ0&utm_content=&utm_medium=Youtube&utm_source=CH_kEMBez3l&utm_term=) for providing the API credits for the game. And also [Warrier](https://zhaochen0110.github.io/) for helping us contact them.
