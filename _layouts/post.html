@@ -2,7 +2,6 @@
 layout: default
 ---
 
-<!-- MathJax配置 -->
 {% if page.mathjax %}
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -20,32 +19,21 @@ layout: default
 </script>
 <script type="text/javascript" async
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
+</script>
 {% endif %}
 <link rel="stylesheet" href="{{ '/assets/css/default.min.css' | relative_url }}">
 <script src="{{ '/assets/js/highlight.min.js' | relative_url }}"></script>
 
-<article class="post">
+<article class="post" style="padding-top: 5rem;">
+
     {% if page.header-img %}
-    <header class="post-header"
-        style="background-image: url('{{ page.header-img | relative_url }}'); background-size: cover; background-position: center; min-height: 250px;">
-        <div class="post-header-content">
+    <header class="post-header post-header--hero"
+        style="background-image: url('{{ page.header-img | relative_url }}');">
+        <div class="post-header-overlay">
             <h1 class="post-title">{{ page.title }}</h1>
             <p class="post-meta">
-                <time datetime="{{ page.date | date_to_xmlschema }}">
-                    {{ page.date | date: "%B %d, %Y" }}
-                </time>
-                {% if page.author %}
-                • <span class="post-author">{{ page.author }}</span>
-                {% endif %}
-                {% if page.tags %}
-                <br>
-                <span class="post-tags">
-                    {% for tag in page.tags %}
-                    <span class="tag">{{ tag }}</span>
-                    {% endfor %}
-                </span>
-                {% endif %}
+                <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+                {% if page.author %} · {{ page.author }}{% endif %}
             </p>
         </div>
     </header>
@@ -53,17 +41,12 @@ layout: default
     <header class="post-header">
         <h1 class="post-title">{{ page.title }}</h1>
         <p class="post-meta">
-            <time datetime="{{ page.date | date_to_xmlschema }}">
-                {{ page.date | date: "%B %d, %Y" }}
-            </time>
-            {% if page.author %}
-            • <span class="post-author">{{ page.author }}</span>
-            {% endif %}
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+            {% if page.author %} · {{ page.author }}{% endif %}
             {% if page.tags %}
-            <br>
             <span class="post-tags">
                 {% for tag in page.tags %}
-                <span class="tag">{{ tag }}</span>
+                <span class="tag">#{{ tag }}</span>
                 {% endfor %}
             </span>
             {% endif %}
@@ -72,9 +55,7 @@ layout: default
     {% endif %}
 
     {% if page.hidden %}
-    <div class="post-in-progress">
-        This post is still in progress.
-    </div>
+    <div class="post-in-progress">This post is still in progress.</div>
     {% endif %}
 
     <div class="post-content">
@@ -85,214 +66,197 @@ layout: default
         <div class="post-nav">
             {% if page.previous %}
             <a href="{{ page.previous.url | relative_url }}" class="prev-post">
-                ← {{ page.previous.title | truncate: 50 }}
+                &larr; {{ page.previous.title | truncate: 50 }}
             </a>
             {% endif %}
             {% if page.next %}
             <a href="{{ page.next.url | relative_url }}" class="next-post">
-                {{ page.next.title | truncate: 50 }} →
+                {{ page.next.title | truncate: 50 }} &rarr;
             </a>
             {% endif %}
         </div>
         <div class="back-to-list">
-            <a href="{{ '/blogs' | relative_url }}">← Back to Blog List</a>
+            <a href="{{ '/blogs' | relative_url }}">&larr; Back to all posts</a>
         </div>
     </footer>
 </article>
 
 <style>
     .post-header {
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #e1e1e1;
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        border-radius: 5px;
+        margin-bottom: 3rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .post-header--hero {
+        background-size: cover;
+        background-position: center;
+        min-height: 250px;
+        border-radius: 3px;
         overflow: hidden;
-        font-family: 'Noto Sans SC', sans-serif;
+        border-bottom: none;
+        padding-bottom: 0;
     }
 
-    .post-header-content {
-        position: relative;
-        z-index: 1;
+    .post-header-overlay {
         padding: 3rem 2rem;
-        /* Increase padding for better appearance */
         color: white;
-        /* Ensure text is visible on image */
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        /* Add text shadow for better readability */
-        background-color: rgba(0, 0, 0, 0.3);
-        /* Add semi-transparent overlay for better text visibility */
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        background: linear-gradient(transparent 0%, rgba(0,0,0,0.4) 100%);
     }
 
-    .post-header .post-title {
-        font-size: 2rem;
+    .post-header-overlay .post-title {
+        color: white;
+    }
+
+    .post-title {
+        font-family: var(--font-display);
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: var(--ink);
         margin-bottom: 0.5rem;
-        color: white;
-        position: relative;
-        z-index: 1;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
     }
 
-    .post-header .post-meta {
-        color: white;
-        font-size: 0.9rem;
+    .post-meta {
+        color: var(--text-light);
+        font-size: 0.88rem;
+        font-style: italic;
         margin: 0;
     }
 
-    .post-header .tag {
-        display: inline-block;
-        background-color: rgba(255, 255, 255, 0.2);
-        /* Semi-transparent white background */
-        color: white;
-        padding: 0.2rem 0.5rem;
+    .post-tags {
+        margin-left: 0.3rem;
+    }
+
+    .tag {
+        font-size: 0.82rem;
+        color: var(--text-light);
         margin-right: 0.3rem;
+    }
+
+    .post-in-progress {
+        font-family: var(--font-display);
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-align: center;
+        color: var(--terracotta);
+        padding: 1rem 1.5rem;
+        background: var(--bg-warm);
+        border: 2px dashed var(--rule);
         border-radius: 3px;
-        font-size: 0.85rem;
+        margin: 1.5rem 0;
+    }
+
+    .post-content {
+        line-height: 1.82;
+    }
+
+    .post-content p,
+    .post-content li {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        color: var(--text);
+        text-align: justify;
+    }
+
+    .post-content > p {
+        text-indent: 2em;
+    }
+
+    .post-content code {
+        font-size: 0.88em;
+        background: var(--bg-warm);
+        padding: 0.1em 0.35em;
+        border-radius: 2px;
+    }
+
+    .post-content pre code {
+        background: none;
+        padding: 0;
+    }
+
+    .post-content blockquote {
+        margin: 1.5rem 0;
+        padding: 1rem 1.4rem;
+        background: var(--bg-warm);
+        border-left: 3px solid var(--terracotta);
+        border-radius: 0 2px 2px 0;
+        font-style: italic;
+    }
+
+    .post-content blockquote > p {
+        margin: 0;
+        color: var(--text-mid);
+        text-indent: 0;
+    }
+
+    .post-content img {
+        border-radius: 2px;
+        margin: 1rem 0;
     }
 
     .post-footer {
         margin-top: 3rem;
         padding-top: 2rem;
-        border-top: 1px solid #e1e1e1;
-        position: relative;
-        width: 100%;
+        border-top: 1px solid var(--rule);
     }
 
-    .post-in-progress {
-        font-size: 2rem;
-        font-weight: 500;
-        font-family: 'Noto Sans SC', sans-serif;
+    .post-nav {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .post-nav a {
+        color: var(--terracotta);
+        font-size: 0.9rem;
+        transition: color 0.25s;
+    }
+
+    .post-nav a:hover {
+        color: var(--terracotta-dim);
+    }
+
+    .back-to-list {
         text-align: center;
-        color: #117e45;
-        padding: 1.5rem 2rem;
-        background: #f1f5f9;
-        border-radius: 8px;
-        border: 4px solid #117e45;
-        margin: 1.5rem 0;
     }
 
-    .post-content p,
-    .post-content li {
-        font: 16px Georgia, "Times New Roman", Times, sans-serif;
-        text-align: justify;
-    }
-
-    .post-content>p {
-        text-indent: 2em;
-    }
-
-    .post-content code {
-        font-size: 14px;
-    }
-
-    .post-content blockquote {
-        margin: 1.5rem 0;
-        padding: 1.2rem 1.5rem;
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        border-left: 4px solid #68b88e;
-        border-radius: 0 8px 8px 0;
-        position: relative;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    .back-to-list a {
+        color: var(--text-light);
+        font-size: 0.85rem;
         font-style: italic;
+        transition: color 0.25s;
     }
 
-    .post-content blockquote::before {
-        content: '“';
-        font-size: 5rem;
-        font-weight: 400;
-        color: #68b88e;
-        position: absolute;
-        top: -1.0rem;
-        left: -0.3rem;
-        font-family: "Alfa Slab One", serif;
-        opacity: 0.3;
-        width: 4rem;
-        height: 4rem;
-    }
-
-    .post-content blockquote::after {
-        content: '”';
-        font-size: 5rem;
-        font-weight: 400;
-        color: #68b88e;
-        position: absolute;
-        bottom: -1.0rem;
-        right: -1.0rem;
-        font-family: "Alfa Slab One", serif;
-        opacity: 0.3;
-        width: 4rem;
-        height: 4rem;
-    }
-
-    .post-content blockquote>p {
-        margin: 0;
-        color: #495057;
-        font-size: 1.05rem;
-        line-height: 1.6;
-        text-indent: 0;
-        position: relative;
-        z-index: 1;
-    }
-
-    .post-content blockquote>p:first-child {
-        margin-top: 0.5rem;
-    }
-
-    .post-content blockquote>p:last-child {
-        margin-bottom: 0;
-    }
-
-    /* 深色模式适配 */
-    @media (prefers-color-scheme: dark) {
-        .post-content blockquote {
-            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
-            border-left-color: #68b88e;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .post-content blockquote>p {
-            color: #e2e8f0;
-        }
+    .back-to-list a:hover {
+        color: var(--terracotta);
     }
 </style>
 
 <script>
-    // 修复博客内容中的图像路径和链接
     document.addEventListener('DOMContentLoaded', function () {
         var baseUrl = '{{ site.baseurl }}';
-
-        // 只有当baseUrl不为空时才进行路径修复
         if (baseUrl && baseUrl !== '') {
-            // 修复图像路径
-            var images = document.querySelectorAll('.post-content img');
-            images.forEach(function (img) {
+            document.querySelectorAll('.post-content img').forEach(function (img) {
                 var src = img.getAttribute('src');
-                if (src && src.startsWith('/assets/')) {
-                    // 避免重复添加baseurl
-                    if (!src.startsWith(baseUrl + '/assets/')) {
-                        img.setAttribute('src', baseUrl + src);
-                    }
+                if (src && src.startsWith('/assets/') && !src.startsWith(baseUrl + '/assets/')) {
+                    img.setAttribute('src', baseUrl + src);
                 }
             });
-
-            // 修复内部链接
-            var links = document.querySelectorAll('.post-content a');
-            links.forEach(function (link) {
+            document.querySelectorAll('.post-content a').forEach(function (link) {
                 var href = link.getAttribute('href');
                 if (href && href.startsWith('/') && !href.startsWith('//') && !href.startsWith(baseUrl)) {
                     link.setAttribute('href', baseUrl + href);
                 }
             });
         }
-
-        // 确保MathJax重新渲染
         if (typeof MathJax !== 'undefined' && MathJax.Hub) {
-            setTimeout(function () {
-                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-            }, 500);
+            setTimeout(function () { MathJax.Hub.Queue(["Typeset", MathJax.Hub]); }, 500);
         }
     });
 </script>
-
 <script>hljs.highlightAll();</script>

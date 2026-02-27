@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: " en-US" }}">
+<html lang="{{ site.lang | default: "en-US" }}">
 
 <head>
   {% if page.title %}
@@ -77,71 +77,54 @@
   <link rel="mask-icon" href="{{ site.favicon_svg | relative_url }}" color="#000000" />
   <meta name="baidu-site-verification" content="codeva-6RxSUUpptm" />
   <meta name="google-site-verification" content="WClIHF4PllX3llgomaJlnmeZgZwqRswXAEAHz3jqWRM" />
-  <!-- Google tag (gtag.js) -->
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZZZBEC0BC0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-ZZZBEC0BC0');
   </script>
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css"
+    integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/pub.css' | relative_url }}">
 </head>
 
 <body>
+
   <script src="{{ '/assets/js/vanilla-back-to-top.min.js' | relative_url }}"></script>
-  <script>addBackToTop({
-      backgroundColor: '#fff',
-      innerHTML: 'Back to Top',
-      textColor: '#333'
-    })
-  </script>
-  <style>
-    #back-to-top {
-      border-radius: 5px;
-      font-size: 15px;
-      width: 100px;
-      text-align: center;
-      line-height: 30px;
-      height: 30px;
-    }
-  </style>
-  <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css
-    integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
-  <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css
-    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin=anonymous>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/pub.css' | relative_url }}">
-  <!-- <link rel="stylesheet" href="/assets/css/skeleton-tabs.css | relative_url"> -->
+  <script>addBackToTop({ backgroundColor: 'transparent', innerHTML: '↑ Top', textColor: '#7A6B5D' })</script>
 
-  <style>
-    .nav-links {
-      text-align: center;
-      margin: 0.5rem 0;
-    }
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="{{ site.canonical }}" class="nav-brand">{{ site.title }}</a>
+      <div class="nav-links">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/blogs' | relative_url }}">Blog</a>
+      </div>
+    </div>
+  </nav>
 
-    .nav-link {
-      color: #666;
-      text-decoration: none;
-      font-size: 0.95rem;
-      padding: 0.3rem 0.5rem;
-      transition: color 0.3s;
-    }
+  <main class="site-main">
+    {{ content }}
+  </main>
 
-    .nav-link:hover {
-      color: #68b88e;
-    }
-
-    .nav-separator {
-      color: #ccc;
-      margin: 0 0.5rem;
-    }
-  </style>
+  <footer class="site-footer">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
+  </footer>
 
   <script src="{{ '/assets/js/github-stars.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/skeleton-tabs.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}"></script>
   <script type="text/javascript" src="{{ '/assets/js/jquery.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/favicon-switcher.js' | relative_url }}"></script>
+
   <script>
     var _hmt = _hmt || [];
     (function () {
@@ -152,85 +135,40 @@
     })();
   </script>
 
-  <div class="wrapper">
-    <header>
+  <script>
+    window.addEventListener('scroll', function () {
+      var nav = document.querySelector('.site-nav');
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
 
-      {% if site.avatar %}
-      <a href="{{ site.canonical }}" class="image avatar"><img src="{{ site.avatar | relative_url }}"
-          alt="avatar" /></a>
-      {% endif %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var btns = document.querySelectorAll('.pub-tab-btn');
+      var panels = document.querySelectorAll('.pub-panel');
+      if (!btns.length) return;
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var tab = btn.getAttribute('data-tab');
+          btns.forEach(function (b) { b.classList.remove('active'); });
+          panels.forEach(function (p) { p.classList.remove('active'); });
+          btn.classList.add('active');
+          var target = document.querySelector('.pub-panel[data-panel="' + tab + '"]');
+          if (target) target.classList.add('active');
+        });
+      });
+    });
+  </script>
 
-      <a href="{{ site.canonical }}">
-        <div class="my-name">{{ site.title }}</div>
-      </a>
+  <p hidden>
+    <script type="text/javascript" id="clstr_globe"
+      src="//clustrmaps.com/globe.js?&w=50&d=HV0rAUdAxpfEQLOsVs0FcJTR2rKVI5sEQUZIDM-N_HY"></script>
+  </p>
 
-      {% if site.position %}
-      <position style="font-size:1.10rem;">{{ site.position }}</position>
-      <br>
-      {% endif %}
-      <a href="{{ site.affiliation_link }}" rel="noopener">
-        <autocolor>{{ site.affiliation }}</autocolor>
-      </a>
-      <br>
-      <email>{{ site.email }}</email>
-
-      <br>
-      <br>
-      <div class="social-icons">
-        <a style="margin: 0 5px 0 0" href="{{ site.semantic_scholar }}" aria-label="Go to Semantic Scholar Page">
-          <i class="ai ai-semantic-scholar" style="font-size:1.2rem"></i>
-        </a>
-
-        <a style="margin: 0 5px 0 0" href="{{ site.google_scholar }}" aria-label="Go to Google Scholar Page">
-          <i class="ai ai-google-scholar" style="font-size:1.2rem"></i>
-        </a>
-
-        <!-- <a style="margin: 0 5px 0 0" href="{{ site.cv_link }}">
-          <i class="ai ai-cv" style="font-size:1.2rem;"></i>
-        </a> -->
-
-        <a style="margin: 0 5px 0 0" href="{{ site.github_link }}" aria-label="Go to GitHub Page">
-          <i class="fab fa-github"></i>
-        </a>
-
-        <a style="margin: 0 5px 0 0" href="{{ site.arxiv_link }}" aria-label="Go to My ArXiv New Papers Page">
-          <i class="ai ai-arxiv"></i>
-        </a>
-      </div>
-      <br>
-
-      <div class="nav-links">
-        <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
-        <span class="nav-separator">•</span>
-        <a href="{{ '/blogs' | relative_url }}" class="nav-link">Blog</a>
-      </div>
-      <br>
-
-    </header>
-    <section>
-
-      {{ content }}
-
-      <br>
-      <p hidden>
-        <script type="text/javascript" id="clstr_globe"
-          src="//clustrmaps.com/globe.js?&w=50&d=HV0rAUdAxpfEQLOsVs0FcJTR2rKVI5sEQUZIDM-N_HY"></script>
-      </p>
-
-    </section>
-    <footer>
-      <!-- <div style="font: 12px/1.2 Crimson Pro, serif">
-        <p>
-        <small>
-        <a href="{{ site.imprint }}" rel="noopener"><autocolor>Imprint / Impressum</autocolor></a><br>
-        <a href="{{ site.data_protection }}" rel="noopener"><autocolor>Data Protection / Datenschutzhinweis</autocolor></a>
-        </small>
-        </p>
-        </div> -->
-      <br>
-      <br>
-    </footer>
-  </div>
 </body>
 
 </html>

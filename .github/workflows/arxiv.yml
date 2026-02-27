@@ -48,6 +48,7 @@ jobs:
         run: |
           pip install -U pip arxiv
           python arxiv-daily.py
+          python citation.py
           bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
