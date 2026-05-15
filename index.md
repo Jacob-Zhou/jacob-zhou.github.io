@@ -57,9 +57,9 @@ layout: default
 </div>
 
 <div class="project-card">
-  <div class="project-title">🦗 赛博斗蛐蛐 — Cyber Crickets</div>
+  <div class="project-title">🧪 Neuralchemy — A Card Game for Model Experiments</div>
   <div class="project-desc">
-    How would LLMs fare at Texas Hold'em — a game demanding both mathematical reasoning and psychological tactics? We built an <a href="https://holdem.ququer.ai">arena</a> where Claude, ChatGPT, Gemini, Qwen, Kimi, and DeepSeek compete with table talk, opponent profiling, and visible chains of thought. Kimi stood out with effective bluffing strategies.
+    I also made <a href="https://neuralchemy.feedscription.com/">Neuralchemy</a>, an exploratory demo about turning model training into a card-table experiment. It is a small probe into what interactive ML education and playful model-building might feel like: buy cards, upgrade compute, build a model from your hand, and let the browser really train it before the server checks the result. Good runs earn research points; odd runs become very serious lab notes.
   </div>
 </div>
 
