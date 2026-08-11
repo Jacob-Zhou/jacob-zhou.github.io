@@ -15,7 +15,7 @@ layout: default
       <a href="https://zhangminsuda.github.io/cn_homepage/">Prof. Min Zhang</a>.
     </p>
     <p class="hero-bio">
-      I am currently exploring applications of AI in games, with a particular interest in AI-native games. My research focuses on text error correction — spelling correction, grammatical error correction — and the evaluation and application of large language models. Previously I worked on constituency parsing, dependency parsing, and part-of-speech tagging.
+      My research spans language intelligence and AI-driven interactive experiences. I began with constituency parsing, dependency parsing, and part-of-speech tagging, then moved to text error correction—including spelling and grammatical error correction—and the evaluation and application of large language models. More recently, I have been exploring how these models can enable new forms of gameplay, particularly AI-native games.
     </p>
     <nav class="profile-links" aria-label="Academic profiles">
       <a href="https://scholar.google.com/citations?user=hJWovmAAAAAJ">Google Scholar</a>
