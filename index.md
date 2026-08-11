@@ -45,7 +45,7 @@ layout: default
 <div class="project-card">
   <div class="project-title"><a href="https://wortou.ai">Wortou.AI</a> — Exploring AI-Native Games</div>
   <div class="project-desc">
-    Wortou.AI is our cross-disciplinary AI game team spanning research, engineering, and design. We explore large language models as native game mechanics—not merely content generators—through AI-driven narratives, multi-agent competition, and playable AI algorithms, while building the platforms and open-source tools behind them.
+    At Wortou.AI, I work with collaborators across research, engineering, and design to explore how large language models can become native game mechanics—not merely content generators. Our projects span AI-driven narratives, multi-agent competition, and playable AI algorithms, supported by the platforms and open-source tools we build along the way.
   </div>
 </div>
 
