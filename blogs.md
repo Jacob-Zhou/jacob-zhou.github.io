@@ -13,7 +13,7 @@ permalink: /blogs/
   {% assign post_count = 0 %}
   {% for post in site.posts %}
     {% unless post.published == false or post.hidden == true %}
-    <article class="blog-entry reveal" data-delay="{{ post_count | times: 60 }}">
+    <article class="blog-entry">
       <div class="blog-entry-date">
         {{ post.date | date: "%b %d, %Y" }}
       </div>
