@@ -15,7 +15,7 @@ layout: default
       <a href="https://zhangminsuda.github.io/cn_homepage/">Prof. Min Zhang</a>.
     </p>
     <p class="hero-bio">
-      My research focuses on text error correction — spelling correction, grammatical error correction — and the evaluation and application of large language models. Previously I worked on constituency parsing, dependency parsing, and part-of-speech tagging.
+      I am currently exploring applications of AI in games, with a particular interest in AI-native games. My research focuses on text error correction — spelling correction, grammatical error correction — and the evaluation and application of large language models. Previously I worked on constituency parsing, dependency parsing, and part-of-speech tagging.
     </p>
     <nav class="profile-links" aria-label="Academic profiles">
       <a href="https://scholar.google.com/citations?user=hJWovmAAAAAJ">Google Scholar</a>
@@ -43,9 +43,9 @@ layout: default
 </div>
 
 <div class="project-card">
-  <div class="project-title">A Platform for LLM-powered Applications</div>
+  <div class="project-title"><a href="https://wortou.ai">Wortou.AI</a> — Exploring AI-Native Games</div>
   <div class="project-desc">
-    Building on 🫑青椒模拟器, we developed a dedicated <a href="https://platform.feedscription.com">platform</a> for LLM-powered applications with two new simulator demos.
+    Wortou.AI is our cross-disciplinary AI game team spanning research, engineering, and design. We explore large language models as native game mechanics—not merely content generators—through AI-driven narratives, multi-agent competition, and playable AI algorithms, while building the platforms and open-source tools behind them.
   </div>
 </div>
 
