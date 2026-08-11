@@ -3,9 +3,9 @@ layout: default
 ---
 
 <section class="hero">
-  <div class="hero-polaroid">
+  <figure class="hero-portrait">
     <img src="/assets/img/avatar.jpg" alt="Houquan Zhou" class="hero-avatar">
-  </div>
+  </figure>
   <div class="hero-text">
     <h1 class="hero-name">Houquan Zhou</h1>
     <div class="hero-name-cn">周厚全</div>
@@ -17,32 +17,25 @@ layout: default
     <p class="hero-bio">
       My research focuses on text error correction — spelling correction, grammatical error correction — and the evaluation and application of large language models. Previously I worked on constituency parsing, dependency parsing, and part-of-speech tagging.
     </p>
-    <div class="hero-links-row">
-      <div class="hero-social">
-        <a href="https://www.semanticscholar.org/author/Houquan-Zhou/50986473" aria-label="Semantic Scholar"><i class="ai ai-semantic-scholar"></i></a>
-        <a href="https://scholar.google.com/citations?user=hJWovmAAAAAJ" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-        <a href="https://github.com/Jacob-Zhou" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://cv.hqzhou.com/arxiv" aria-label="arXiv"><i class="ai ai-arxiv"></i></a>
-      </div>
-      <span class="hero-social-sep">·</span>
-      <div class="hero-scholar-links">
-        <a href="https://www.semanticscholar.org/author/Houquan-Zhou/50986473">Semantic Scholar</a>
-        <a href="https://scholar.google.com/citations?user=hJWovmAAAAAJ">Google Scholar</a>
-        <a href="https://dblp.org/pid/221/7847-1.html">DBLP</a>
-        <a href="https://aclanthology.org/people/h/houquan-zhou/">ACL Anthology</a>
-      </div>
-    </div>
+    <nav class="profile-links" aria-label="Academic profiles">
+      <a href="https://scholar.google.com/citations?user=hJWovmAAAAAJ">Google Scholar</a>
+      <a href="https://www.semanticscholar.org/author/Houquan-Zhou/50986473">Semantic Scholar</a>
+      <a href="https://dblp.org/pid/221/7847-1.html">DBLP</a>
+      <a href="https://aclanthology.org/people/h/houquan-zhou/">ACL Anthology</a>
+      <a href="https://github.com/Jacob-Zhou">GitHub</a>
+      <a href="https://cv.hqzhou.com/arxiv">arXiv</a>
+    </nav>
   </div>
 </section>
 
 <hr class="section-rule">
 
-<section class="content-section reveal" data-delay="0">
+<section class="content-section">
 <h2 class="section-title">Projects</h2>
 <div class="projects-grid">
 
 <div class="project-card">
-  <div class="project-title">🫑青椒模拟器 — A Little Simulator Powered by LLMs</div>
+  <div class="project-title">青椒模拟器 — A Little Simulator Powered by LLMs</div>
   <div class="project-desc">
     I am interested in building LLM-powered applications. Here is a little simulator that <a href="https://spico197.github.io">Spico197</a> and I made: <a href="https://platform.feedscription.com">🫑青椒模拟器</a>. Feel free to play and give us feedback! Thanks to <a href="https://www.kimi.com/?utm_campaign=TR_Z0K1xPQ0&utm_content=&utm_medium=Youtube&utm_source=CH_kEMBez3l&utm_term=">Kimi</a> for API credits, and <a href="https://zhaochen0110.github.io/">Warrier</a> for the connection.
   </div>
@@ -50,14 +43,14 @@ layout: default
 </div>
 
 <div class="project-card">
-  <div class="project-title">🚀 A Platform for LLM-powered Applications</div>
+  <div class="project-title">A Platform for LLM-powered Applications</div>
   <div class="project-desc">
     Building on 🫑青椒模拟器, we developed a dedicated <a href="https://platform.feedscription.com">platform</a> for LLM-powered applications with two new simulator demos.
   </div>
 </div>
 
 <div class="project-card">
-  <div class="project-title">🧪 Neuralchemy — A Card Game for Model Experiments</div>
+  <div class="project-title">Neuralchemy — A Card Game for Model Experiments</div>
   <div class="project-desc">
     I also made <a href="https://neuralchemy.feedscription.com/">Neuralchemy</a>, an exploratory demo about turning model training into a card-table experiment. It is a small probe into what interactive ML education and playful model-building might feel like: buy cards, upgrade compute, build a model from your hand, and let the browser really train it before the server checks the result. Good runs earn research points; odd runs become very serious lab notes.
   </div>
@@ -68,17 +61,12 @@ layout: default
 
 <hr class="section-rule">
 
-<section class="content-section reveal" data-delay="80">
+<section class="content-section">
 <h2 class="section-title">Publications</h2>
 <p class="section-subtitle">(* denotes equal contributions)</p>
 
-<div class="pub-tabs-bar">
-  <button class="pub-tab-btn active" data-tab="tec">Text Error Correction</button>
-  <button class="pub-tab-btn" data-tab="llm">LLM Evaluation &amp; Application</button>
-  <button class="pub-tab-btn" data-tab="parse">Parsing &amp; Tagging</button>
-</div>
-
-<div class="pub-panel pub-panel--tec active" data-panel="tec">
+<div class="publication-group">
+<h3 class="publication-group-title">Text Error Correction</h3>
 <ul class="pub-list">
 
 <li class="pub-year-mark">2025</li>
@@ -162,7 +150,8 @@ layout: default
 </ul>
 </div>
 
-<div class="pub-panel pub-panel--llm" data-panel="llm">
+<div class="publication-group">
+<h3 class="publication-group-title">LLM Evaluation &amp; Application</h3>
 <ul class="pub-list">
 
 <li class="pub-year-mark">2026</li>
@@ -193,7 +182,8 @@ layout: default
 </ul>
 </div>
 
-<div class="pub-panel pub-panel--parse" data-panel="parse">
+<div class="publication-group">
+<h3 class="publication-group-title">Parsing &amp; Tagging</h3>
 <ul class="pub-list">
 
 <li class="pub-year-mark">2022</li>
@@ -226,7 +216,7 @@ layout: default
 
 <li>
 <strong>A Coarse-to-Fine Labeling Framework for Joint Word Segmentation, POS Tagging, and Constituent Parsing</strong>
-<p><em>Yang Hou, <strong>Houquan Zhou</strong>, Zhenghua Li, Yu Zhang, Min Zhang, Zhefeng Wang, Baoxing Huai, Nicholas Jing Yuan</em></p>
+<p><em>Yang Hou, <strong>Houquan Zhou</strong>, Zhenghua Li, <a href="https://yzhang.site/">Yu Zhang</a>, Min Zhang, Zhefeng Wang, Baoxing Huai, Nicholas Jing Yuan</em></p>
 <p><strong class="pub-venue">CoNLL 2021</strong></p>
 <div class="pub-links">
 <a href="https://aclanthology.org/2021.conll-1.23/" class="pub-link pub-link--paper">paper</a>
@@ -240,7 +230,7 @@ layout: default
 
 <li>
 <strong>Fast and Accurate Neural CRF Constituency Parsing</strong>
-<p><em>Yu Zhang*, <strong>Houquan Zhou</strong>*, Zhenghua Li</em></p>
+<p><em><a href="https://yzhang.site/">Yu Zhang</a>*, <strong>Houquan Zhou</strong>*, Zhenghua Li</em></p>
 <p><strong class="pub-venue">IJCAI 2020</strong></p>
 <div class="pub-links">
 <a href="https://www.ijcai.org/Proceedings/2020/560/" class="pub-link pub-link--paper">paper</a>
@@ -253,8 +243,8 @@ layout: default
 
 <li>
 <strong>Is POS Tagging Necessary or Even Helpful for Neural Dependency Parsing?</strong>
-<p><em><strong>Houquan Zhou</strong>*, Yu Zhang*, Zhenghua Li, Min Zhang</em></p>
-<p><strong class="pub-venue">NLPCC 2020</strong> — <em style="color: var(--terracotta);">Best Paper Award</em></p>
+<p><em><strong>Houquan Zhou</strong>*, <a href="https://yzhang.site/">Yu Zhang</a>*, Zhenghua Li, Min Zhang</em></p>
+<p><strong class="pub-venue">NLPCC 2020</strong> — <em style="color: var(--accent);">Best Paper Award</em></p>
 <div class="pub-links">
 <a href="https://arxiv.org/abs/2003.03204" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://github.com/Jacob-Zhou/stack-parser" class="pub-link pub-link--code">code</a>
@@ -269,16 +259,16 @@ layout: default
 
 <hr class="section-rule">
 
-<section class="content-section reveal" data-delay="60">
+<section class="content-section">
 <h2 class="section-title">Competitions</h2>
 
 <ul class="competition-list">
 <li>
-<strong>🏆 First prize</strong> — <a href="https://datastudio.wps.cn/matchcenter/competition/1/introduction">Kingsoft Office 2024 Algorithm Challenge: Chinese Text Correction</a> (<em style="color: var(--terracotta);">Team leader</em>)
+<strong>First prize</strong> — <a href="https://datastudio.wps.cn/matchcenter/competition/1/introduction">Kingsoft Office 2024 Algorithm Challenge: Chinese Text Correction</a> (<em style="color: var(--accent);">Team leader</em>)
 <p>2024.11 · F0.5 score <strong>2.02 points</strong> above second place.</p>
 </li>
 <li>
-<strong>🏆 First prize</strong> — <a href="http://cips-cl.org/static/CCL2023/cclEval/taskResults/index.html#评测任务-7汉语学习者文本纠错cltc">CCL 2023</a> Task 7: Chinese Learner Text Correction (Track 1)
+<strong>First prize</strong> — <a href="http://cips-cl.org/static/CCL2023/cclEval/taskResults/index.html#评测任务-7汉语学习者文本纠错cltc">CCL 2023</a> Task 7: Chinese Learner Text Correction (Track 1)
 <p>2023.08</p>
 </li>
 </ul>
@@ -286,7 +276,7 @@ layout: default
 
 <hr class="section-rule">
 
-<section class="content-section reveal" data-delay="60">
+<section class="content-section">
 <h2 class="section-title">Education</h2>
 
 <ul class="education-list">
@@ -307,11 +297,11 @@ layout: default
 
 <hr class="section-rule">
 
-<section class="content-section reveal" data-delay="60">
+<section class="content-section">
 <h2 class="section-title">Experience</h2>
 
 <ul class="experience-list">
-<li class="bcard" data-initial="T">
+<li class="bcard">
   <div>
     <div class="bcard-company">Tongyi Lab</div>
     <div class="bcard-role">Research Intern</div>
@@ -319,7 +309,7 @@ layout: default
   </div>
   <div class="bcard-date">2024 – 2025</div>
 </li>
-<li class="bcard" data-initial="A">
+<li class="bcard">
   <div>
     <div class="bcard-company">Alibaba DAMO</div>
     <div class="bcard-role">Project Intern</div>

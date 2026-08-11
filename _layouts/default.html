@@ -86,20 +86,10 @@
     gtag('config', 'G-ZZZBEC0BC0');
   </script>
 
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css"
-    integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/pub.css' | relative_url }}">
 </head>
 
 <body>
-
-  <script src="{{ '/assets/js/vanilla-back-to-top.min.js' | relative_url }}"></script>
-  <script>addBackToTop({ backgroundColor: 'transparent', innerHTML: '↑ Top', textColor: '#7A6B5D' })</script>
 
   <nav class="site-nav">
     <div class="nav-inner">
@@ -119,10 +109,6 @@
     <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
   </footer>
 
-  <script src="{{ '/assets/js/github-stars.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/scroll-reveal.js' | relative_url }}"></script>
-  <script type="text/javascript" src="{{ '/assets/js/jquery.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/favicon-switcher.js' | relative_url }}"></script>
 
   <script>
@@ -133,35 +119,6 @@
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
-  </script>
-
-  <script>
-    window.addEventListener('scroll', function () {
-      var nav = document.querySelector('.site-nav');
-      if (window.scrollY > 10) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-  </script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var btns = document.querySelectorAll('.pub-tab-btn');
-      var panels = document.querySelectorAll('.pub-panel');
-      if (!btns.length) return;
-      btns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var tab = btn.getAttribute('data-tab');
-          btns.forEach(function (b) { b.classList.remove('active'); });
-          panels.forEach(function (p) { p.classList.remove('active'); });
-          btn.classList.add('active');
-          var target = document.querySelector('.pub-panel[data-panel="' + tab + '"]');
-          if (target) target.classList.add('active');
-        });
-      });
-    });
   </script>
 
   <p hidden>

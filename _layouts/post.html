@@ -24,21 +24,11 @@ layout: default
 <link rel="stylesheet" href="{{ '/assets/css/default.min.css' | relative_url }}">
 <script src="{{ '/assets/js/highlight.min.js' | relative_url }}"></script>
 
-<article class="post" style="padding-top: 5rem;">
-
-    {% if page.header-img %}
-    <header class="post-header post-header--hero"
-        style="background-image: url('{{ page.header-img | relative_url }}');">
-        <div class="post-header-overlay">
-            <h1 class="post-title">{{ page.title }}</h1>
-            <p class="post-meta">
-                <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
-                {% if page.author %} · {{ page.author }}{% endif %}
-            </p>
-        </div>
-    </header>
-    {% else %}
+<article class="post">
     <header class="post-header">
+        {% if page.header-img %}
+        <img class="post-cover" src="{{ page.header-img | relative_url }}" alt="">
+        {% endif %}
         <h1 class="post-title">{{ page.title }}</h1>
         <p class="post-meta">
             <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
@@ -52,7 +42,6 @@ layout: default
             {% endif %}
         </p>
     </header>
-    {% endif %}
 
     {% if page.hidden %}
     <div class="post-in-progress">This post is still in progress.</div>
@@ -82,47 +71,39 @@ layout: default
 </article>
 
 <style>
+    .post {
+        padding-top: 5.75rem;
+    }
+
     .post-header {
-        margin-bottom: 3rem;
-        padding-bottom: 1.5rem;
+        margin-bottom: 3.5rem;
+        padding-bottom: 2rem;
         border-bottom: 1px solid var(--rule);
     }
 
-    .post-header--hero {
-        background-size: cover;
-        background-position: center;
-        min-height: 250px;
-        border-radius: 3px;
-        overflow: hidden;
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-
-    .post-header-overlay {
-        padding: 3rem 2rem;
-        color: white;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-        background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.4) 100%);
-    }
-
-    .post-header-overlay .post-title {
-        color: white;
+    .post-cover {
+        display: block;
+        width: 100%;
+        max-height: 22rem;
+        margin-bottom: 2.25rem;
+        object-fit: cover;
+        filter: grayscale(1);
     }
 
     .post-title {
         font-family: var(--font-display);
-        font-size: 2.2rem;
-        font-weight: 600;
+        font-size: clamp(2rem, 7vw, 2.8rem);
+        font-weight: 500;
         color: var(--ink);
-        margin-bottom: 0.5rem;
-        line-height: 1.25;
-        letter-spacing: -0.01em;
+        margin: 0 0 0.65rem;
+        line-height: 1.18;
+        letter-spacing: -0.02em;
     }
 
     .post-meta {
         color: var(--text-light);
-        font-size: 0.88rem;
-        font-style: italic;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
         margin: 0;
     }
 
@@ -131,45 +112,35 @@ layout: default
     }
 
     .tag {
-        font-size: 0.82rem;
+        font-family: var(--font-body);
+        font-size: 0.72rem;
         color: var(--text-light);
         margin-right: 0.3rem;
     }
 
     .post-in-progress {
-        font-family: var(--font-display);
-        font-size: 1.1rem;
-        font-weight: 600;
-        text-align: center;
-        color: var(--terracotta);
-        padding: 1rem 1.5rem;
-        background: var(--bg-warm);
-        border: 2px dashed var(--rule);
-        border-radius: 3px;
-        margin: 1.5rem 0;
+        margin: 0 0 2rem;
+        padding: 0.8rem 1rem;
+        border-left: 1px solid var(--accent);
+        color: var(--text-light);
+        font-size: 0.8rem;
     }
 
     .post-content {
-        line-height: 1.82;
+        line-height: 1.78;
     }
 
     .post-content p,
     .post-content li {
         font-family: var(--font-body);
-        font-size: 1rem;
+        font-size: 0.96rem;
         color: var(--text);
-        text-align: justify;
-    }
-
-    .post-content>p {
-        text-indent: 2em;
     }
 
     .post-content code {
         font-size: 0.88em;
         background: var(--bg-warm);
-        padding: 0.1em 0.35em;
-        border-radius: 2px;
+        padding: 0.08em 0.28em;
     }
 
     .post-content pre code {
@@ -179,11 +150,8 @@ layout: default
 
     .post-content blockquote {
         margin: 1.5rem 0;
-        padding: 1rem 1.4rem;
-        background: var(--bg-warm);
-        border-left: 3px solid var(--terracotta);
-        border-radius: 0 2px 2px 0;
-        font-style: italic;
+        padding: 0.15rem 0 0.15rem 1.1rem;
+        border-left: 1px solid var(--accent);
     }
 
     .post-content blockquote>p {
@@ -193,13 +161,12 @@ layout: default
     }
 
     .post-content img {
-        border-radius: 2px;
-        margin: 1rem 0;
+        margin: 1.5rem 0;
     }
 
     .post-footer {
-        margin-top: 3rem;
-        padding-top: 2rem;
+        margin-top: 4rem;
+        padding-top: 1.5rem;
         border-top: 1px solid var(--rule);
     }
 
@@ -212,13 +179,8 @@ layout: default
     }
 
     .post-nav a {
-        color: var(--terracotta);
-        font-size: 0.9rem;
-        transition: color 0.25s;
-    }
-
-    .post-nav a:hover {
-        color: var(--terracotta-dim);
+        color: var(--text-light);
+        font-size: 0.78rem;
     }
 
     .back-to-list {
@@ -227,13 +189,7 @@ layout: default
 
     .back-to-list a {
         color: var(--text-light);
-        font-size: 0.85rem;
-        font-style: italic;
-        transition: color 0.25s;
-    }
-
-    .back-to-list a:hover {
-        color: var(--terracotta);
+        font-size: 0.76rem;
     }
 </style>
 

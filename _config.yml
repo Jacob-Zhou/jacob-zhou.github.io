@@ -36,3 +36,6 @@ exclude:
   - Gemfile.lock
   - README.md
   - LICENSE
+  - arxiv-daily.py
+  - citation.py
+  - tests
