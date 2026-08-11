@@ -15,7 +15,7 @@ layout: default
       <a href="https://zhangminsuda.github.io/cn_homepage/">Prof. Min Zhang</a>.
     </p>
     <p class="hero-bio">
-      My research focuses on text error correction — spelling correction, grammatical error correction — and the evaluation and application of large language models. Previously I worked on constituency parsing, dependency parsing, and part-of-speech tagging.
+      My current focus is on how AI can enable new forms of gameplay, particularly AI-native games. This direction builds on my broader research in language intelligence, including text error correction—spelling and grammatical error correction—and the evaluation and application of large language models. Earlier, I worked on constituency parsing, dependency parsing, and part-of-speech tagging.
     </p>
     <nav class="profile-links" aria-label="Academic profiles">
       <a href="https://scholar.google.com/citations?user=hJWovmAAAAAJ">Google Scholar</a>
@@ -43,9 +43,9 @@ layout: default
 </div>
 
 <div class="project-card">
-  <div class="project-title">A Platform for LLM-powered Applications</div>
+  <div class="project-title"><a href="https://wortou.ai">Wortou.AI</a> — Exploring AI-Native Games</div>
   <div class="project-desc">
-    Building on 🫑青椒模拟器, we developed a dedicated <a href="https://platform.feedscription.com">platform</a> for LLM-powered applications with two new simulator demos.
+    I co-founded Wortou.AI, a cross-disciplinary team spanning research, engineering, and design. Together, we explore how large language models can become native game mechanics—not merely content generators. Our projects span AI-driven narratives, multi-agent competition, and playable AI algorithms, supported by the platforms and open-source tools we build along the way.
   </div>
 </div>
 
@@ -64,6 +64,25 @@ layout: default
 <section class="content-section">
 <h2 class="section-title">Publications</h2>
 <p class="section-subtitle">(* denotes equal contributions)</p>
+
+<div class="publication-group">
+<h3 class="publication-group-title">LLM Application</h3>
+<ul class="pub-list">
+
+<li class="pub-year-mark">2026</li>
+
+<li>
+<strong>WebWeaver: Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research</strong>
+<p><em>Zijian Li, Xin Guan, Bo Zhang, Shen Huang, <strong>Houquan Zhou</strong>, Shaopeng Lai, Ming Yan, Yong Jiang, Pengjun Xie, Fei Huang, Jun Zhang, Jingren Zhou</em></p>
+<p><strong class="pub-venue">ICLR 2026</strong></p>
+<div class="pub-links">
+<a href="https://arxiv.org/abs/2509.13312" class="pub-link pub-link--arxiv">arXiv</a>
+{% include citation.html id="b86524240ae145da8f6de030dad4c2ff823d6b2f" %}
+</div>
+</li>
+
+</ul>
+</div>
 
 <div class="publication-group">
 <h3 class="publication-group-title">Text Error Correction</h3>
@@ -151,20 +170,8 @@ layout: default
 </div>
 
 <div class="publication-group">
-<h3 class="publication-group-title">LLM Evaluation &amp; Application</h3>
+<h3 class="publication-group-title">Parsing &amp; Tagging</h3>
 <ul class="pub-list">
-
-<li class="pub-year-mark">2026</li>
-
-<li>
-<strong>WebWeaver: Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research</strong>
-<p><em>Zijian Li, Xin Guan, Bo Zhang, Shen Huang, <strong>Houquan Zhou</strong>, Shaopeng Lai, Ming Yan, Yong Jiang, Pengjun Xie, Fei Huang, Jun Zhang, Jingren Zhou</em></p>
-<p><strong class="pub-venue">ICLR 2026</strong></p>
-<div class="pub-links">
-<a href="https://arxiv.org/abs/2509.13312" class="pub-link pub-link--arxiv">arXiv</a>
-{% include citation.html id="b86524240ae145da8f6de030dad4c2ff823d6b2f" %}
-</div>
-</li>
 
 <li class="pub-year-mark">2023</li>
 
@@ -178,13 +185,6 @@ layout: default
 {% include citation.html id="ad0726511073f65f0864a10bcdf2b56cc8931a98" %}
 </div>
 </li>
-
-</ul>
-</div>
-
-<div class="publication-group">
-<h3 class="publication-group-title">Parsing &amp; Tagging</h3>
-<ul class="pub-list">
 
 <li class="pub-year-mark">2022</li>
 
