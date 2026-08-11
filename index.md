@@ -91,7 +91,7 @@ layout: default
 <a href="https://aclanthology.org/2025.acl-long.678" class="pub-link pub-link--paper">paper</a>
 <a href="https://arxiv.org/abs/2502.15266" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://github.com/Jacob-Zhou/simple-csc/tree/v2.0.0" class="pub-link pub-link--code">code</a>
-<a href="https://www.semanticscholar.org/paper/9a6479bdd7605029d3972dea4c64a2e914f2755a" class="pub-link pub-link--cite">cited <span class="cite-count">1</span></a>
+{% include citation.html id="9a6479bdd7605029d3972dea4c64a2e914f2755a" %}
 </div>
 </li>
 
@@ -103,7 +103,7 @@ layout: default
 <a href="https://aclanthology.org/2025.acl-long.1372" class="pub-link pub-link--paper">paper</a>
 <a href="https://arxiv.org/abs/2506.06887" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://github.com/zhqiao-nlp/MSLLM" class="pub-link pub-link--code">code</a>
-<a href="https://www.semanticscholar.org/paper/87a2958bd75a72e61b5b2549a63a222d7ca2a1ec" class="pub-link pub-link--cite">cited <span class="cite-count">3</span></a>
+{% include citation.html id="87a2958bd75a72e61b5b2549a63a222d7ca2a1ec" %}
 </div>
 </li>
 
@@ -115,7 +115,7 @@ layout: default
 <a href="https://aclanthology.org/2025.acl-long.1373" class="pub-link pub-link--paper">paper</a>
 <a href="https://arxiv.org/abs/2412.12863" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://github.com/zhqiao-nlp/DISC" class="pub-link pub-link--code">code</a>
-<a href="https://www.semanticscholar.org/paper/ce38ac3362e9509e75209db83cc67546a302c7cc" class="pub-link pub-link--cite">cited <span class="cite-count">0</span></a>
+{% include citation.html id="ce38ac3362e9509e75209db83cc67546a302c7cc" %}
 </div>
 </li>
 
@@ -130,7 +130,7 @@ layout: default
 <a href="https://arxiv.org/abs/2410.04027" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://aclanthology.org/2024.emnlp-main.966.bib" class="pub-link pub-link--bib">bib</a>
 <a href="https://github.com/Jacob-Zhou/simple-csc/tree/v1.0.0" class="pub-link pub-link--code">code</a>
-<a href="https://www.semanticscholar.org/paper/619346184ae157741fc1c4ac74447ab2455cd6f3" class="pub-link pub-link--cite">cited <span class="cite-count">6</span></a>
+{% include citation.html id="619346184ae157741fc1c4ac74447ab2455cd6f3" %}
 </div>
 </li>
 
@@ -144,7 +144,7 @@ layout: default
 <a href="https://aclanthology.org/2023.findings-emnlp.495/" class="pub-link pub-link--paper">paper</a>
 <a href="https://arxiv.org/abs/2310.14534" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://github.com/Jacob-Zhou/gecdi" class="pub-link pub-link--code">code</a>
-<a href="https://www.semanticscholar.org/paper/4711f26c0295fed15161b6145800b3df1ab9c0f6" class="pub-link pub-link--cite">cited <span class="cite-count">13</span></a>
+{% include citation.html id="4711f26c0295fed15161b6145800b3df1ab9c0f6" %}
 </div>
 </li>
 
@@ -155,7 +155,7 @@ layout: default
 <div class="pub-links">
 <a href="https://aclanthology.org/2023.ccl-3.25/" class="pub-link pub-link--paper">paper</a>
 <a href="https://aclanthology.org/2023.ccl-3.25.bib" class="pub-link pub-link--bib">bib</a>
-<a href="https://www.semanticscholar.org/paper/22895ce93d629a7f3129bcd228ee3968721c071f" class="pub-link pub-link--cite">cited <span class="cite-count">1</span></a>
+{% include citation.html id="22895ce93d629a7f3129bcd228ee3968721c071f" %}
 </div>
 </li>
 
@@ -173,6 +173,7 @@ layout: default
 <p><strong class="pub-venue">ICLR 2026</strong></p>
 <div class="pub-links">
 <a href="https://arxiv.org/abs/2509.13312" class="pub-link pub-link--arxiv">arXiv</a>
+{% include citation.html id="b86524240ae145da8f6de030dad4c2ff823d6b2f" %}
 </div>
 </li>
 
@@ -185,6 +186,7 @@ layout: default
 <div class="pub-links">
 <a href="https://arxiv.org/abs/2311.08287" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://github.com/Jacob-Zhou/SynEval" class="pub-link pub-link--code">code</a>
+{% include citation.html id="ad0726511073f65f0864a10bcdf2b56cc8931a98" %}
 </div>
 </li>
 
@@ -205,7 +207,7 @@ layout: default
 <a href="https://arxiv.org/abs/2203.10315" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://aclanthology.org/2022.findings-acl.259.bib" class="pub-link pub-link--bib">bib</a>
 <a href="https://github.com/Jacob-Zhou/FeatureCRFAE" class="pub-link pub-link--code">code</a>
-<a href="https://www.semanticscholar.org/paper/40e8fcca89dca2a426f23ed8596b259667ec177a" class="pub-link pub-link--cite">cited <span class="cite-count">4</span></a>
+{% include citation.html id="40e8fcca89dca2a426f23ed8596b259667ec177a" %}
 </div>
 </li>
 
@@ -218,7 +220,7 @@ layout: default
 <a href="https://arxiv.org/abs/2106.00334" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://aclanthology.org/2021.acl-long.452.bib" class="pub-link pub-link--bib">bib</a>
 <a href="https://github.com/SUDA-LA/wist" class="pub-link pub-link--code">code</a>
-<a href="https://www.semanticscholar.org/paper/38d052313e6cce936926f2168987b9edeb85a496" class="pub-link pub-link--cite">cited <span class="cite-count">3</span></a>
+{% include citation.html id="38d052313e6cce936926f2168987b9edeb85a496" %}
 </div>
 </li>
 
@@ -230,7 +232,7 @@ layout: default
 <a href="https://aclanthology.org/2021.conll-1.23/" class="pub-link pub-link--paper">paper</a>
 <a href="https://aclanthology.org/2021.conll-1.23.bib" class="pub-link pub-link--bib">bib</a>
 <a href="https://github.com/ironsword666/jointparser" class="pub-link pub-link--code">code</a>
-<a href="https://www.semanticscholar.org/paper/7a78d8adc8c10a66e4c04bc28351f4fd865fd409" class="pub-link pub-link--cite">cited <span class="cite-count">5</span></a>
+{% include citation.html id="7a78d8adc8c10a66e4c04bc28351f4fd865fd409" %}
 </div>
 </li>
 
@@ -245,7 +247,7 @@ layout: default
 <a href="https://arxiv.org/abs/2008.03736" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://www.ijcai.org/proceedings/2020/bibtex/560" class="pub-link pub-link--bib">bib</a>
 <a href="https://github.com/yzhangcs/crfpar" class="pub-link pub-link--code">code</a>
-<a href="https://www.semanticscholar.org/paper/46fe2ae301aeb75b25ebca0bdc26132ca46f5101" class="pub-link pub-link--cite">cited <span class="cite-count">98</span></a>
+{% include citation.html id="46fe2ae301aeb75b25ebca0bdc26132ca46f5101" %}
 </div>
 </li>
 
@@ -256,7 +258,7 @@ layout: default
 <div class="pub-links">
 <a href="https://arxiv.org/abs/2003.03204" class="pub-link pub-link--arxiv">arXiv</a>
 <a href="https://github.com/Jacob-Zhou/stack-parser" class="pub-link pub-link--code">code</a>
-<a href="https://www.semanticscholar.org/paper/3bb577d87ae8e0d45a223f65db24ab479fbda174" class="pub-link pub-link--cite">cited <span class="cite-count">27</span></a>
+{% include citation.html id="3bb577d87ae8e0d45a223f65db24ab479fbda174" %}
 </div>
 </li>
 
