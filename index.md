@@ -66,6 +66,25 @@ layout: default
 <p class="section-subtitle">(* denotes equal contributions)</p>
 
 <div class="publication-group">
+<h3 class="publication-group-title">LLM Application</h3>
+<ul class="pub-list">
+
+<li class="pub-year-mark">2026</li>
+
+<li>
+<strong>WebWeaver: Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research</strong>
+<p><em>Zijian Li, Xin Guan, Bo Zhang, Shen Huang, <strong>Houquan Zhou</strong>, Shaopeng Lai, Ming Yan, Yong Jiang, Pengjun Xie, Fei Huang, Jun Zhang, Jingren Zhou</em></p>
+<p><strong class="pub-venue">ICLR 2026</strong></p>
+<div class="pub-links">
+<a href="https://arxiv.org/abs/2509.13312" class="pub-link pub-link--arxiv">arXiv</a>
+{% include citation.html id="b86524240ae145da8f6de030dad4c2ff823d6b2f" %}
+</div>
+</li>
+
+</ul>
+</div>
+
+<div class="publication-group">
 <h3 class="publication-group-title">Text Error Correction</h3>
 <ul class="pub-list">
 
@@ -151,20 +170,8 @@ layout: default
 </div>
 
 <div class="publication-group">
-<h3 class="publication-group-title">LLM Evaluation &amp; Application</h3>
+<h3 class="publication-group-title">Parsing &amp; Tagging</h3>
 <ul class="pub-list">
-
-<li class="pub-year-mark">2026</li>
-
-<li>
-<strong>WebWeaver: Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research</strong>
-<p><em>Zijian Li, Xin Guan, Bo Zhang, Shen Huang, <strong>Houquan Zhou</strong>, Shaopeng Lai, Ming Yan, Yong Jiang, Pengjun Xie, Fei Huang, Jun Zhang, Jingren Zhou</em></p>
-<p><strong class="pub-venue">ICLR 2026</strong></p>
-<div class="pub-links">
-<a href="https://arxiv.org/abs/2509.13312" class="pub-link pub-link--arxiv">arXiv</a>
-{% include citation.html id="b86524240ae145da8f6de030dad4c2ff823d6b2f" %}
-</div>
-</li>
 
 <li class="pub-year-mark">2023</li>
 
@@ -178,13 +185,6 @@ layout: default
 {% include citation.html id="ad0726511073f65f0864a10bcdf2b56cc8931a98" %}
 </div>
 </li>
-
-</ul>
-</div>
-
-<div class="publication-group">
-<h3 class="publication-group-title">Parsing &amp; Tagging</h3>
-<ul class="pub-list">
 
 <li class="pub-year-mark">2022</li>
 
