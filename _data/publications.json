@@ -1,0 +1,292 @@
+[
+  {
+    "category": "LLM Application",
+    "year": 2026,
+    "title": "WebWeaver: Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research",
+    "authors": [
+      {"name": "Zijian Li"},
+      {"name": "Xin Guan"},
+      {"name": "Bo Zhang"},
+      {"name": "Shen Huang"},
+      {"name": "Houquan Zhou", "owner": true},
+      {"name": "Shaopeng Lai"},
+      {"name": "Ming Yan"},
+      {"name": "Yong Jiang"},
+      {"name": "Pengjun Xie"},
+      {"name": "Fei Huang"},
+      {"name": "Jun Zhang"},
+      {"name": "Jingren Zhou"}
+    ],
+    "venue": "ICLR 2026",
+    "links": [
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2509.13312", "kind": "arxiv"}
+    ],
+    "arxiv_id": "2509.13312",
+    "semantic_scholar_id": "b86524240ae145da8f6de030dad4c2ff823d6b2f"
+  },
+  {
+    "category": "Text Error Correction",
+    "year": 2025,
+    "title": "A Training-free LLM-based Approach to General Chinese Character Error Correction",
+    "authors": [
+      {"name": "Houquan Zhou", "owner": true},
+      {"name": "Bo Zhang"},
+      {"name": "Zhenghua Li"},
+      {"name": "Ming Yan"},
+      {"name": "Min Zhang"}
+    ],
+    "venue": "ACL 2025",
+    "links": [
+      {"label": "paper", "url": "https://aclanthology.org/2025.acl-long.678", "kind": "paper"},
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2502.15266", "kind": "arxiv"},
+      {"label": "code", "url": "https://github.com/Jacob-Zhou/simple-csc/tree/v2.0.0", "kind": "code"}
+    ],
+    "acl_anthology_id": "2025.acl-long.678",
+    "arxiv_id": "2502.15266",
+    "semantic_scholar_id": "9a6479bdd7605029d3972dea4c64a2e914f2755a"
+  },
+  {
+    "category": "Text Error Correction",
+    "year": 2025,
+    "title": "Mixture of Small and Large Models for Chinese Spelling Check",
+    "authors": [
+      {"name": "Ziheng Qiao"},
+      {"name": "Houquan Zhou", "owner": true},
+      {"name": "Zhenghua Li"}
+    ],
+    "venue": "ACL 2025",
+    "links": [
+      {"label": "paper", "url": "https://aclanthology.org/2025.acl-long.1372", "kind": "paper"},
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2506.06887", "kind": "arxiv"},
+      {"label": "code", "url": "https://github.com/zhqiao-nlp/MSLLM", "kind": "code"}
+    ],
+    "acl_anthology_id": "2025.acl-long.1372",
+    "arxiv_id": "2506.06887",
+    "semantic_scholar_id": "87a2958bd75a72e61b5b2549a63a222d7ca2a1ec"
+  },
+  {
+    "category": "Text Error Correction",
+    "year": 2025,
+    "title": "DISC: Plug-and-Play Decoding Intervention with Similarity of Characters for Chinese Spelling Check",
+    "authors": [
+      {"name": "Ziheng Qiao"},
+      {"name": "Houquan Zhou", "owner": true},
+      {"name": "Yumeng Liu"},
+      {"name": "Zhenghua Li"},
+      {"name": "Min Zhang"},
+      {"name": "Bo Zhang"},
+      {"name": "Chen Li"},
+      {"name": "Ji Zhang"},
+      {"name": "Fei Huang"}
+    ],
+    "venue": "ACL 2025",
+    "links": [
+      {"label": "paper", "url": "https://aclanthology.org/2025.acl-long.1373", "kind": "paper"},
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2412.12863", "kind": "arxiv"},
+      {"label": "code", "url": "https://github.com/zhqiao-nlp/DISC", "kind": "code"}
+    ],
+    "acl_anthology_id": "2025.acl-long.1373",
+    "arxiv_id": "2412.12863",
+    "semantic_scholar_id": "ce38ac3362e9509e75209db83cc67546a302c7cc"
+  },
+  {
+    "category": "Text Error Correction",
+    "year": 2024,
+    "title": "A Simple yet Effective Training-free Prompt-free Approach to Chinese Spelling Correction Based on Large Language Models",
+    "authors": [
+      {"name": "Houquan Zhou", "owner": true},
+      {"name": "Zhenghua Li"},
+      {"name": "Bo Zhang"},
+      {"name": "Chen Li"},
+      {"name": "Shaopeng Lai"},
+      {"name": "Ji Zhang"},
+      {"name": "Fei Huang"},
+      {"name": "Min Zhang"}
+    ],
+    "venue": "EMNLP 2024",
+    "links": [
+      {"label": "paper", "url": "https://aclanthology.org/2024.emnlp-main.966", "kind": "paper"},
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2410.04027", "kind": "arxiv"},
+      {"label": "bib", "url": "https://aclanthology.org/2024.emnlp-main.966.bib", "kind": "bib"},
+      {"label": "code", "url": "https://github.com/Jacob-Zhou/simple-csc/tree/v1.0.0", "kind": "code"}
+    ],
+    "acl_anthology_id": "2024.emnlp-main.966",
+    "arxiv_id": "2410.04027",
+    "semantic_scholar_id": "619346184ae157741fc1c4ac74447ab2455cd6f3"
+  },
+  {
+    "category": "Text Error Correction",
+    "year": 2023,
+    "title": "Improving Seq2Seq Grammatical Error Correction via Decoding Interventions",
+    "authors": [
+      {"name": "Houquan Zhou", "owner": true},
+      {"name": "Yumeng Liu"},
+      {"name": "Zhenghua Li"},
+      {"name": "Min Zhang"},
+      {"name": "Bo Zhang"},
+      {"name": "Chen Li"},
+      {"name": "Ji Zhang"},
+      {"name": "Fei Huang"}
+    ],
+    "venue": "EMNLP (Findings) 2023",
+    "links": [
+      {"label": "paper", "url": "https://aclanthology.org/2023.findings-emnlp.495/", "kind": "paper"},
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2310.14534", "kind": "arxiv"},
+      {"label": "code", "url": "https://github.com/Jacob-Zhou/gecdi", "kind": "code"}
+    ],
+    "acl_anthology_id": "2023.findings-emnlp.495",
+    "arxiv_id": "2310.14534",
+    "semantic_scholar_id": "4711f26c0295fed15161b6145800b3df1ab9c0f6"
+  },
+  {
+    "category": "Text Error Correction",
+    "year": 2023,
+    "title": "CCL23-Eval Task 7 Track 1 System Report: Suda & Alibaba Team Text Error Correction System",
+    "authors": [
+      {"name": "Haochen Jiang"},
+      {"name": "Yumeng Liu"},
+      {"name": "Houquan Zhou", "owner": true},
+      {"name": "Ziheng Qiao"},
+      {"name": "Bo Zhang"},
+      {"name": "Chen Li"},
+      {"name": "Zhenghua Li"},
+      {"name": "Min Zhang"}
+    ],
+    "venue": "CCL 2023",
+    "links": [
+      {"label": "paper", "url": "https://aclanthology.org/2023.ccl-3.25/", "kind": "paper"},
+      {"label": "bib", "url": "https://aclanthology.org/2023.ccl-3.25.bib", "kind": "bib"}
+    ],
+    "acl_anthology_id": "2023.ccl-3.25",
+    "semantic_scholar_id": "22895ce93d629a7f3129bcd228ee3968721c071f"
+  },
+  {
+    "category": "Parsing & Tagging",
+    "year": 2023,
+    "title": "How Well Do Large Language Models Understand Syntax? An Evaluation by Asking Natural Language Questions",
+    "authors": [
+      {"name": "Houquan Zhou", "owner": true},
+      {"name": "Yang Hou"},
+      {"name": "Zhenghua Li"},
+      {"name": "Xuebin Wang"},
+      {"name": "Zhefeng Wang"},
+      {"name": "Xinyu Duan"},
+      {"name": "Min Zhang"}
+    ],
+    "venue": "arXiv 2023",
+    "note": "preprint",
+    "links": [
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2311.08287", "kind": "arxiv"},
+      {"label": "code", "url": "https://github.com/Jacob-Zhou/SynEval", "kind": "code"}
+    ],
+    "arxiv_id": "2311.08287",
+    "semantic_scholar_id": "ad0726511073f65f0864a10bcdf2b56cc8931a98"
+  },
+  {
+    "category": "Parsing & Tagging",
+    "year": 2022,
+    "title": "Bridging Pre-trained Language Models and Hand-crafted Features for Unsupervised POS Tagging",
+    "authors": [
+      {"name": "Houquan Zhou", "owner": true, "equal_contribution": true},
+      {"name": "Yang Li", "equal_contribution": true},
+      {"name": "Zhenghua Li"},
+      {"name": "Min Zhang"}
+    ],
+    "venue": "ACL (Findings) 2022",
+    "links": [
+      {"label": "paper", "url": "https://aclanthology.org/2022.findings-acl.259/", "kind": "paper"},
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2203.10315", "kind": "arxiv"},
+      {"label": "bib", "url": "https://aclanthology.org/2022.findings-acl.259.bib", "kind": "bib"},
+      {"label": "code", "url": "https://github.com/Jacob-Zhou/FeatureCRFAE", "kind": "code"}
+    ],
+    "acl_anthology_id": "2022.findings-acl.259",
+    "arxiv_id": "2203.10315",
+    "semantic_scholar_id": "40e8fcca89dca2a426f23ed8596b259667ec177a"
+  },
+  {
+    "category": "Parsing & Tagging",
+    "year": 2021,
+    "title": "An In-depth Study on Internal Structure of Chinese Words",
+    "authors": [
+      {"name": "Chen Gong"},
+      {"name": "Saihao Huang"},
+      {"name": "Houquan Zhou", "owner": true},
+      {"name": "Zhenghua Li"},
+      {"name": "Min Zhang"},
+      {"name": "Zhefeng Wang"},
+      {"name": "Baoxing Huai"},
+      {"name": "Nicholas Jing Yuan"}
+    ],
+    "venue": "ACL-IJCNLP 2021",
+    "links": [
+      {"label": "paper", "url": "https://aclanthology.org/2021.acl-long.452/", "kind": "paper"},
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2106.00334", "kind": "arxiv"},
+      {"label": "bib", "url": "https://aclanthology.org/2021.acl-long.452.bib", "kind": "bib"},
+      {"label": "code", "url": "https://github.com/SUDA-LA/wist", "kind": "code"}
+    ],
+    "acl_anthology_id": "2021.acl-long.452",
+    "arxiv_id": "2106.00334",
+    "semantic_scholar_id": "38d052313e6cce936926f2168987b9edeb85a496"
+  },
+  {
+    "category": "Parsing & Tagging",
+    "year": 2021,
+    "title": "A Coarse-to-Fine Labeling Framework for Joint Word Segmentation, POS Tagging, and Constituent Parsing",
+    "authors": [
+      {"name": "Yang Hou"},
+      {"name": "Houquan Zhou", "owner": true},
+      {"name": "Zhenghua Li"},
+      {"name": "Yu Zhang", "url": "https://yzhang.site/"},
+      {"name": "Min Zhang"},
+      {"name": "Zhefeng Wang"},
+      {"name": "Baoxing Huai"},
+      {"name": "Nicholas Jing Yuan"}
+    ],
+    "venue": "CoNLL 2021",
+    "links": [
+      {"label": "paper", "url": "https://aclanthology.org/2021.conll-1.23/", "kind": "paper"},
+      {"label": "bib", "url": "https://aclanthology.org/2021.conll-1.23.bib", "kind": "bib"},
+      {"label": "code", "url": "https://github.com/ironsword666/jointparser", "kind": "code"}
+    ],
+    "acl_anthology_id": "2021.conll-1.23",
+    "semantic_scholar_id": "7a78d8adc8c10a66e4c04bc28351f4fd865fd409"
+  },
+  {
+    "category": "Parsing & Tagging",
+    "year": 2020,
+    "title": "Fast and Accurate Neural CRF Constituency Parsing",
+    "authors": [
+      {"name": "Yu Zhang", "url": "https://yzhang.site/", "equal_contribution": true},
+      {"name": "Houquan Zhou", "owner": true, "equal_contribution": true},
+      {"name": "Zhenghua Li"}
+    ],
+    "venue": "IJCAI 2020",
+    "links": [
+      {"label": "paper", "url": "https://www.ijcai.org/Proceedings/2020/560/", "kind": "paper"},
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2008.03736", "kind": "arxiv"},
+      {"label": "bib", "url": "https://www.ijcai.org/proceedings/2020/bibtex/560", "kind": "bib"},
+      {"label": "code", "url": "https://github.com/yzhangcs/crfpar", "kind": "code"}
+    ],
+    "arxiv_id": "2008.03736",
+    "semantic_scholar_id": "46fe2ae301aeb75b25ebca0bdc26132ca46f5101"
+  },
+  {
+    "category": "Parsing & Tagging",
+    "year": 2020,
+    "title": "Is POS Tagging Necessary or Even Helpful for Neural Dependency Parsing?",
+    "authors": [
+      {"name": "Houquan Zhou", "owner": true, "equal_contribution": true},
+      {"name": "Yu Zhang", "url": "https://yzhang.site/", "equal_contribution": true},
+      {"name": "Zhenghua Li"},
+      {"name": "Min Zhang"}
+    ],
+    "venue": "NLPCC 2020",
+    "award": "Best Paper Award",
+    "links": [
+      {"label": "arXiv", "url": "https://arxiv.org/abs/2003.03204", "kind": "arxiv"},
+      {"label": "code", "url": "https://github.com/Jacob-Zhou/stack-parser", "kind": "code"}
+    ],
+    "arxiv_id": "2003.03204",
+    "semantic_scholar_id": "3bb577d87ae8e0d45a223f65db24ab479fbda174"
+  }
+]

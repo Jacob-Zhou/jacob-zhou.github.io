@@ -21,6 +21,16 @@ class CitationUpdaterTests(unittest.TestCase):
 
         self.assertEqual(citation.extract_paper_ids(content), [PAPER_A, PAPER_B])
 
+    def test_extracts_ids_from_publication_data(self):
+        content = json.dumps(
+            [
+                {"semantic_scholar_id": PAPER_A},
+                {"semantic_scholar_id": PAPER_B},
+            ]
+        )
+
+        self.assertEqual(citation.extract_paper_ids(content), [PAPER_A, PAPER_B])
+
     def test_refresh_merges_fresh_counts_with_cached_fallbacks(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

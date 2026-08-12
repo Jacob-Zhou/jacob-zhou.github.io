@@ -1,0 +1,45 @@
+<section class="content-section">
+<h2 class="section-title">Publications</h2>
+<p class="section-subtitle">(* denotes equal contributions)</p>
+
+{% assign current_category = "" %}
+{% assign current_year = "" %}
+{% for publication in site.data.publications %}
+  {% if publication.category != current_category %}
+    {% unless forloop.first %}
+    </ul>
+    </div>
+    {% endunless %}
+    <div class="publication-group">
+    <h3 class="publication-group-title">{{ publication.category }}</h3>
+    <ul class="pub-list">
+    {% assign current_category = publication.category %}
+    {% assign current_year = "" %}
+  {% endif %}
+
+  {% if publication.year != current_year %}
+    <li class="pub-year-mark">{{ publication.year }}</li>
+    {% assign current_year = publication.year %}
+  {% endif %}
+
+  <li>
+    <strong>{{ publication.title }}</strong>
+    <p><em>{% for author in publication.authors %}{% if author.url %}<a href="{{ author.url }}">{% endif %}{% if author.owner %}<strong>{% endif %}{{ author.name }}{% if author.owner %}</strong>{% endif %}{% if author.url %}</a>{% endif %}{% if author.equal_contribution %}*{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</em></p>
+    <p>
+      <strong class="pub-venue">{{ publication.venue }}</strong>
+      {% if publication.note %} <em style="color: var(--text-light);">({{ publication.note }})</em>{% endif %}
+      {% if publication.award %} &mdash; <em style="color: var(--accent);">{{ publication.award }}</em>{% endif %}
+    </p>
+    <div class="pub-links">
+      {% for link in publication.links %}
+      <a href="{{ link.url }}" class="pub-link pub-link--{{ link.kind }}">{{ link.label }}</a>
+      {% endfor %}
+      {% include citation.html id=publication.semantic_scholar_id %}
+    </div>
+  </li>
+{% endfor %}
+{% if site.data.publications.size > 0 %}
+</ul>
+</div>
+{% endif %}
+</section>

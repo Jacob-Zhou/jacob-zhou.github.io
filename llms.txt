@@ -1,0 +1,63 @@
+---
+layout: null
+permalink: /llms.txt
+---
+# Houquan Zhou
+
+> Academic profile of Houquan Zhou, focusing on language intelligence, text error correction, large language model evaluation and applications, and AI-native games.
+
+Canonical site: {{ '/' | absolute_url }}
+
+## Profile
+
+- [Homepage]({{ '/' | absolute_url }}): Biography, projects, publications, education, and experience.
+- [Machine-readable profile]({{ '/data/profile.json' | absolute_url }}): Schema.org ProfilePage and Person data in JSON-LD.
+
+## Publications
+
+- [Publication data]({{ '/data/publications.json' | absolute_url }}): Structured publication records with authors, venues, identifiers, links, and Semantic Scholar IDs.
+- [Google Scholar]({{ site.google_scholar }}): Citation profile.
+- [Semantic Scholar]({{ site.semantic_scholar }}): Author and publication profile.
+- [DBLP](https://dblp.org/pid/221/7847-1.html): Computer science bibliography.
+- [ACL Anthology](https://aclanthology.org/people/h/houquan-zhou/): NLP publications.
+
+## Writing
+
+- [Blog index]({{ '/blogs/' | absolute_url }}): Human-readable list of published posts.
+- [JSON Feed]({{ '/feed.json' | absolute_url }}): JSON Feed 1.1 with post metadata and summaries.
+- [Atom Feed]({{ '/feed.xml' | absolute_url }}): Atom feed with complete post content.
+{% for post in site.posts %}{% unless post.published == false or post.hidden == true %}
+- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description | default: post.excerpt | strip_html | strip_newlines }}
+{% endunless %}{% endfor %}
+
+## Projects
+
+- [Machine-readable project knowledge base]({{ '/data/projects.json' | absolute_url }}): Detailed JSON covering Wortou.AI's design thesis, playable projects, infrastructure, open-source tools, reported metrics, interviews, and press coverage.
+- [Wortou.AI portfolio](https://wortou.ai/): Primary source for the team's current projects and media references.
+
+Houquan Zhou co-founded Wortou.AI, a cross-disciplinary research, engineering, and design team exploring AI-native games. The team's working thesis is that language models can become game mechanics rather than merely generate decorative content. Its exploration spans AI narrative, real-time AI dialogue, multi-agent competition, playable machine-learning algorithms, and LLM-first development tools.
+
+### Selected Projects
+
+- [Tenure-Track Simulator / 青椒模拟器](https://tenure-plus.feedscription.com/): Co-created by Houquan Zhou. A young-faculty career simulation in which an LLM responds to player decisions rather than following only a fixed story tree. It combines grants, papers, students, funding, wellbeing, social updates, and branching career choices. The creators reported a peak of 90,000 daily players and more than 2,000 concurrent players in a January 2026 interview.
+- [Neuralchemy / 炼经术](https://neuralchemy.feedscription.com/): Created and developed by Houquan Zhou. Cards represent neural-network components; players assemble an architecture, train a real visual model in the browser, and submit results for checking.
+- [Fate River / 逆命之河](https://fated.feedscription.com/): A historical counterfactual narrative adventure driven by player choices.
+- [Presiduck Simulator / 噗噗模拟器](https://presiduck.feedscription.com/): An AI-driven presidential world simulation starring a duck.
+- [Cyber Cricket - Poker / 大模型德扑](https://holdem.ququer.ai/): Six language models play no-limit Texas Hold'em while human viewers observe strategy and bluffing.
+- QuQuer Platform / 赛博蛐蛐儿: An upcoming auditable platform for external-agent games using a commit-reveal mechanism.
+- Just Pamper Him / 就“宠”他吧: An upcoming multiplayer voice game in which players manipulate the shared context of one AI NPC.
+
+### Infrastructure And Open Source
+
+- [FeedScription](https://platform.feedscription.com/): Shared AI application platform for model access, accounts, registration flows, and analytics.
+- [KAL AI Layer](https://github.com/Feed-Scription/kal): Open-source LLM-first game framework designed to help coding agents assemble text games quickly.
+- [Openovel](https://github.com/Feed-Scription/openovel): Open-source local-first interactive-fiction engine with a foreground narrative loop and a background agent maintaining state, memory, and files.
+
+### Interviews And Coverage
+
+- [游戏茶馆 creator interview](https://youxichaguan.com/archives/184254): Origin, design iteration, multi-model generation, latency, concurrency, token cost, reported player metrics, and plans for deeper AI participation in gameplay.
+- [科学网 creator profile](https://news.sciencenet.cn/htmlnews/2026/1/558423.shtm): The creators' backgrounds and the experiences that shaped Tenure-Track Simulator.
+- [405游局 / GCORES podcast](https://www.gcores.com/radios/210229): A 62-minute conversation with the creators about product decisions, technical tradeoffs, and lessons from building their first AI game.
+- [Nature News Feature](https://www.nature.com/articles/d41586-026-00224-5): English-language coverage connecting academic career anxiety with gameplay.
+- [机器之心 product feature](https://mp.weixin.qq.com/s/OyY2oX--Bb7TXS9uZkZrTw): Early product coverage of Tenure-Track Simulator.
+- [极昼工作室 reported feature](https://mp.weixin.qq.com/s/YG70lGn-gT1QeUD02tqV-w): A reported feature about playing and interpreting the simulator.

@@ -1,0 +1,5 @@
+---
+layout: null
+permalink: /data/projects.json
+---
+{{ site.data.projects | jsonify }}

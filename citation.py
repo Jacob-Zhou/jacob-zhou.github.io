@@ -2,11 +2,11 @@
 
 """Refresh citation counts used by the Jekyll site.
 
-The publication page declares Semantic Scholar paper IDs through the
-``citation.html`` include. This script looks up those exact papers with the
-Semantic Scholar batch API and stores the last known counts in Jekyll's data
-directory. A temporary API failure leaves the existing cache untouched so it
-does not prevent the rest of the site from being deployed.
+The publication data declares Semantic Scholar paper IDs used by the homepage
+and machine-readable endpoints. This script looks up those exact papers with
+the Semantic Scholar batch API and stores the last known counts in Jekyll's
+data directory. A temporary API failure leaves the existing cache untouched so
+it does not prevent the rest of the site from being deployed.
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ from typing import Iterable
 
 
 ROOT = Path(__file__).resolve().parent
-INDEX_PATH = ROOT / "index.md"
+INDEX_PATH = ROOT / "_data" / "publications.json"
 CACHE_PATH = ROOT / "_data" / "citations.json"
 API_URL = "https://api.semanticscholar.org/graph/v1/paper/batch?fields=citationCount"
 
@@ -33,6 +33,9 @@ INCLUDE_RE = re.compile(
 )
 SEMANTIC_SCHOLAR_URL_RE = re.compile(
     r"https://www\.semanticscholar\.org/paper/[^\"'\s<>]*?([0-9a-f]{40})(?=[/?#\"'\s<>]|$)"
+)
+PUBLICATION_DATA_RE = re.compile(
+    r'["\']semantic_scholar_id["\']\s*:\s*["\']([0-9a-f]{40})["\']'
 )
 
 MAX_BATCH_SIZE = 500
@@ -49,6 +52,7 @@ def extract_paper_ids(content: str) -> list[str]:
 
     ids = INCLUDE_RE.findall(content)
     ids.extend(SEMANTIC_SCHOLAR_URL_RE.findall(content))
+    ids.extend(PUBLICATION_DATA_RE.findall(content))
     return list(dict.fromkeys(paper_id.lower() for paper_id in ids))
 
 
