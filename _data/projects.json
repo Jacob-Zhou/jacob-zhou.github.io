@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0",
+  "canonical_url": "https://cv.hqzhou.com/data/projects.json",
+  "subject": {
+    "id": "https://cv.hqzhou.com/#person",
+    "name": "Houquan Zhou",
+    "relationship_to_organization": "Co-founder of Wortou.AI"
+  },
+  "organization": {
+    "name": "Wortou.AI",
+    "alternate_name": "青椒模拟器团队",
+    "url": "https://wortou.ai/",
+    "description": "A cross-disciplinary AI game team spanning research, engineering, and design.",
+    "thesis": "Large language models can serve as native game mechanics rather than only as content generators.",
+    "working_principles": [
+      "Build every demo end to end until people outside the team can play it.",
+      "Judge an AI game by whether its mechanics are interesting and its world remains coherent.",
+      "Turn reusable infrastructure and testing methods into open-source tools when possible."
+    ],
+    "focus_areas": [
+      "AI-driven narrative",
+      "Real-time AI dialogue",
+      "Multi-agent competition",
+      "Playable AI algorithms",
+      "LLM-first game tooling"
+    ],
+    "github": "https://github.com/Feed-Scription"
+  },
+  "projects": [
+    {
+      "id": "tenure-track-simulator",
+      "name": "Tenure-Track Simulator",
+      "name_zh": "青椒模拟器",
+      "category": "AI narrative simulation game",
+      "status": "live",
+      "url": "https://tenure-plus.feedscription.com/",
+      "individual_role": "Co-creator",
+      "summary": "A career simulation in which the player tries to survive and advance as a young university faculty member. The LLM responds to player decisions instead of merely selecting from a fixed story tree.",
+      "core_mechanics": [
+        "LLM-generated identity, events, student profiles, social updates, and character text",
+        "Academic career progression involving grants, papers, students, funding, and wellbeing",
+        "Player choices influence later events and possible life paths"
+      ],
+      "engineering_context": [
+        "The early system mixed multiple models, assigning different content-generation tasks according to quality, latency, and cost.",
+        "The project exposed practical AI-game constraints including inference latency, concurrency, token cost, analytics, and long-term state consistency."
+      ],
+      "reported_metrics": {
+        "peak_daily_players": 90000,
+        "peak_concurrent_players": 2000,
+        "source": "https://youxichaguan.com/archives/184254",
+        "qualification": "Metrics reported by the creators in a January 2026 interview."
+      }
+    },
+    {
+      "id": "fate-river",
+      "name": "Fate River",
+      "name_zh": "逆命之河",
+      "category": "AI narrative adventure",
+      "status": "live",
+      "url": "https://fated.feedscription.com/",
+      "relationship": "Wortou.AI team project",
+      "summary": "A historical counterfactual adventure in which players inhabit historical figures and explore how different choices might alter their lives."
+    },
+    {
+      "id": "presiduck-simulator",
+      "name": "Presiduck Simulator",
+      "name_zh": "噗噗模拟器",
+      "category": "AI-driven world simulation",
+      "status": "live",
+      "url": "https://presiduck.feedscription.com/",
+      "relationship": "Wortou.AI team project",
+      "summary": "A presidential simulation starring a duck, with decisions, public opinion, and unexpected events generated inside an AI-driven world."
+    },
+    {
+      "id": "just-pamper-him",
+      "name": "Just Pamper Him",
+      "name_zh": "就‘宠’他吧",
+      "category": "Multiplayer voice game with an AI NPC",
+      "status": "upcoming",
+      "relationship": "Wortou.AI team project",
+      "summary": "Players take turns speaking with the same AI NPC and try to induce it to say their assigned keywords while contaminating the shared conversational context for opponents."
+    },
+    {
+      "id": "cyber-cricket-poker",
+      "name": "Cyber Cricket - Poker",
+      "name_zh": "大模型德扑",
+      "category": "Multi-agent spectator game",
+      "status": "live",
+      "url": "https://holdem.ququer.ai/",
+      "relationship": "Wortou.AI team project",
+      "summary": "Six language models play no-limit Texas Hold'em at one table while human viewers observe their decisions, competition, and bluffing behavior."
+    },
+    {
+      "id": "ququer-platform",
+      "name": "QuQuer Platform",
+      "name_zh": "赛博蛐蛐儿",
+      "category": "Auditable external-agent competition platform",
+      "status": "upcoming",
+      "relationship": "Wortou.AI team project",
+      "summary": "A platform for bringing external agents into fair games, using a commit-reveal mechanism to reduce cheating and make competition auditable."
+    },
+    {
+      "id": "neuralchemy",
+      "name": "Neuralchemy",
+      "name_zh": "炼经术",
+      "category": "Playable machine-learning education",
+      "status": "live",
+      "url": "https://neuralchemy.feedscription.com/",
+      "individual_role": "Creator and developer",
+      "summary": "A card-table experiment in which cards represent neural-network components and the browser trains a real visual model assembled from the player's hand.",
+      "core_mechanics": [
+        "Buy model-component cards and upgrade compute",
+        "Assemble a network architecture from the player's hand",
+        "Train a real model in the browser and submit the result for server-side checking",
+        "Earn research points and generate lab notes from unusual runs"
+      ]
+    }
+  ],
+  "infrastructure_and_tools": [
+    {
+      "name": "FeedScription",
+      "type": "AI application platform",
+      "url": "https://platform.feedscription.com/",
+      "summary": "The team's shared platform for AI capabilities, accounts, registration flows, and analytics across playable demos."
+    },
+    {
+      "name": "KAL AI Layer",
+      "type": "Open-source LLM-first game framework",
+      "url": "https://github.com/Feed-Scription/kal",
+      "summary": "Reusable game components intended to help coding agents assemble complete text games quickly."
+    },
+    {
+      "name": "Openovel",
+      "type": "Open-source AI interactive-fiction engine",
+      "url": "https://github.com/Feed-Scription/openovel",
+      "summary": "A local-first dual-loop narrative system: a foreground loop advances the story while a background agent maintains state, memory, and files."
+    },
+    {
+      "name": "Fate-River Autotest",
+      "type": "Internal AI-player regression testing",
+      "summary": "An automated test system in which an LLM plays a complete narrative run while the team tracks memory and strategy behavior."
+    }
+  ],
+  "press_and_interviews": [
+    {
+      "publisher": "机器之心",
+      "date": "2025-12-20",
+      "type": "product feature",
+      "title": "玩到崩溃，《青椒模拟器》游戏爆火，我在AI世界一路升级做院士",
+      "url": "https://mp.weixin.qq.com/s/OyY2oX--Bb7TXS9uZkZrTw",
+      "language": "zh-CN"
+    },
+    {
+      "publisher": "游戏茶馆",
+      "date": "2026-01-07",
+      "type": "creator interview",
+      "title": "专访：DAU达9万，2000人同时在线，两个博士生的AI游戏，凭什么击中玩家？",
+      "url": "https://youxichaguan.com/archives/184254",
+      "language": "zh-CN",
+      "topics": [
+        "Origin and iteration of Tenure-Track Simulator",
+        "Multi-model generation architecture",
+        "Latency, concurrency, and token cost",
+        "AI-native game design and future directions"
+      ]
+    },
+    {
+      "publisher": "科学网",
+      "date": "2026-01-08",
+      "type": "creator profile",
+      "title": "三本院校出身，逆袭拿下诺奖？两位95后博士生写了部‘神人游戏’",
+      "url": "https://news.sciencenet.cn/htmlnews/2026/1/558423.shtm",
+      "language": "zh-CN"
+    },
+    {
+      "publisher": "极昼工作室",
+      "date": "2026-01-20",
+      "type": "reported feature",
+      "title": "重生之我在‘青椒模拟器’做导师，一路飞升到院士",
+      "url": "https://mp.weixin.qq.com/s/YG70lGn-gT1QeUD02tqV-w",
+      "language": "zh-CN"
+    },
+    {
+      "publisher": "405游局 / 机核 GCORES",
+      "date": "2026-01-28",
+      "type": "podcast interview",
+      "title": "Ep.32 第一次用AI做游戏的实战经验分享：对话《青椒模拟器》主创",
+      "url": "https://www.gcores.com/radios/210229",
+      "language": "zh-CN",
+      "duration_minutes": 62,
+      "topics": [
+        "Product and technical decisions",
+        "Lessons from building a first AI game",
+        "Model cost, response speed, and production tradeoffs"
+      ]
+    },
+    {
+      "publisher": "Nature",
+      "date": "2026-04-08",
+      "type": "news feature",
+      "title": "When career anxiety becomes gameplay: lessons from China's ‘young-faculty simulator’",
+      "url": "https://www.nature.com/articles/d41586-026-00224-5",
+      "language": "en"
+    }
+  ],
+  "provenance": {
+    "primary_source": "https://wortou.ai/",
+    "notes": "Project names, descriptions, links, and press references are based on the public Wortou.AI portfolio. Metrics are explicitly attributed to their interview source."
+  }
+}

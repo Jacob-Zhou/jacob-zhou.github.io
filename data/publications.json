@@ -1,0 +1,11 @@
+---
+layout: null
+permalink: /data/publications.json
+---
+{
+  "schema_version": "1.0",
+  "canonical_url": {{ '/data/publications.json' | absolute_url | jsonify }},
+  "author_id": "https://cv.hqzhou.com/#person",
+  "generated_at": {{ site.time | date_to_xmlschema | jsonify }},
+  "publications": {{ site.data.publications | jsonify }}
+}

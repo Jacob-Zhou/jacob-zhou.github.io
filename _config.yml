@@ -1,4 +1,7 @@
 title: Houquan Zhou
+url: https://cv.hqzhou.com
+baseurl: ""
+lang: en-US
 position: Ph.D. Student
 affiliation: Soochow University
 email: Jacob_Zhou (at) outlook.com
@@ -6,6 +9,7 @@ email: Jacob_Zhou (at) outlook.com
 plugins:
   - jekyll-spaceship
   - jekyll-sitemap
+  - jekyll-feed
 
 keywords: minimal academic
 description:

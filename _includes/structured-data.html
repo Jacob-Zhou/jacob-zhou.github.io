@@ -1,0 +1,64 @@
+{% if page.url == '/' %}
+<script type="application/ld+json">
+{{ site.data.profile | jsonify }}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://cv.hqzhou.com/#publications",
+  "name": "Publications by Houquan Zhou",
+  "numberOfItems": {{ site.data.publications.size }},
+  "itemListElement": [
+    {% for publication in site.data.publications %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.index }},
+      "item": {
+        "@type": "ScholarlyArticle",
+        "name": {{ publication.title | jsonify }},
+        "datePublished": {{ publication.year | append: '' | jsonify }},
+        "author": [
+          {% for author in publication.authors %}
+          {
+            "@type": "Person",
+            "name": {{ author.name | jsonify }}{% if author.owner %},
+            "@id": "https://cv.hqzhou.com/#person"{% elsif author.url %},
+            "url": {{ author.url | jsonify }}{% endif %}
+          }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ],
+        "isPartOf": {
+          "@type": "CreativeWork",
+          "name": {{ publication.venue | jsonify }}
+        },
+        "sameAs": [{% for link in publication.links %}{{ link.url | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}]
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+{% elsif page.layout == 'post' %}
+{% assign structured_url = page.url | absolute_url %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": {{ structured_url | append: '#article' | jsonify }},
+  "url": {{ structured_url | jsonify }},
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.excerpt | strip_html | strip_newlines | jsonify }},
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+  "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+  "inLanguage": {{ page.lang | default: site.lang | jsonify }},
+  "author": {
+    "@type": "Person",
+    "@id": "https://cv.hqzhou.com/#person",
+    "name": {{ page.author | default: site.title | jsonify }},
+    "url": {{ '/' | absolute_url | jsonify }}
+  }{% if page.image or page.header-img %},
+  "image": {{ page.image | default: page.header-img | absolute_url | jsonify }}{% endif %}
+}
+</script>
+{% endif %}

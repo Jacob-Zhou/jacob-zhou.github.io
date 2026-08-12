@@ -87,10 +87,17 @@
   {% endif %}
 
   <link rel="canonical" href="{{ site.canonical }}{{ page.url }}" />
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}" />
+  <link rel="alternate" type="application/feed+json" title="{{ site.title }}" href="{{ '/feed.json' | absolute_url }}" />
+  <link rel="alternate" type="application/ld+json" title="{{ site.title }} profile data" href="{{ '/data/profile.json' | absolute_url }}" />
+  <link rel="alternate" type="application/json" title="{{ site.title }} publication data" href="{{ '/data/publications.json' | absolute_url }}" />
+  <link rel="alternate" type="application/json" title="{{ site.title }} project data" href="{{ '/data/projects.json' | absolute_url }}" />
   <link rel="icon" type="image/svg+xml" href="{{ site.favicon_svg | relative_url }}" />
   <link rel="mask-icon" href="{{ site.favicon_svg | relative_url }}" color="#000000" />
   <meta name="baidu-site-verification" content="codeva-6RxSUUpptm" />
   <meta name="google-site-verification" content="WClIHF4PllX3llgomaJlnmeZgZwqRswXAEAHz3jqWRM" />
+
+  {% include structured-data.html %}
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZZZBEC0BC0"></script>
   <script>

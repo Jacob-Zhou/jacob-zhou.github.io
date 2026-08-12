@@ -1,0 +1,72 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://cv.hqzhou.com/#profile-page",
+  "url": "https://cv.hqzhou.com/",
+  "name": "Houquan Zhou - Academic Profile",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://cv.hqzhou.com/#person",
+    "name": "Houquan Zhou",
+    "alternateName": "周厚全",
+    "url": "https://cv.hqzhou.com/",
+    "image": "https://cv.hqzhou.com/assets/img/avatar.jpg",
+    "jobTitle": "Ph.D. Student",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Soochow University",
+      "url": "https://www.suda.edu.cn/"
+    },
+    "memberOf": {
+      "@type": "Organization",
+      "name": "Wortou.AI",
+      "alternateName": "青椒模拟器团队",
+      "url": "https://wortou.ai/",
+      "description": "A cross-disciplinary team exploring AI-native games through narrative, dialogue, multi-agent competition, and playable AI algorithms."
+    },
+    "description": "Researcher in language intelligence, text error correction, large language model evaluation and applications, and AI-native games.",
+    "knowsAbout": [
+      "Language intelligence",
+      "Text error correction",
+      "Large language models",
+      "AI-native games",
+      "Natural language processing"
+    ],
+    "sameAs": [
+      "https://scholar.google.com/citations?user=hJWovmAAAAAJ",
+      "https://www.semanticscholar.org/author/Houquan-Zhou/50986473",
+      "https://dblp.org/pid/221/7847-1.html",
+      "https://aclanthology.org/people/h/houquan-zhou/",
+      "https://github.com/Jacob-Zhou"
+    ],
+    "subjectOf": [
+      {
+        "@type": "Article",
+        "name": "专访：DAU达9万，2000人同时在线，两个博士生的AI游戏，凭什么击中玩家？",
+        "publisher": {"@type": "Organization", "name": "游戏茶馆"},
+        "url": "https://youxichaguan.com/archives/184254",
+        "inLanguage": "zh-CN"
+      },
+      {
+        "@type": "Article",
+        "name": "三本院校出身，逆袭拿下诺奖？两位95后博士生写了部‘神人游戏’",
+        "publisher": {"@type": "Organization", "name": "科学网"},
+        "url": "https://news.sciencenet.cn/htmlnews/2026/1/558423.shtm",
+        "inLanguage": "zh-CN"
+      },
+      {
+        "@type": "PodcastEpisode",
+        "name": "Ep.32 第一次用AI做游戏的实战经验分享：对话《青椒模拟器》主创",
+        "url": "https://www.gcores.com/radios/210229",
+        "inLanguage": "zh-CN"
+      },
+      {
+        "@type": "NewsArticle",
+        "name": "When career anxiety becomes gameplay: lessons from China's ‘young-faculty simulator’",
+        "publisher": {"@type": "Organization", "name": "Nature"},
+        "url": "https://www.nature.com/articles/d41586-026-00224-5",
+        "inLanguage": "en"
+      }
+    ]
+  }
+}
