@@ -10,6 +10,20 @@
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <script>
+    (function () {
+      var theme = "system";
+      try {
+        var savedTheme = window.localStorage.getItem("color-theme");
+        if (savedTheme === "light" || savedTheme === "dark" || savedTheme === "system") {
+          theme = savedTheme;
+        }
+      } catch (error) {
+        // Storage can be unavailable in privacy-restricted browsing contexts.
+      }
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
   {% if page.description %}
   <meta name="description" content="{{ page.description }}">
   {% elsif page.excerpt %}
@@ -94,9 +108,19 @@
   <nav class="site-nav">
     <div class="nav-inner">
       <a href="{{ site.canonical }}" class="nav-brand">{{ site.title }}</a>
-      <div class="nav-links">
-        <a href="{{ '/' | relative_url }}">Home</a>
-        <a href="{{ '/blogs' | relative_url }}">Blog</a>
+      <div class="nav-actions">
+        <div class="nav-links">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          <a href="{{ '/blogs' | relative_url }}">Blog</a>
+        </div>
+        <label class="theme-control">
+          <span class="theme-label">Theme</span>
+          <select id="theme-select" class="theme-select" aria-label="Color theme">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
       </div>
     </div>
   </nav>
@@ -109,6 +133,7 @@
     <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
   </footer>
 
+  <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/favicon-switcher.js' | relative_url }}"></script>
 
   <script>
