@@ -1,3 +1,28 @@
+/*
+ * Roboto Flex variable font (self-hosted), with the GRAD (grade) axis.
+ * Grade thickens strokes without changing glyph advance widths, so the
+ * scroll focus effect below can never reflow or shift text.
+ */
+@font-face {
+  font-family: "Roboto Flex";
+  src: url("../fonts/roboto-flex-latin.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-stretch: 100%;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Roboto Flex";
+  src: url("../fonts/roboto-flex-latin-ext.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-stretch: 100%;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 @mixin dark-palette {
   color-scheme: dark;
   --paper: #151514;
@@ -12,6 +37,11 @@
   --code-warm: #d8a0a0;
   --code-green: #a9c393;
   --code-blue: #91b9cc;
+  --fx-grad-max: 95;
+  --fx-grad-rest: -18;
+  --fx-tint-max: 38%;
+  --fx-dim-ink: 28%;
+  --fx-dim-text: 16%;
 }
 
 :root {
@@ -28,10 +58,19 @@
   --code-warm: #7c3f3f;
   --code-green: #3f6f31;
   --code-blue: #286780;
-  --font-sans: "Helvetica Neue", Helvetica, Arial, "Noto Sans SC", "PingFang SC", sans-serif;
+  --font-sans: "Roboto Flex", "Helvetica Neue", Helvetica, Arial, "Noto Sans SC", "PingFang SC", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --measure: 1120px;
   --reading-measure: 760px;
+
+  /* Scroll focus effect: grade (stroke) swing and ink tint strengths.
+     *-max applies at full focus, *-rest / *-dim at zero focus; with no
+     JS-set --fx-focus at all, everything falls back to the plain design. */
+  --fx-grad-max: 150;
+  --fx-grad-rest: -32;
+  --fx-tint-max: 55%;
+  --fx-dim-ink: 30%;
+  --fx-dim-text: 20%;
 
   /* Compatibility aliases used by posts and older pages. */
   --bg: var(--paper);
@@ -56,6 +95,61 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]):not([data-theme="dark"]) {
     @include dark-palette;
+  }
+}
+
+/*
+ * Scroll focus effect ("focus flow").
+ * assets/js/focus-flow.js sets --fx-focus (0..1) per content block based on
+ * its distance from the viewport center. The block responds as one unit:
+ * strokes thicken via the width-neutral GRAD axis and the palette tokens are
+ * re-mixed toward the theme's deepest ink. Nothing here can move a glyph.
+ */
+:root {
+  --fx-src-ink: var(--ink);
+  --fx-src-text: var(--text);
+  --fx-src-muted: var(--muted);
+  --fx-strong: var(--accent-deep);
+}
+
+/*
+ * Two-sided contrast: at full focus (--fx-up = 1) a block gains grade and
+ * ink; at zero focus (--fx-down = 1) it recedes slightly toward muted with
+ * a small negative grade. The fallbacks are chosen so that when --fx-focus
+ * is not set at all (no JS, reduced motion), both channels are 0 and the
+ * block renders exactly as the plain design.
+ */
+.fx-block {
+  --fx-up: var(--fx-focus, 0);
+  --fx-down: calc(1 - var(--fx-focus, 1));
+  --fx-grad: calc(var(--fx-grad-rest, 0) * var(--fx-down) + var(--fx-grad-max, 0) * var(--fx-up));
+  --ink: color-mix(in oklab,
+      color-mix(in oklab, var(--fx-src-ink), var(--fx-src-muted) calc(var(--fx-down) * var(--fx-dim-ink, 0%))),
+      var(--fx-strong) calc(var(--fx-up) * var(--fx-tint-max, 0%)));
+  --text: color-mix(in oklab,
+      color-mix(in oklab, var(--fx-src-text), var(--fx-src-muted) calc(var(--fx-down) * var(--fx-dim-text, 0%))),
+      var(--fx-strong) calc(var(--fx-up) * var(--fx-tint-max, 0%) * 0.6));
+  --muted: color-mix(in oklab, var(--fx-src-muted), var(--fx-strong) calc(var(--fx-up) * var(--fx-tint-max, 0%) * 0.3));
+  --text-mid: var(--text);
+  --text-light: var(--muted);
+  font-variation-settings: "GRAD" calc(var(--fx-grad) * 0.55);
+}
+
+/*
+ * Hierarchy inside a highlighted block: primary elements carry the full
+ * grade and ink swing; body and metadata get a milder one (0.55 grade,
+ * 0.6 / 0.3 ink above), so focus widens the internal contrast instead of
+ * pushing every line toward the same black.
+ */
+.fx-block:is(h1, h2, h3, h4, h5, h6),
+.fx-block :is(h1, h2, h3, h4, h5, h6, strong, b),
+.fx-block :is(.project-title, .timeline-title, .bcard-company, .blog-entry-title) {
+  font-variation-settings: "GRAD" var(--fx-grad);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-block {
+    --fx-focus: initial !important;
   }
 }
 
