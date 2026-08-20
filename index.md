@@ -39,7 +39,7 @@ layout: default
   <div class="project-desc">
     I am interested in building LLM-powered applications. Here is a little simulator that <a href="https://spico197.github.io">Spico197</a> and I made: <a href="https://platform.feedscription.com">🫑青椒模拟器</a>. Feel free to play and give us feedback! Thanks to <a href="https://www.kimi.com/?utm_campaign=TR_Z0K1xPQ0&utm_content=&utm_medium=Youtube&utm_source=CH_kEMBez3l&utm_term=">Kimi</a> for API credits, and <a href="https://zhaochen0110.github.io/">Warrier</a> for the connection.
   </div>
-  <div class="project-media">Media: <a href="https://news.sciencenet.cn/htmlnews/2026/1/558423.shtm">ScienceNet</a><a href="https://news.qq.com/rain/a/20260106A05YL300">游戏茶馆</a></div>
+  <div class="project-media">Press: <a href="https://mp.weixin.qq.com/s/OyY2oX--Bb7TXS9uZkZrTw">机器之心</a><a href="https://youxichaguan.com/archives/184254">游戏茶馆</a><a href="https://news.sciencenet.cn/htmlnews/2026/1/558423.shtm">科学网</a><a href="https://mp.weixin.qq.com/s/YG70lGn-gT1QeUD02tqV-w">极昼工作室</a><a href="https://www.gcores.com/radios/210229">405 游局</a></div>
 </div>
 
 <div class="project-card">
